@@ -58,7 +58,7 @@ class LoginViewController: UIViewController {
         }
         
         loginButton.backgroundColor = #colorLiteral(red: 0.8823529412, green: 0.1215686275, blue: 0.1215686275, alpha: 1)
-        loginButton.layer.cornerRadius = 18
+        loginButton.layer.cornerRadius = 8
         loginButton.clipsToBounds = true
         loginButton.setTitle("Entrar", for: .normal)
         loginButton.titleLabel?.font = UIFont.systemFont(ofSize: 25)
@@ -130,6 +130,8 @@ class LoginViewController: UIViewController {
         userTextField.delegate = self
         userTextField.backgroundColor = .white
         userTextField.placeholder = "Matricula ou usuário"
+        userTextField.clipsToBounds = true
+        userTextField.layer.cornerRadius = 8
         
         self.view.addSubview(passwordTextField)
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
@@ -140,6 +142,8 @@ class LoginViewController: UIViewController {
         passwordTextField.backgroundColor = .white
         passwordTextField.delegate = self
         passwordTextField.placeholder = "Senha"
+        passwordTextField.clipsToBounds = true
+        passwordTextField.layer.cornerRadius = 8
     }
     
     @objc func loginActionButton(_ sender: Any){

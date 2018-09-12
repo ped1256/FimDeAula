@@ -12,8 +12,20 @@ import UIKit
 extension UIView {
     func modalStyle(){
         self.clipsToBounds = true
-        self.layer.cornerRadius = 40
+        self.layer.cornerRadius = 10
         self.backgroundColor = #colorLiteral(red: 0.4784313725, green: 0.4588235294, blue: 0.4588235294, alpha: 1)
         self.alpha = 0.7
     }
+    
+    // for oppen wpp
+//    let urlWhats = "whatsapp://send?phone=+919789384445&abid=12354&text=Hello"
+//    if let urlString = urlWhats.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed) {
+//        if let whatsappURL = URL(string: urlString) {
+//            if UIApplication.shared.canOpenURL(whatsappURL!) {
+//                UIApplication.shared.openURL(whatsappURL!)
+//            } else {
+//                print("Install Whatsapp")
+//            }
+//        }
+//    }
 }

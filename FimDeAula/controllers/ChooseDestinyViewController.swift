@@ -16,7 +16,7 @@ class ChooseDestinyViewController: UIViewController {
     var subtitleView = UIView()
     var tableview = UITableView()
     var backButtonView = UIButton()
-    var cellSelectedIndex: Int = 0
+    var cellSelectedIndex: Int = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
