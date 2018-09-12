@@ -12,6 +12,8 @@
 		FA080FA52148B8F400C5B2B0 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA080FA42148B8F400C5B2B0 /* LoadingView.swift */; };
 		FA080FA72148BAB400C5B2B0 /* ChooseDestinyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA080FA62148BAB400C5B2B0 /* ChooseDestinyViewController.swift */; };
 		FA080FAB2148BB3500C5B2B0 /* Destinys.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA080FAA2148BB3500C5B2B0 /* Destinys.swift */; };
+		FA669D0B2149451100A9D09B /* DestinysCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA669D0A2149451100A9D09B /* DestinysCell.swift */; };
+		FA669D0D2149645000A9D09B /* ChooseGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA669D0C2149645000A9D09B /* ChooseGoalViewController.swift */; };
 		FA90FF53214706A700A55FFD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90FF52214706A700A55FFD /* AppDelegate.swift */; };
 		FA90FF55214706A700A55FFD /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90FF54214706A700A55FFD /* MainViewController.swift */; };
 		FA90FF58214706A700A55FFD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA90FF56214706A700A55FFD /* Main.storyboard */; };
@@ -27,6 +29,8 @@
 		FA080FA42148B8F400C5B2B0 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		FA080FA62148BAB400C5B2B0 /* ChooseDestinyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseDestinyViewController.swift; sourceTree = "<group>"; };
 		FA080FAA2148BB3500C5B2B0 /* Destinys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destinys.swift; sourceTree = "<group>"; };
+		FA669D0A2149451100A9D09B /* DestinysCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinysCell.swift; sourceTree = "<group>"; };
+		FA669D0C2149645000A9D09B /* ChooseGoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseGoalViewController.swift; sourceTree = "<group>"; };
 		FA90FF4F214706A700A55FFD /* FimDeAula.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FimDeAula.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA90FF52214706A700A55FFD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA90FF54214706A700A55FFD /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +67,7 @@
 				FA90FF54214706A700A55FFD /* MainViewController.swift */,
 				FA080FA2214861FD00C5B2B0 /* LoginViewController.swift */,
 				FA080FA62148BAB400C5B2B0 /* ChooseDestinyViewController.swift */,
+				FA669D0C2149645000A9D09B /* ChooseGoalViewController.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -112,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				FA90FF682147072600A55FFD /* BackgroundViewWithAnimate.swift */,
+				FA669D0A2149451100A9D09B /* DestinysCell.swift */,
 				FA080FA42148B8F400C5B2B0 /* LoadingView.swift */,
 			);
 			path = views;
@@ -188,6 +194,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA669D0B2149451100A9D09B /* DestinysCell.swift in Sources */,
 				FA080FA3214861FD00C5B2B0 /* LoginViewController.swift in Sources */,
 				FA080FA1214855D200C5B2B0 /* UIView+.swift in Sources */,
 				FA90FF692147072600A55FFD /* BackgroundViewWithAnimate.swift in Sources */,
@@ -196,6 +203,7 @@
 				FA080FA72148BAB400C5B2B0 /* ChooseDestinyViewController.swift in Sources */,
 				FA90FF5B214706A700A55FFD /* FimDeAula.xcdatamodeld in Sources */,
 				FA080FA52148B8F400C5B2B0 /* LoadingView.swift in Sources */,
+				FA669D0D2149645000A9D09B /* ChooseGoalViewController.swift in Sources */,
 				FA90FF53214706A700A55FFD /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

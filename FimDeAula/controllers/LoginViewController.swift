@@ -147,8 +147,9 @@ class LoginViewController: UIViewController {
         let loadingView = LoadingView(frame: self.view.frame)
         self.view.addSubview(loadingView)
         loadingView.start {
-            let destinyList = ChooseDestinyViewController()
-            self.present(destinyList, animated: true, completion: nil)
+            loadingView.removeFromSuperview()
+            let chooseGoalViewController = ChooseGoalViewController()
+            self.navigationController?.pushViewController(chooseGoalViewController, animated: true)
         }
     }
     
