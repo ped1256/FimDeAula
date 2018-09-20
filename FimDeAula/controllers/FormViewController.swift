@@ -1,5 +1,5 @@
 //
-//  FormDriverViewController.swift
+//  FormViewController.swift
 //  FimDeAula
 //
 //  Created by Pedro Emanuel on 12/09/18.
@@ -11,7 +11,7 @@ enum SchedulingSection: Int {
     case days, hour, space
 }
 
-class FormDriverViewController: UIViewController {
+class FormViewController: UIViewController {
     
     var cellTypes: [Destiny] = Destiny.getPredestinys()
     let grayBackground = UIView()
@@ -23,6 +23,7 @@ class FormDriverViewController: UIViewController {
     var driverInfoView = UIView()
     var sections = [SchedulingSection]()
     var schedule = Schedule()
+    var acceptButton = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +48,7 @@ class FormDriverViewController: UIViewController {
         addSubtitleView()
         addbackButton()
         prepareCollectionView()
+        addButtonaccept()
     }
     
     func addTitle() {
@@ -123,9 +125,34 @@ class FormDriverViewController: UIViewController {
         collectionView.backgroundColor = .clear
         
     }
+    func addButtonaccept(){
+        self.view.addSubview(acceptButton)
+        acceptButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        acceptButton.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
+        acceptButton.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
+        acceptButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        acceptButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        
+        acceptButton.backgroundColor = #colorLiteral(red: 0.8823529412, green: 0.1215686275, blue: 0.1215686275, alpha: 1)
+        acceptButton.isHidden = true
+        
+        acceptButton.setTitle("Cadastrar carona", for: .normal)
+        acceptButton.titleLabel?.font = UIFont.systemFont(ofSize: 25)
+        acceptButton.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: .highlighted)
+        acceptButton.addTarget(self, action: #selector(acceptAction(_:)), for: .touchUpInside)
+    }
     
     @objc func backAction(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func acceptAction(_ sender: Any){
+        let loadingView = LoadingView(frame: self.view.frame)
+        self.view.addSubview(loadingView)
+        loadingView.start {
+            loadingView.removeFromSuperview()
+        }
     }
     
     let hourViewIdentifier = "hourViewIdentifier"
@@ -134,7 +161,7 @@ class FormDriverViewController: UIViewController {
     
 }
 
-extension FormDriverViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, SchedulingDaysCollectionDelegate {
+extension FormViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, SchedulingDaysCollectionDelegate {
 
     func didSelectScheduling(schedulingSection: SchedulingSection) {
         switch schedulingSection {
@@ -147,7 +174,7 @@ extension FormDriverViewController: UICollectionViewDelegate, UICollectionViewDa
                 sections.append(.space)
             }
         case .space:
-            break
+            self.acceptButton.isHidden = false
         }
         
         collectionView?.reloadData()

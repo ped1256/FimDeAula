@@ -80,7 +80,7 @@ class ChooseGoalViewController: UIViewController{
         driverButton.setTitleColor(.white, for: .normal)
         driverButton.setTitleColor(#colorLiteral(red: 0.521568656, green: 0.1098039225, blue: 0.05098039284, alpha: 1), for: .highlighted)
         driverButton.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .bold)
-        driverButton.addTarget(self, action: #selector(buttonAction(_:)), for: .touchUpInside)
+        driverButton.addTarget(self, action: #selector(driverButtonAction(_:)), for: .touchUpInside)
         
         let passagerButton = UIButton()
         self.view.addSubview(passagerButton)
@@ -96,14 +96,22 @@ class ChooseGoalViewController: UIViewController{
         passagerButton.setTitleColor(#colorLiteral(red: 0.8784313725, green: 0.1019607843, blue: 0.1019607843, alpha: 1), for: .normal)
         passagerButton.setTitleColor(#colorLiteral(red: 0.3058823529, green: 0.3058823529, blue: 0.3058823529, alpha: 1), for: .highlighted)
         passagerButton.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .bold)
-        passagerButton.addTarget(self, action: #selector(buttonAction(_:)), for: .touchUpInside)
+        passagerButton.addTarget(self, action: #selector(passagerButtonAction(_:)), for: .touchUpInside)
     }
     
-    @objc func buttonAction(_ sender: Any) {
+    @objc func driverButtonAction(_ sender: Any) {
         let chooseDestinyViewController = ChooseDestinyViewController()
+        chooseDestinyViewController.decisionType = .driver
+        
         let nav = UINavigationController(rootViewController: chooseDestinyViewController)
         self.present(nav, animated: true, completion: nil)
     }
     
+    @objc func passagerButtonAction(_ sender: Any) {
+        let chooseDestinyViewController = ChooseDestinyViewController()
+        chooseDestinyViewController.decisionType = .passenger
+        let nav = UINavigationController(rootViewController: chooseDestinyViewController)
+        self.present(nav, animated: true, completion: nil)
+    }
 }
 

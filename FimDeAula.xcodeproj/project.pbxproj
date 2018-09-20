@@ -16,7 +16,7 @@
 		FA5520E82153FBB40054B29B /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5520E72153FBB40054B29B /* Schedule.swift */; };
 		FA669D0B2149451100A9D09B /* DestinysCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA669D0A2149451100A9D09B /* DestinysCell.swift */; };
 		FA669D0D2149645000A9D09B /* ChooseGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA669D0C2149645000A9D09B /* ChooseGoalViewController.swift */; };
-		FA669D0F2149C8F900A9D09B /* FormDriverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA669D0E2149C8F900A9D09B /* FormDriverViewController.swift */; };
+		FA669D0F2149C8F900A9D09B /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA669D0E2149C8F900A9D09B /* FormViewController.swift */; };
 		FA669D112149D3AA00A9D09B /* DaysCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA669D102149D3AA00A9D09B /* DaysCell.swift */; };
 		FA90FF53214706A700A55FFD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90FF52214706A700A55FFD /* AppDelegate.swift */; };
 		FA90FF55214706A700A55FFD /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90FF54214706A700A55FFD /* MainViewController.swift */; };
@@ -37,7 +37,7 @@
 		FA5520E72153FBB40054B29B /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		FA669D0A2149451100A9D09B /* DestinysCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinysCell.swift; sourceTree = "<group>"; };
 		FA669D0C2149645000A9D09B /* ChooseGoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseGoalViewController.swift; sourceTree = "<group>"; };
-		FA669D0E2149C8F900A9D09B /* FormDriverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormDriverViewController.swift; sourceTree = "<group>"; };
+		FA669D0E2149C8F900A9D09B /* FormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
 		FA669D102149D3AA00A9D09B /* DaysCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysCell.swift; sourceTree = "<group>"; };
 		FA90FF4F214706A700A55FFD /* FimDeAula.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FimDeAula.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA90FF52214706A700A55FFD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -76,7 +76,7 @@
 				FA080FA2214861FD00C5B2B0 /* LoginViewController.swift */,
 				FA080FA62148BAB400C5B2B0 /* ChooseDestinyViewController.swift */,
 				FA669D0C2149645000A9D09B /* ChooseGoalViewController.swift */,
-				FA669D0E2149C8F900A9D09B /* FormDriverViewController.swift */,
+				FA669D0E2149C8F900A9D09B /* FormViewController.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -206,7 +206,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA669D0F2149C8F900A9D09B /* FormDriverViewController.swift in Sources */,
+				FA669D0F2149C8F900A9D09B /* FormViewController.swift in Sources */,
 				FA669D0B2149451100A9D09B /* DestinysCell.swift in Sources */,
 				FA669D112149D3AA00A9D09B /* DaysCell.swift in Sources */,
 				FA5520E82153FBB40054B29B /* Schedule.swift in Sources */,
@@ -364,6 +364,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WEP9UKL7GT;
 				INFOPLIST_FILE = FimDeAula/Info.plist;
@@ -373,6 +374,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = pedro.emanuel.FimDeAula;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -382,6 +384,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WEP9UKL7GT;
 				INFOPLIST_FILE = FimDeAula/Info.plist;
@@ -391,6 +394,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = pedro.emanuel.FimDeAula;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

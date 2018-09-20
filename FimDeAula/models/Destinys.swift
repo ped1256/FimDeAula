@@ -16,6 +16,11 @@ enum PreDestinys: String {
     case OTHERS = "Outro destino"
 }
 
+enum DecisionType {
+    case driver
+    case passenger
+}
+
 class Destiny: NSObject {
     var title: String
     var slug: String

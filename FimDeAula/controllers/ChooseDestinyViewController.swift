@@ -11,6 +11,7 @@ import UIKit
 class ChooseDestinyViewController: UIViewController {
     
     var cellTypes: [Destiny] = Destiny.getPredestinys()
+    var decisionType: DecisionType = .passenger
     let grayBackground = UIView()
     var titleLabel = UILabel()
     var subtitleView = UIView()
@@ -139,8 +140,8 @@ extension ChooseDestinyViewController: UITableViewDelegate, UITableViewDataSourc
         self.cellSelectedIndex = indexPath.row
         tableview.reloadData()
 
-        let formDriverViewController = FormDriverViewController()
-        self.navigationController?.pushViewController(formDriverViewController, animated: true)
+        let formViewController = FormViewController()
+        self.navigationController?.pushViewController(formViewController, animated: true)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
