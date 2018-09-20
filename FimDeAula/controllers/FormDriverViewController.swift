@@ -7,7 +7,7 @@
 //
 
 import UIKit
-enum SchedulingSections: Int {
+enum SchedulingSection: Int {
     case days, hour, space
 }
 
@@ -21,7 +21,8 @@ class FormDriverViewController: UIViewController {
     var backButtonView = UIButton()
     var cellSelectedIndex: Int = -1
     var driverInfoView = UIView()
-    var sections = [SchedulingSections]()
+    var sections = [SchedulingSection]()
+    var schedule = Schedule()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,19 +109,18 @@ class FormDriverViewController: UIViewController {
         
         self.view.addSubview(collectionView)
         
-        collectionView.register(CalendarDaysView.self, forCellWithReuseIdentifier: CalendarDaysView.identifier)
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: hourIdentifier)
+        collectionView.register(SchedulingCollection.self, forCellWithReuseIdentifier: daysViewIdentifier)
+        collectionView.register(SchedulingCollection.self, forCellWithReuseIdentifier: hourViewIdentifier)
+        collectionView.register(SchedulingCollection.self, forCellWithReuseIdentifier: spaceViewIdentifier)
         
         sections.append(.days)
-        sections.append(.hour)
-        sections.append(.space)
         
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
         collectionView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
         collectionView.topAnchor.constraint(equalTo: self.subtitleView.bottomAnchor, constant: 30).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-        collectionView.backgroundColor = #colorLiteral(red: 0.4470588235, green: 0.4235294118, blue: 0.4235294118, alpha: 1)
+        collectionView.backgroundColor = .clear
         
     }
     
@@ -128,13 +128,31 @@ class FormDriverViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    
-    let hourIdentifier = "hourIdentifier"
+    let hourViewIdentifier = "hourViewIdentifier"
+    let daysViewIdentifier = "daysViewIdentifier"
+    let spaceViewIdentifier = "spaceViewIdentifier"
     
 }
 
-extension FormDriverViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension FormDriverViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, SchedulingDaysCollectionDelegate {
 
+    func didSelectScheduling(schedulingSection: SchedulingSection) {
+        switch schedulingSection {
+        case .days:
+            if !sections.contains(.hour) {
+                sections.append(.hour)
+            }
+        case .hour:
+            if !sections.contains(.space) {
+                sections.append(.space)
+            }
+        case .space:
+            break
+        }
+        
+        collectionView?.reloadData()
+    }
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return sections.count
     }
@@ -142,29 +160,34 @@ extension FormDriverViewController: UICollectionViewDelegate, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 1
     }
+    
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var cell = UICollectionViewCell()
-
-        guard let section = SchedulingSections(rawValue: indexPath.section) else { return UICollectionViewCell() }
+        guard let section = SchedulingSection(rawValue: indexPath.section) else { return UICollectionViewCell() }
         
         switch section {
         case .days :
-            guard let calendarDaysCollection = collectionView.dequeueReusableCell(withReuseIdentifier: CalendarDaysView.identifier, for: indexPath) as? CalendarDaysView else {
-                return UICollectionViewCell() }
-            cell = calendarDaysCollection
+            guard let schedulingDaysCollection = collectionView.dequeueReusableCell(withReuseIdentifier: daysViewIdentifier, for: indexPath) as? SchedulingCollection else { return UICollectionViewCell() }
+            
+            schedulingDaysCollection.delegate = self
+            schedulingDaysCollection.section = .days
+            cell = schedulingDaysCollection
             
         case .hour:
-            let hourCollection = collectionView.dequeueReusableCell(withReuseIdentifier: hourIdentifier, for: indexPath)
-            hourCollection.backgroundColor = .red
-            cell = hourCollection
+            guard let schedulingHourCollection = collectionView.dequeueReusableCell(withReuseIdentifier: hourViewIdentifier, for: indexPath) as? SchedulingCollection else { return UICollectionViewCell() }
             
+            schedulingHourCollection.delegate = self
+            schedulingHourCollection.section = .hour
+            cell = schedulingHourCollection
         case .space:
-            let spaceCollection = collectionView.dequeueReusableCell(withReuseIdentifier: hourIdentifier, for: indexPath)
-            spaceCollection.backgroundColor = .black
-            cell = spaceCollection
+            guard let schedulingSpaceCollection = collectionView.dequeueReusableCell(withReuseIdentifier: spaceViewIdentifier, for: indexPath) as? SchedulingCollection else { return UICollectionViewCell() }
+            
+            schedulingSpaceCollection.delegate = self
+            schedulingSpaceCollection.section = .space
+            cell = schedulingSpaceCollection
         }
-
+        
         return cell
     }
 }

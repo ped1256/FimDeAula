@@ -1,5 +1,5 @@
 //
-//  DaysView.swift
+//  SchedulingCollection.swift
 //  FimDeAula
 //
 //  Created by Pedro Emanuel on 14/09/18.
@@ -8,10 +8,21 @@
 
 import UIKit
 
-class CalendarDaysView: UICollectionViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
+protocol SchedulingDaysCollectionDelegate {
+    func didSelectScheduling(schedulingSection: SchedulingSection)
+}
+
+class SchedulingCollection: UICollectionViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
     
     var daysCollectioView: UICollectionView?
     var cellSelectedIndex: Int = -1
+    var section: SchedulingSection = .days {
+        didSet {
+            daysCollectioView?.reloadData()
+        }
+    }
+    var delegate: SchedulingDaysCollectionDelegate?
+    
     static var identifier = "calendarDaysViewIdentifier"
     
     override init(frame: CGRect) {
@@ -48,7 +59,14 @@ class CalendarDaysView: UICollectionViewCell, UICollectionViewDelegate, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 7
+        switch self.section {
+        case .days:
+            return 7
+        case .hour:
+            return 7
+        case .space:
+            return 4
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -61,25 +79,59 @@ class CalendarDaysView: UICollectionViewCell, UICollectionViewDelegate, UICollec
             cell.titleLabel.textColor = #colorLiteral(red: 0.7215686275, green: 0.7215686275, blue: 0.7215686275, alpha: 1)
         }
         
-        switch indexPath.row {
-        case 0:
-            cell.titleLabel.text = "Segunda"
-        case 1:
-            cell.titleLabel.text = "Terça"
-        case 2:
-            cell.titleLabel.text = "Quarta"
-        case 3:
-            cell.titleLabel.text = "Quinta"
-        case 4:
-            cell.titleLabel.text = "Sexta"
-        case 5:
-            cell.titleLabel.text = "Sabado"
-        case 6:
-            cell.titleLabel.text = "Domingo"
-        default:
-            break
+        switch self.section {
+        case .days:
+            switch indexPath.row {
+            case 0:
+                cell.titleLabel.text = "Segunda"
+            case 1:
+                cell.titleLabel.text = "Terça"
+            case 2:
+                cell.titleLabel.text = "Quarta"
+            case 3:
+                cell.titleLabel.text = "Quinta"
+            case 4:
+                cell.titleLabel.text = "Sexta"
+            case 5:
+                cell.titleLabel.text = "Sabado"
+            case 6:
+                cell.titleLabel.text = "Domingo"
+            default:
+                break
+            }
+        case .hour:
+            switch indexPath.row {
+            case 0:
+                cell.titleLabel.text = "19:00"
+            case 1:
+                cell.titleLabel.text = "19:30"
+            case 2:
+                cell.titleLabel.text = "20:00"
+            case 3:
+                cell.titleLabel.text = "21:30"
+            case 4:
+                cell.titleLabel.text = "22:00"
+            case 5:
+                cell.titleLabel.text = "22:30"
+            case 6:
+                cell.titleLabel.text = "23:00"
+            default:
+                break
+            }
+        case .space:
+            switch indexPath.row {
+            case 0:
+                cell.titleLabel.text = "1 vaga"
+            case 1:
+                cell.titleLabel.text = "2 vagas"
+            case 2:
+                cell.titleLabel.text = "3 vagas"
+            case 3:
+                cell.titleLabel.text = "4 vagas"
+            default:
+                break
+            }
         }
-        
         return cell
     }
     
@@ -91,5 +143,7 @@ class CalendarDaysView: UICollectionViewCell, UICollectionViewDelegate, UICollec
         cell.titleLabel.textColor = #colorLiteral(red: 0.7215686275, green: 0.7215686275, blue: 0.7215686275, alpha: 1)
         cellSelectedIndex = indexPath.row
         collectionView.reloadData()
+        
+        delegate?.didSelectScheduling(schedulingSection: self.section)
     }
 }

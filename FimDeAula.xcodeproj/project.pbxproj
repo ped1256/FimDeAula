@@ -12,7 +12,8 @@
 		FA080FA52148B8F400C5B2B0 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA080FA42148B8F400C5B2B0 /* LoadingView.swift */; };
 		FA080FA72148BAB400C5B2B0 /* ChooseDestinyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA080FA62148BAB400C5B2B0 /* ChooseDestinyViewController.swift */; };
 		FA080FAB2148BB3500C5B2B0 /* Destinys.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA080FAA2148BB3500C5B2B0 /* Destinys.swift */; };
-		FA4A9C25214C473200FA4DDE /* CalendarDaysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4A9C24214C473200FA4DDE /* CalendarDaysView.swift */; };
+		FA4A9C25214C473200FA4DDE /* SchedullingCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4A9C24214C473200FA4DDE /* SchedullingCollection.swift */; };
+		FA5520E82153FBB40054B29B /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5520E72153FBB40054B29B /* Schedule.swift */; };
 		FA669D0B2149451100A9D09B /* DestinysCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA669D0A2149451100A9D09B /* DestinysCell.swift */; };
 		FA669D0D2149645000A9D09B /* ChooseGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA669D0C2149645000A9D09B /* ChooseGoalViewController.swift */; };
 		FA669D0F2149C8F900A9D09B /* FormDriverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA669D0E2149C8F900A9D09B /* FormDriverViewController.swift */; };
@@ -32,7 +33,8 @@
 		FA080FA42148B8F400C5B2B0 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		FA080FA62148BAB400C5B2B0 /* ChooseDestinyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseDestinyViewController.swift; sourceTree = "<group>"; };
 		FA080FAA2148BB3500C5B2B0 /* Destinys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destinys.swift; sourceTree = "<group>"; };
-		FA4A9C24214C473200FA4DDE /* CalendarDaysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDaysView.swift; sourceTree = "<group>"; };
+		FA4A9C24214C473200FA4DDE /* SchedullingCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedullingCollection.swift; sourceTree = "<group>"; };
+		FA5520E72153FBB40054B29B /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		FA669D0A2149451100A9D09B /* DestinysCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinysCell.swift; sourceTree = "<group>"; };
 		FA669D0C2149645000A9D09B /* ChooseGoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseGoalViewController.swift; sourceTree = "<group>"; };
 		FA669D0E2149C8F900A9D09B /* FormDriverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormDriverViewController.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				FA080FAA2148BB3500C5B2B0 /* Destinys.swift */,
+				FA5520E72153FBB40054B29B /* Schedule.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -125,7 +128,7 @@
 			children = (
 				FA90FF682147072600A55FFD /* BackgroundViewWithAnimate.swift */,
 				FA669D0A2149451100A9D09B /* DestinysCell.swift */,
-				FA4A9C24214C473200FA4DDE /* CalendarDaysView.swift */,
+				FA4A9C24214C473200FA4DDE /* SchedullingCollection.swift */,
 				FA669D102149D3AA00A9D09B /* DaysCell.swift */,
 				FA080FA42148B8F400C5B2B0 /* LoadingView.swift */,
 			);
@@ -206,7 +209,8 @@
 				FA669D0F2149C8F900A9D09B /* FormDriverViewController.swift in Sources */,
 				FA669D0B2149451100A9D09B /* DestinysCell.swift in Sources */,
 				FA669D112149D3AA00A9D09B /* DaysCell.swift in Sources */,
-				FA4A9C25214C473200FA4DDE /* CalendarDaysView.swift in Sources */,
+				FA5520E82153FBB40054B29B /* Schedule.swift in Sources */,
+				FA4A9C25214C473200FA4DDE /* SchedullingCollection.swift in Sources */,
 				FA080FA3214861FD00C5B2B0 /* LoginViewController.swift in Sources */,
 				FA080FA1214855D200C5B2B0 /* UIView+.swift in Sources */,
 				FA90FF692147072600A55FFD /* BackgroundViewWithAnimate.swift in Sources */,
