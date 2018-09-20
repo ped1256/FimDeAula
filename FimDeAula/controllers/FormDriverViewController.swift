@@ -1,5 +1,5 @@
 //
-//  ChooseDestinyViewController.swift
+//  FormDriverViewController.swift
 //  FimDeAula
 //
 //  Created by Pedro Emanuel on 12/09/18.
@@ -7,26 +7,27 @@
 //
 
 import UIKit
+enum SchedulingSections: Int {
+    case days, hour, space
+}
 
-class ChooseDestinyViewController: UIViewController {
+class FormDriverViewController: UIViewController {
     
     var cellTypes: [Destiny] = Destiny.getPredestinys()
     let grayBackground = UIView()
     var titleLabel = UILabel()
     var subtitleView = UIView()
-    var tableview = UITableView()
+    var collectionView: UICollectionView?
     var backButtonView = UIButton()
     var cellSelectedIndex: Int = -1
-    
-    var nav = UINavigationController()
-    
+    var driverInfoView = UIView()
+    var sections = [SchedulingSections]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        self.navigationController?.isNavigationBarHidden = true
         let backgroundView = BackgroundViewWithAnimate(frame: self.view.frame)
-
+        
         backgroundView.addSubview(grayBackground)
         grayBackground.modalStyle()
         grayBackground.layer.cornerRadius = 0
@@ -35,16 +36,16 @@ class ChooseDestinyViewController: UIViewController {
         grayBackground.rightAnchor.constraint(equalTo: backgroundView.rightAnchor).isActive = true
         grayBackground.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor).isActive = true
         grayBackground.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: 80).isActive = true
-
+        
         self.view.addSubview(backgroundView)
         self.buildUI()
-        self.configureTableView()
     }
     
     func buildUI() {
         addTitle()
         addSubtitleView()
         addbackButton()
+        prepareCollectionView()
     }
     
     func addTitle() {
@@ -71,18 +72,18 @@ class ChooseDestinyViewController: UIViewController {
         let subtitleTextLabel = UILabel()
         subtitleView.addSubview(subtitleTextLabel)
         
-        subtitleTextLabel.text = "Escolha o destino"
+        subtitleTextLabel.text = "Selecione Dia e horario"
         subtitleTextLabel.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         subtitleTextLabel.textColor = #colorLiteral(red: 0.9568627451, green: 0.9568627451, blue: 0.9568627451, alpha: 1)
         
         subtitleTextLabel.translatesAutoresizingMaskIntoConstraints = false
-        subtitleTextLabel.centerXAnchor.constraint(equalTo: subtitleView.centerXAnchor, constant: -10).isActive = true
+        subtitleTextLabel.centerXAnchor.constraint(equalTo: subtitleView.centerXAnchor, constant: 5).isActive = true
         subtitleTextLabel.centerYAnchor.constraint(equalTo: subtitleView.centerYAnchor).isActive = true
     }
     
     func addbackButton() {
         self.view.addSubview(backButtonView)
-     
+        
         backButtonView.translatesAutoresizingMaskIntoConstraints = false
         backButtonView.setImage(#imageLiteral(resourceName: "backButton"), for: .normal)
         backButtonView.heightAnchor.constraint(equalToConstant: 29).isActive = true
@@ -90,86 +91,80 @@ class ChooseDestinyViewController: UIViewController {
         backButtonView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 10).isActive = true
         backButtonView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 30).isActive = true
         backButtonView.addTarget(self, action: #selector(backAction(_:)), for: .touchUpInside)
+    }
+    
+    func prepareCollectionView(){
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.itemSize = CGSize(width: self.view.frame.width, height: 42)
+        layout.headerReferenceSize = layout.itemSize
+
+        self.collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
+        
+        guard let collectionView = collectionView else { return }
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+        self.view.addSubview(collectionView)
+        
+        collectionView.register(CalendarDaysView.self, forCellWithReuseIdentifier: CalendarDaysView.identifier)
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: hourIdentifier)
+        
+        sections.append(.days)
+        sections.append(.hour)
+        sections.append(.space)
+        
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
+        collectionView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
+        collectionView.topAnchor.constraint(equalTo: self.subtitleView.bottomAnchor, constant: 30).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        collectionView.backgroundColor = #colorLiteral(red: 0.4470588235, green: 0.4235294118, blue: 0.4235294118, alpha: 1)
         
     }
     
-    @objc func backAction(_ sender: Any){
-        self.dismiss(animated: true, completion: nil)
+    @objc func backAction(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
-
+    
+    
+    let hourIdentifier = "hourIdentifier"
+    
 }
 
-//MARK: table view Delegates
-extension ChooseDestinyViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    func configureTableView() {
-        self.view.addSubview(tableview)
-        tableview.delegate = self
-        tableview.dataSource = self
-        
-        tableview.tableFooterView = UIView()
-        tableview.backgroundColor = .clear
-        tableview.separatorColor = #colorLiteral(red: 0.3058823529, green: 0.3058823529, blue: 0.3058823529, alpha: 1)
-        tableview.allowsSelection = true
+extension FormDriverViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
-        tableview.translatesAutoresizingMaskIntoConstraints = false
-        tableview.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
-        tableview.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
-        tableview.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-        tableview.topAnchor.constraint(equalTo: self.subtitleView.bottomAnchor, constant: 33).isActive = true
-        
-        tableview.register(DestinyCell.self, forCellReuseIdentifier: DestinyCell.destinyCellIdentifier)
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return sections.count
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 1
     }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cellTypes.count
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
-    }
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.cellForRow(at: indexPath) as? DestinyCell else { return }
-        cell.cellIsSelected = true
-        self.cellSelectedIndex = indexPath.row
-        tableview.reloadData()
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        var cell = UICollectionViewCell()
 
-        let formDriverViewController = FormDriverViewController()
-        self.navigationController?.pushViewController(formDriverViewController, animated: true)
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: DestinyCell.destinyCellIdentifier, for: indexPath) as? DestinyCell else { return
-            UITableViewCell() }
-
-        if indexPath.row == cellSelectedIndex {
-            cell.cellIsSelected = true
-        } else {
-            cell.cellIsSelected = false
-        }
-
-        switch indexPath.row {
-            case PreDestinys.TICAN.hashValue:
-                cell.titleLabel.text = PreDestinys.TICAN.rawValue
-            case PreDestinys.TISAN.hashValue:
-                cell.titleLabel.text = PreDestinys.TISAN.rawValue
-            case PreDestinys.TITRI.hashValue:
-                cell.titleLabel.text = PreDestinys.TITRI.rawValue
-            case PreDestinys.TILAG.hashValue:
-                cell.titleLabel.text = PreDestinys.TILAG.rawValue
-            case PreDestinys.TICEN.hashValue:
-                cell.titleLabel.text = PreDestinys.TICEN.rawValue
-            case PreDestinys.OTHERS.hashValue:
-                cell.titleLabel.text = PreDestinys.OTHERS.rawValue
-            default:
-                break
-        }
+        guard let section = SchedulingSections(rawValue: indexPath.section) else { return UICollectionViewCell() }
         
+        switch section {
+        case .days :
+            guard let calendarDaysCollection = collectionView.dequeueReusableCell(withReuseIdentifier: CalendarDaysView.identifier, for: indexPath) as? CalendarDaysView else {
+                return UICollectionViewCell() }
+            cell = calendarDaysCollection
+            
+        case .hour:
+            let hourCollection = collectionView.dequeueReusableCell(withReuseIdentifier: hourIdentifier, for: indexPath)
+            hourCollection.backgroundColor = .red
+            cell = hourCollection
+            
+        case .space:
+            let spaceCollection = collectionView.dequeueReusableCell(withReuseIdentifier: hourIdentifier, for: indexPath)
+            spaceCollection.backgroundColor = .black
+            cell = spaceCollection
+        }
+
         return cell
     }
 }

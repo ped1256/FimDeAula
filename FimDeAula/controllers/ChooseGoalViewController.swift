@@ -101,7 +101,8 @@ class ChooseGoalViewController: UIViewController{
     
     @objc func buttonAction(_ sender: Any) {
         let chooseDestinyViewController = ChooseDestinyViewController()
-        self.present(chooseDestinyViewController, animated: true, completion: nil)
+        let nav = UINavigationController(rootViewController: chooseDestinyViewController)
+        self.present(nav, animated: true, completion: nil)
     }
     
 }

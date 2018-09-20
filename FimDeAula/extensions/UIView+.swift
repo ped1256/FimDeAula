@@ -28,4 +28,13 @@ extension UIView {
 //            }
 //        }
 //    }
+    
+    // for call
+//    if let url = URL(string: "tel://\(busPhone)"), UIApplication.shared.canOpenURL(url) {
+//    if #available(iOS 10, *) {
+//    UIApplication.shared.open(url)
+//    } else {
+//    UIApplication.shared.openURL(url)
+//    }
+//    }
 }
