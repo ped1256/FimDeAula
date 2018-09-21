@@ -15,6 +15,7 @@ class ChooseGoalViewController: UIViewController{
     var logoImageView = UIImageView()
     var backgroundView = UIView()
     var user: User?
+    var shouldGetuUserInfo: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +28,13 @@ class ChooseGoalViewController: UIViewController{
         addTitle()
         addLogo()
         addPassagerAndDriverButton()
+        
+        // get user info when user not loged
+        if shouldGetuUserInfo {
+            Operation().retrieverUserFacebookInfo { (user) in
+                self.user = user
+            }
+        } 
     }
     
     override func didReceiveMemoryWarning() {

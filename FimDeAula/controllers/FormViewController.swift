@@ -138,7 +138,12 @@ class FormViewController: UIViewController {
         acceptButton.backgroundColor = #colorLiteral(red: 0.8823529412, green: 0.1215686275, blue: 0.1215686275, alpha: 1)
         acceptButton.isHidden = true
         
-        acceptButton.setTitle("Cadastrar carona", for: .normal)
+        if schedule.decisionType == .driver {
+            acceptButton.setTitle("Cadastrar carona", for: .normal)
+        } else {
+            acceptButton.setTitle("Encontrar carona", for: .normal)
+        }
+        
         acceptButton.titleLabel?.font = UIFont.systemFont(ofSize: 25)
         acceptButton.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: .highlighted)
         acceptButton.addTarget(self, action: #selector(acceptAction(_:)), for: .touchUpInside)

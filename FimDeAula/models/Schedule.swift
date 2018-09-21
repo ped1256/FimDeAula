@@ -10,6 +10,7 @@ import Foundation
 
 class Schedule: NSObject {
     var destiny = Destiny(title: PreDestinys.OTHERS.rawValue, slug: "OTHERS")
+    var decisionType: DecisionType = .driver
     var hour: String = ""
     var space: String = "1"
     var day: String = ""

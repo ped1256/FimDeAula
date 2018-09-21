@@ -95,7 +95,7 @@ class MainViewController: UIViewController {
     }
 
     @objc func acceptAction(_ sender: Any){
-        
+        UserDefaults.standard.set(false, forKey: Identifier().userFirstTimeIdentifier)
         let loginViewController = LoginViewController()
         self.navigationController?.pushViewController(loginViewController, animated: true)
     }

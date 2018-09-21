@@ -119,22 +119,14 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController: FBSDKLoginButtonDelegate {
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-        UserDefaults.standard.setValue(false, forKey: "userIsLoged")
+        UserDefaults.standard.setValue(false, forKey: Identifier().userIsLogedIdentifier)
     }
     
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
-        let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, email, gender, cover, picture"])
-        _ = graphRequest?.start(completionHandler: {
-            (connection, result, error) -> Void in
-            
-            guard error == nil else { return }
-            UserDefaults.standard.setValue(true, forKey: "userIsLoged")
-            
-            guard let user = User.parseInfoFromFacebook(result: result) else { return }
+        Operation().retrieverUserFacebookInfo { user in
             let chooseGoalViewController = ChooseGoalViewController()
             chooseGoalViewController.user = user
             self.navigationController?.pushViewController(chooseGoalViewController, animated: true)
-            
-        })
+        }
     }
 }

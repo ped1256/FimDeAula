@@ -16,9 +16,9 @@ enum PreDestinys: String {
     case OTHERS = "Outro destino"
 }
 
-enum DecisionType {
-    case driver
-    case passenger
+enum DecisionType: Int {
+    case driver = 0
+    case passenger = 1
 }
 
 class Destiny: NSObject {

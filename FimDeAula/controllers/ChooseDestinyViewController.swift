@@ -143,7 +143,7 @@ extension ChooseDestinyViewController: UITableViewDelegate, UITableViewDataSourc
 
         let formViewController = FormViewController()
         formViewController.user = self.user
-        
+        formViewController.schedule.decisionType = self.decisionType
         switch indexPath.row {
         case PreDestinys.TICAN.hashValue:
             formViewController.schedule.destiny = Destiny(title: PreDestinys.TICAN.rawValue, slug: "TICAN")
