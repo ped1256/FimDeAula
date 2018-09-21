@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SchedulingDaysCollectionDelegate {
-    func didSelectScheduling(schedulingSection: SchedulingSection)
+    func didSelectScheduling(schedulingSection: SchedulingSection, value: String)
 }
 
 class SchedulingCollection: UICollectionViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
@@ -144,6 +144,8 @@ class SchedulingCollection: UICollectionViewCell, UICollectionViewDelegate, UICo
         cellSelectedIndex = indexPath.row
         collectionView.reloadData()
         
-        delegate?.didSelectScheduling(schedulingSection: self.section)
+        if let value = cell.titleLabel.text {
+            delegate?.didSelectScheduling(schedulingSection: self.section, value: value)
+        }
     }
 }

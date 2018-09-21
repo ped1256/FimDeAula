@@ -22,6 +22,7 @@ class FormViewController: UIViewController {
     var cellSelectedIndex: Int = -1
     var driverInfoView = UIView()
     var sections = [SchedulingSection]()
+    var user: User?
     var schedule = Schedule()
     var acceptButton = UIButton()
     
@@ -148,11 +149,12 @@ class FormViewController: UIViewController {
     }
     
     @objc func acceptAction(_ sender: Any){
+        guard let user = self.user else { return }
+        user.schedules.append(self.schedule)
+        
         let loadingView = LoadingView(frame: self.view.frame)
         self.view.addSubview(loadingView)
-        loadingView.start {
-            loadingView.removeFromSuperview()
-        }
+        loadingView.animating.startAnimating()
     }
     
     let hourViewIdentifier = "hourViewIdentifier"
@@ -163,18 +165,23 @@ class FormViewController: UIViewController {
 
 extension FormViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, SchedulingDaysCollectionDelegate {
 
-    func didSelectScheduling(schedulingSection: SchedulingSection) {
+    func didSelectScheduling(schedulingSection: SchedulingSection, value: String) {
         switch schedulingSection {
         case .days:
             if !sections.contains(.hour) {
                 sections.append(.hour)
             }
+            
+            self.schedule.day = value
         case .hour:
             if !sections.contains(.space) {
                 sections.append(.space)
             }
+            
+            self.schedule.hour = value
         case .space:
             self.acceptButton.isHidden = false
+            self.schedule.space = value
         }
         
         collectionView?.reloadData()

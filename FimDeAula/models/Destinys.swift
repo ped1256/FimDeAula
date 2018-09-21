@@ -24,8 +24,6 @@ enum DecisionType {
 class Destiny: NSObject {
     var title: String
     var slug: String
-    var date: Date?
-    var day: String?
     
     init(title: String, slug: String) {
         self.title = title

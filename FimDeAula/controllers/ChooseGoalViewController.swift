@@ -14,6 +14,7 @@ class ChooseGoalViewController: UIViewController{
     var titleLabel = UILabel()
     var logoImageView = UIImageView()
     var backgroundView = UIView()
+    var user: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,6 +103,7 @@ class ChooseGoalViewController: UIViewController{
     @objc func driverButtonAction(_ sender: Any) {
         let chooseDestinyViewController = ChooseDestinyViewController()
         chooseDestinyViewController.decisionType = .driver
+        chooseDestinyViewController.user = self.user
         
         let nav = UINavigationController(rootViewController: chooseDestinyViewController)
         self.present(nav, animated: true, completion: nil)
@@ -109,6 +111,7 @@ class ChooseGoalViewController: UIViewController{
     
     @objc func passagerButtonAction(_ sender: Any) {
         let chooseDestinyViewController = ChooseDestinyViewController()
+        chooseDestinyViewController.user = self.user
         chooseDestinyViewController.decisionType = .passenger
         let nav = UINavigationController(rootViewController: chooseDestinyViewController)
         self.present(nav, animated: true, completion: nil)

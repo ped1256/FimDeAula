@@ -12,6 +12,7 @@ class ChooseDestinyViewController: UIViewController {
     
     var cellTypes: [Destiny] = Destiny.getPredestinys()
     var decisionType: DecisionType = .passenger
+    var user: User?
     let grayBackground = UIView()
     var titleLabel = UILabel()
     var subtitleView = UIView()
@@ -141,6 +142,25 @@ extension ChooseDestinyViewController: UITableViewDelegate, UITableViewDataSourc
         tableview.reloadData()
 
         let formViewController = FormViewController()
+        formViewController.user = self.user
+        
+        switch indexPath.row {
+        case PreDestinys.TICAN.hashValue:
+            formViewController.schedule.destiny = Destiny(title: PreDestinys.TICAN.rawValue, slug: "TICAN")
+        case PreDestinys.TISAN.hashValue:
+            formViewController.schedule.destiny = Destiny(title: PreDestinys.TISAN.rawValue, slug: "TISAN")
+        case PreDestinys.TITRI.hashValue:
+            formViewController.schedule.destiny = Destiny(title: PreDestinys.TITRI.rawValue, slug: "TITRI")
+        case PreDestinys.TILAG.hashValue:
+            formViewController.schedule.destiny = Destiny(title: PreDestinys.TILAG.rawValue, slug: "TILAG")
+        case PreDestinys.TICEN.hashValue:
+            formViewController.schedule.destiny = Destiny(title: PreDestinys.TICEN.rawValue, slug: "TICEN")
+        case PreDestinys.OTHERS.hashValue:
+            formViewController.schedule.destiny = Destiny(title: PreDestinys.OTHERS.rawValue, slug: "OTHERS")
+        default:
+            break
+        }
+        
         self.navigationController?.pushViewController(formViewController, animated: true)
     }
     

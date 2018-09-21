@@ -9,7 +9,7 @@
 import Foundation
 
 class Schedule: NSObject {
-    var destiny: PreDestinys = .OTHERS
+    var destiny = Destiny(title: PreDestinys.OTHERS.rawValue, slug: "OTHERS")
     var hour: String = ""
     var space: String = "1"
     var day: String = ""

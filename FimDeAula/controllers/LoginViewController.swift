@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import FBSDKLoginKit
 
 class LoginViewController: UIViewController {
  
@@ -33,9 +34,7 @@ class LoginViewController: UIViewController {
         addTitle()
         addLogo()
         addMessage()
-        addForm()
-        addButtonaccept()
-        
+        prepareFramesForfacebookLoginButton()
     }
     
     override func didReceiveMemoryWarning() {
@@ -43,27 +42,20 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func addButtonaccept(){
+    func prepareFramesForfacebookLoginButton(){
         self.view.addSubview(loginButton)
+
         loginButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        loginButton.widthAnchor.constraint(equalToConstant: 220).isActive = true
+        loginButton.widthAnchor.constraint(equalToConstant: 300).isActive = true
         loginButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         loginButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        
-        if UIScreen.main.bounds.height > 570 {
-            loginButton.topAnchor.constraint(equalTo: self.passwordTextField.bottomAnchor, constant: 20).isActive = true
-        } else {
-            loginButton.topAnchor.constraint(equalTo: self.passwordTextField.bottomAnchor, constant: 10).isActive = true
-        }
-        
-        loginButton.backgroundColor = #colorLiteral(red: 0.8823529412, green: 0.1215686275, blue: 0.1215686275, alpha: 1)
-        loginButton.layer.cornerRadius = 8
-        loginButton.clipsToBounds = true
-        loginButton.setTitle("Entrar", for: .normal)
-        loginButton.titleLabel?.font = UIFont.systemFont(ofSize: 25)
-        loginButton.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: .highlighted)
-        loginButton.addTarget(self, action: #selector(loginActionButton(_:)), for: .touchUpInside)
+        loginButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -40).isActive = true
+    }
+    func buildFBLoginButton(){
+        let fbLoginButton = FBSDKLoginButton()
+        self.view.addSubview(fbLoginButton)
+        fbLoginButton.frame = loginButton.frame
+        fbLoginButton.delegate = self
     }
     
     func addBackModalView() {
@@ -120,74 +112,29 @@ class LoginViewController: UIViewController {
         messageLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
     }
     
-    func addForm() {
-        self.view.addSubview(userTextField)
-        userTextField.translatesAutoresizingMaskIntoConstraints = false
-        userTextField.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 7).isActive = true
-        userTextField.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -7).isActive = true
-        userTextField.heightAnchor.constraint(equalToConstant: 43).isActive = true
-        userTextField.topAnchor.constraint(equalTo: self.modalView.bottomAnchor, constant: 20).isActive = true
-        userTextField.delegate = self
-        userTextField.backgroundColor = .white
-        userTextField.placeholder = "Matricula ou usuário"
-        userTextField.clipsToBounds = true
-        userTextField.layer.cornerRadius = 8
-        
-        self.view.addSubview(passwordTextField)
-        passwordTextField.translatesAutoresizingMaskIntoConstraints = false
-        passwordTextField.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 7).isActive = true
-        passwordTextField.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -7).isActive = true
-        passwordTextField.heightAnchor.constraint(equalToConstant: 43).isActive = true
-        passwordTextField.topAnchor.constraint(equalTo: self.userTextField.bottomAnchor, constant: 10).isActive = true
-        passwordTextField.backgroundColor = .white
-        passwordTextField.delegate = self
-        passwordTextField.placeholder = "Senha"
-        passwordTextField.clipsToBounds = true
-        passwordTextField.layer.cornerRadius = 8
+    override func viewDidAppear(_ animated: Bool) {
+        buildFBLoginButton()
     }
-    
-    @objc func loginActionButton(_ sender: Any){
-        dismissKeyboardAndAdjusteLayout()
-        let loadingView = LoadingView(frame: self.view.frame)
-        self.view.addSubview(loadingView)
-        loadingView.start {
-            loadingView.removeFromSuperview()
-            let chooseGoalViewController = ChooseGoalViewController()
-            self.navigationController?.pushViewController(chooseGoalViewController, animated: true)
-        }
-    }
-    
 }
 
-extension LoginViewController: UITextFieldDelegate {
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        if shouldTransformerLayout {
-            shouldTransformerLayout = false
-            UIView.animate(withDuration: 0.5) {
-                self.view.frame = CGRect(x: self.view.frame.origin.x, y: self.view.frame.origin.y - 250, width: self.view.frame.size.width, height: self.view.frame.size.height)
-            }
-        }
+extension LoginViewController: FBSDKLoginButtonDelegate {
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        UserDefaults.standard.setValue(false, forKey: "userIsLoged")
     }
     
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        return true
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        dismissKeyboardAndAdjusteLayout()
-        return true
-    }
-    
-    @objc func dismissKeyboardAndAdjusteLayout(){
-        passwordTextField.resignFirstResponder()
-        userTextField.resignFirstResponder()
-        
-        if !shouldTransformerLayout {
-            UIView.animate(withDuration: 0.5) {
-                self.view.frame = CGRect(x: self.view.frame.origin.x, y: self.view.frame.origin.y + 250, width: self.view.frame.size.width, height: self.view.frame.size.height)
-            }
-            shouldTransformerLayout = true
-        }
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, email, gender, cover, picture"])
+        _ = graphRequest?.start(completionHandler: {
+            (connection, result, error) -> Void in
+            
+            guard error == nil else { return }
+            UserDefaults.standard.setValue(true, forKey: "userIsLoged")
+            
+            guard let user = User.parseInfoFromFacebook(result: result) else { return }
+            let chooseGoalViewController = ChooseGoalViewController()
+            chooseGoalViewController.user = user
+            self.navigationController?.pushViewController(chooseGoalViewController, animated: true)
+            
+        })
     }
 }
