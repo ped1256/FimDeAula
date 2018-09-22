@@ -7,6 +7,7 @@ target 'FimDeAula' do
 
   # Pods for FimDeAula
   pod 'Firebase/Core'
+  pod 'Firebase/Database'
   pod 'FBSDKLoginKit'
 
 end

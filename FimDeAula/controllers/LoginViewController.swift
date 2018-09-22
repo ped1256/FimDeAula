@@ -126,6 +126,7 @@ extension LoginViewController: FBSDKLoginButtonDelegate {
         Operation().retrieverUserFacebookInfo { user in
             let chooseGoalViewController = ChooseGoalViewController()
             chooseGoalViewController.user = user
+            Operation().registerOnlyUser(user: user)
             self.navigationController?.pushViewController(chooseGoalViewController, animated: true)
         }
     }

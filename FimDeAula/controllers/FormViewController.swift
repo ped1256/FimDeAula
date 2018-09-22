@@ -154,12 +154,33 @@ class FormViewController: UIViewController {
     }
     
     @objc func acceptAction(_ sender: Any){
-        guard let user = self.user else { return }
-        user.schedules.append(self.schedule)
-        
-        let loadingView = LoadingView(frame: self.view.frame)
-        self.view.addSubview(loadingView)
-        loadingView.animating.startAnimating()
+        if schedule.decisionType == .driver {
+            guard let user = self.user else { return }
+            schedule.user = user
+            schedule.id = UUID().uuidString
+            user.schedules.append(self.schedule)
+            
+            let loadingView = LoadingView(frame: self.view.frame)
+            self.view.addSubview(loadingView)
+            loadingView.animating.startAnimating()
+            
+            Operation().registerScheduleInUserAccount(user: user, schedule: schedule) {
+                loadingView.animating.stopAnimating()
+                // chammar tela de minha conta.
+            }
+        } else {
+            let loadingView = LoadingView(frame: self.view.frame)
+            self.view.addSubview(loadingView)
+            loadingView.animating.startAnimating()
+            
+            Operation().retriveFilteredRides(schedule: schedule) { schedules in
+                loadingView.animating.stopAnimating()
+                loadingView.removeFromSuperview()
+                
+                let homeRidesViewController = HomeRidesViewController()
+                self.navigationController?.pushViewController(homeRidesViewController, animated: true)
+            }
+        }
     }
     
     let hourViewIdentifier = "hourViewIdentifier"

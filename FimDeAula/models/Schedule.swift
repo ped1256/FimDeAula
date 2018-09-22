@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class Schedule: NSObject {
     var destiny = Destiny(title: PreDestinys.OTHERS.rawValue, slug: "OTHERS")
@@ -14,6 +15,8 @@ class Schedule: NSObject {
     var hour: String = ""
     var space: String = "1"
     var day: String = ""
+    var user: User?
+    var id = ""
     
     func isEmpty() -> Bool {
        return self.day.isEmpty

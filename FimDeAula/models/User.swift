@@ -14,7 +14,8 @@ class User: NSObject {
     var id: String
     var email: String?
     var picture: UIImage?
-    var picturePath: String?{
+    var phoneNumber: String = "21 965444987"
+    var picturePath: String? {
         didSet {
             parseImage()
         }

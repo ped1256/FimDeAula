@@ -19,6 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         
+        FirebaseApp.configure()
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        
+        
         let nav = UINavigationController()
         if UserDefaults.standard.value(forKeyPath: Identifier().userFirstTimeIdentifier) == nil {
             let mainController = MainViewController()
@@ -39,9 +43,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         window?.rootViewController = nav
         window?.makeKeyAndVisible()
-        
-        FirebaseApp.configure()
-        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         return true
     }

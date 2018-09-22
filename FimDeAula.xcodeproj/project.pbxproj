@@ -29,6 +29,8 @@
 		FA90FF692147072600A55FFD /* BackgroundViewWithAnimate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90FF682147072600A55FFD /* BackgroundViewWithAnimate.swift */; };
 		FADC91DC2155427B00188AEE /* Identifier+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADC91DB2155427B00188AEE /* Identifier+.swift */; };
 		FADC91DF215546ED00188AEE /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADC91DE215546ED00188AEE /* Operation.swift */; };
+		FAFF6ED82155F24D003AF4C7 /* HomeRidesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFF6ED72155F24D003AF4C7 /* HomeRidesViewController.swift */; };
+		FAFF6EDA2155F88E003AF4C7 /* HomeRideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFF6ED92155F88E003AF4C7 /* HomeRideCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +60,8 @@
 		FA90FF682147072600A55FFD /* BackgroundViewWithAnimate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundViewWithAnimate.swift; sourceTree = "<group>"; };
 		FADC91DB2155427B00188AEE /* Identifier+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Identifier+.swift"; sourceTree = "<group>"; };
 		FADC91DE215546ED00188AEE /* Operation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
+		FAFF6ED72155F24D003AF4C7 /* HomeRidesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRidesViewController.swift; sourceTree = "<group>"; };
+		FAFF6ED92155F88E003AF4C7 /* HomeRideCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRideCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				FA90FF54214706A700A55FFD /* MainViewController.swift */,
+				FAFF6ED72155F24D003AF4C7 /* HomeRidesViewController.swift */,
 				FA080FA2214861FD00C5B2B0 /* LoginViewController.swift */,
 				FA080FA62148BAB400C5B2B0 /* ChooseDestinyViewController.swift */,
 				FA669D0C2149645000A9D09B /* ChooseGoalViewController.swift */,
@@ -141,8 +146,8 @@
 		FA90FF51214706A700A55FFD /* FimDeAula */ = {
 			isa = PBXGroup;
 			children = (
-				FADC91DD215546CB00188AEE /* Requests */,
 				FA90FF52214706A700A55FFD /* AppDelegate.swift */,
+				FADC91DD215546CB00188AEE /* Requests */,
 				FA080FA92148BB1A00C5B2B0 /* models */,
 				FA080FA82148BAFC00C5B2B0 /* controllers */,
 				FA080F9F214855BA00C5B2B0 /* extensions */,
@@ -162,6 +167,7 @@
 				FA90FF682147072600A55FFD /* BackgroundViewWithAnimate.swift */,
 				FA669D0A2149451100A9D09B /* DestinysCell.swift */,
 				FA4A9C24214C473200FA4DDE /* SchedullingCollection.swift */,
+				FAFF6ED92155F88E003AF4C7 /* HomeRideCell.swift */,
 				FA669D102149D3AA00A9D09B /* DaysCell.swift */,
 				FA080FA42148B8F400C5B2B0 /* LoadingView.swift */,
 			);
@@ -290,6 +296,7 @@
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -298,6 +305,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -326,8 +334,10 @@
 				FA90FF55214706A700A55FFD /* MainViewController.swift in Sources */,
 				FA080FAB2148BB3500C5B2B0 /* Destinys.swift in Sources */,
 				FA080FA72148BAB400C5B2B0 /* ChooseDestinyViewController.swift in Sources */,
+				FAFF6EDA2155F88E003AF4C7 /* HomeRideCell.swift in Sources */,
 				FA90FF5B214706A700A55FFD /* FimDeAula.xcdatamodeld in Sources */,
 				FA080FA52148B8F400C5B2B0 /* LoadingView.swift in Sources */,
+				FAFF6ED82155F24D003AF4C7 /* HomeRidesViewController.swift in Sources */,
 				FA669D0D2149645000A9D09B /* ChooseGoalViewController.swift in Sources */,
 				FA90FF53214706A700A55FFD /* AppDelegate.swift in Sources */,
 			);
