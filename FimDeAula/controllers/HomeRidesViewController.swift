@@ -11,7 +11,7 @@ import UIKit
 
 class HomeRidesViewController: UIViewController {
     
-    var schedules = [Schedule]()
+    var rides = [Schedule]()
     var decisionType: DecisionType = .passenger
     var user: User?
     let grayBackground = UIView()
@@ -96,7 +96,7 @@ class HomeRidesViewController: UIViewController {
     }
     
     @objc func backAction(_ sender: Any){
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
 }
@@ -128,7 +128,7 @@ extension HomeRidesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return rides.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -141,6 +141,8 @@ extension HomeRidesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: HomeRideCell.identifier, for: indexPath) as? HomeRideCell else { return UITableViewCell() }
+        cell.ride = self.rides[indexPath.row]
+        
         return cell
     }
 }

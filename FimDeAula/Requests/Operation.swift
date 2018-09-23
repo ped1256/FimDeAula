@@ -37,6 +37,7 @@ class Operation: NSObject {
         scheduleInfo["hour"] = schedule.hour
         scheduleInfo["day"] = schedule.day
         scheduleInfo["userId"] = schedule.user?.id
+        scheduleInfo["driverName"] = schedule.user?.name
         
         ref?.child("rides/\(schedule.id)").setValue(scheduleInfo)
     }
@@ -83,9 +84,14 @@ class Operation: NSObject {
         scheduleInfo["hour"] = schedule.hour
         scheduleInfo["day"] = schedule.day
         scheduleInfo["userId"] = schedule.user?.id
+        scheduleInfo["driverName"] = user.name
         
         ref?.child("user/\(user.id)/schedules/\(schedule.id)").setValue(scheduleInfo)
         self.registerOnlyRideSchedules(schedule: schedule)
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.5) {
+            completion()
+        }
     }
     
     func addUserPhoneNumber(user: User, value: String){
@@ -93,7 +99,7 @@ class Operation: NSObject {
         ref?.child("user/\(user.id)/userPhone").setValue(value)
     }
     
-    func retriveFilteredRides(schedule: Schedule, completion: @escaping (([Schedule]) ->() )) {
+    func retriveRides(schedule: Schedule, completion: @escaping (([Schedule]) ->() )) {
         ref = Database.database().reference()
         ref?.child("rides").queryOrderedByValue().observeSingleEvent(of: .value) { snapshot  in
             guard let data = snapshot.value as? [String: Any] else { return }
@@ -108,7 +114,9 @@ class Operation: NSObject {
                 guard let hour = scheduleData["hour"] as? String else { return }
                 guard let id = scheduleData["id"] as? String else { return }
                 guard let space = scheduleData["space"] as? String else { return }
+                guard let driverName = scheduleData["driverName"] as? String else { return }
                 guard let userId = scheduleData["userId"] as? String else { return }
+                
                 
                 let schedule = Schedule()
                 schedule.day = day
@@ -116,11 +124,32 @@ class Operation: NSObject {
                 schedule.hour = hour
                 schedule.id = id
                 schedule.space = space
-                schedule.user = User(name: "", id: userId)
+                schedule.user = User(name: driverName, id: userId)
                 schedules.append(schedule)
             }
             
             completion(schedules)
         }
+    }
+    
+    func filterRides(schedule: Schedule, rides: [Schedule]) -> [Schedule] {
+        
+        var ordenedRides = [Schedule]()
+        
+        let ordenedridesOptional = rides.map { ride -> Schedule? in
+            if ride.destiny.slug == schedule.destiny.slug {
+                return ride
+            }
+            return nil
+        }
+        
+        for ride in ordenedridesOptional {
+            if let ride = ride {
+                ordenedRides.append(ride)
+            }
+        }
+        
+        
+        return ordenedRides
     }
 }

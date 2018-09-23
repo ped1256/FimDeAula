@@ -154,33 +154,53 @@ class FormViewController: UIViewController {
     }
     
     @objc func acceptAction(_ sender: Any){
+        guard let user = self.user else { return }
+        
         if schedule.decisionType == .driver {
-            guard let user = self.user else { return }
-            schedule.user = user
-            schedule.id = UUID().uuidString
-            user.schedules.append(self.schedule)
-            
-            let loadingView = LoadingView(frame: self.view.frame)
-            self.view.addSubview(loadingView)
-            loadingView.animating.startAnimating()
-            
-            Operation().registerScheduleInUserAccount(user: user, schedule: schedule) {
-                loadingView.animating.stopAnimating()
-                // chammar tela de minha conta.
-            }
+            registerRide()
         } else {
             let loadingView = LoadingView(frame: self.view.frame)
             self.view.addSubview(loadingView)
             loadingView.animating.startAnimating()
             
-            Operation().retriveFilteredRides(schedule: schedule) { schedules in
+            Operation().retriveRides(schedule: schedule) { schedules in
+                let rides = Operation().filterRides(schedule: self.schedule, rides: schedules)
+                let homeRidesViewController = HomeRidesViewController()
+                homeRidesViewController.rides = rides
+                homeRidesViewController.user = user
+                self.navigationController?.pushViewController(homeRidesViewController, animated: true)
+                
                 loadingView.animating.stopAnimating()
                 loadingView.removeFromSuperview()
-                
-                let homeRidesViewController = HomeRidesViewController()
-                self.navigationController?.pushViewController(homeRidesViewController, animated: true)
             }
         }
+    }
+    
+    func registerRide() {
+        guard let user = self.user else { return }
+        
+        schedule.user = user
+        schedule.id = UUID().uuidString
+        user.schedules.append(self.schedule)
+        
+        let loadingView = LoadingView(frame: self.view.frame)
+        self.view.addSubview(loadingView)
+        loadingView.animating.startAnimating()
+        
+        //            Operation().registerScheduleInUserAccount(user: user, schedule: schedule) {
+        loadingView.animating.stopAnimating()
+        loadingView.removeFromSuperview()
+        
+        let succesRegisterView = SuccesRegisterView(frame: self.view.frame)
+        succesRegisterView.buildUI()
+        succesRegisterView.alpha = 0.0
+        self.view.addSubview(succesRegisterView)
+        
+        UIView.animate(withDuration: 1.5) {
+            succesRegisterView.alpha = 1.0
+        }
+        
+        //            }
     }
     
     let hourViewIdentifier = "hourViewIdentifier"

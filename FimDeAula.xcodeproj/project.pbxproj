@@ -31,6 +31,7 @@
 		FADC91DF215546ED00188AEE /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADC91DE215546ED00188AEE /* Operation.swift */; };
 		FAFF6ED82155F24D003AF4C7 /* HomeRidesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFF6ED72155F24D003AF4C7 /* HomeRidesViewController.swift */; };
 		FAFF6EDA2155F88E003AF4C7 /* HomeRideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFF6ED92155F88E003AF4C7 /* HomeRideCell.swift */; };
+		FAFF6EDE21572C22003AF4C7 /* SuccesRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFF6EDD21572C22003AF4C7 /* SuccesRegisterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		FADC91DE215546ED00188AEE /* Operation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
 		FAFF6ED72155F24D003AF4C7 /* HomeRidesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRidesViewController.swift; sourceTree = "<group>"; };
 		FAFF6ED92155F88E003AF4C7 /* HomeRideCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRideCell.swift; sourceTree = "<group>"; };
+		FAFF6EDD21572C22003AF4C7 /* SuccesRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccesRegisterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +169,7 @@
 				FA90FF682147072600A55FFD /* BackgroundViewWithAnimate.swift */,
 				FA669D0A2149451100A9D09B /* DestinysCell.swift */,
 				FA4A9C24214C473200FA4DDE /* SchedullingCollection.swift */,
+				FAFF6EDD21572C22003AF4C7 /* SuccesRegisterView.swift */,
 				FAFF6ED92155F88E003AF4C7 /* HomeRideCell.swift */,
 				FA669D102149D3AA00A9D09B /* DaysCell.swift */,
 				FA080FA42148B8F400C5B2B0 /* LoadingView.swift */,
@@ -329,6 +332,7 @@
 				FADC91DC2155427B00188AEE /* Identifier+.swift in Sources */,
 				FA4A9C25214C473200FA4DDE /* SchedullingCollection.swift in Sources */,
 				FA080FA3214861FD00C5B2B0 /* LoginViewController.swift in Sources */,
+				FAFF6EDE21572C22003AF4C7 /* SuccesRegisterView.swift in Sources */,
 				FA080FA1214855D200C5B2B0 /* UIView+.swift in Sources */,
 				FA90FF692147072600A55FFD /* BackgroundViewWithAnimate.swift in Sources */,
 				FA90FF55214706A700A55FFD /* MainViewController.swift in Sources */,
