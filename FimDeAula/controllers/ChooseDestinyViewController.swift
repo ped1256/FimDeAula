@@ -145,18 +145,18 @@ extension ChooseDestinyViewController: UITableViewDelegate, UITableViewDataSourc
         formViewController.user = self.user
         formViewController.schedule.decisionType = self.decisionType
         switch indexPath.row {
-        case PreDestinys.TICAN.hashValue:
-            formViewController.schedule.destiny = Destiny(title: PreDestinys.TICAN.rawValue, slug: "TICAN")
-        case PreDestinys.TISAN.hashValue:
-            formViewController.schedule.destiny = Destiny(title: PreDestinys.TISAN.rawValue, slug: "TISAN")
-        case PreDestinys.TITRI.hashValue:
-            formViewController.schedule.destiny = Destiny(title: PreDestinys.TITRI.rawValue, slug: "TITRI")
-        case PreDestinys.TILAG.hashValue:
-            formViewController.schedule.destiny = Destiny(title: PreDestinys.TILAG.rawValue, slug: "TILAG")
-        case PreDestinys.TICEN.hashValue:
-            formViewController.schedule.destiny = Destiny(title: PreDestinys.TICEN.rawValue, slug: "TICEN")
-        case PreDestinys.OTHERS.hashValue:
-            formViewController.schedule.destiny = Destiny(title: PreDestinys.OTHERS.rawValue, slug: "OTHERS")
+        case PreDestinys.TICAN.rawValue:
+            formViewController.schedule.destiny = Destiny(title: DestinysText.TICAN.rawValue, slug: "TICAN")
+        case PreDestinys.TISAN.rawValue:
+            formViewController.schedule.destiny = Destiny(title: DestinysText.TISAN.rawValue, slug: "TISAN")
+        case PreDestinys.TITRI.rawValue:
+            formViewController.schedule.destiny = Destiny(title: DestinysText.TITRI.rawValue, slug: "TITRI")
+        case PreDestinys.TILAG.rawValue:
+            formViewController.schedule.destiny = Destiny(title: DestinysText.TILAG.rawValue, slug: "TILAG")
+        case PreDestinys.TICEN.rawValue:
+            formViewController.schedule.destiny = Destiny(title: DestinysText.TICEN.rawValue, slug: "TICEN")
+        case PreDestinys.OTHERS.rawValue:
+            formViewController.schedule.destiny = Destiny(title: DestinysText.OTHERS.rawValue, slug: "OTHERS")
         default:
             break
         }
@@ -175,18 +175,18 @@ extension ChooseDestinyViewController: UITableViewDelegate, UITableViewDataSourc
         }
 
         switch indexPath.row {
-            case PreDestinys.TICAN.hashValue:
-                cell.titleLabel.text = PreDestinys.TICAN.rawValue
-            case PreDestinys.TISAN.hashValue:
-                cell.titleLabel.text = PreDestinys.TISAN.rawValue
-            case PreDestinys.TITRI.hashValue:
-                cell.titleLabel.text = PreDestinys.TITRI.rawValue
-            case PreDestinys.TILAG.hashValue:
-                cell.titleLabel.text = PreDestinys.TILAG.rawValue
-            case PreDestinys.TICEN.hashValue:
-                cell.titleLabel.text = PreDestinys.TICEN.rawValue
-            case PreDestinys.OTHERS.hashValue:
-                cell.titleLabel.text = PreDestinys.OTHERS.rawValue
+            case PreDestinys.TICAN.rawValue:
+                cell.titleLabel.text = DestinysText.TICAN.rawValue
+            case PreDestinys.TISAN.rawValue:
+                cell.titleLabel.text = DestinysText.TISAN.rawValue
+            case PreDestinys.TITRI.rawValue:
+                cell.titleLabel.text = DestinysText.TITRI.rawValue
+            case PreDestinys.TILAG.rawValue:
+                cell.titleLabel.text = DestinysText.TILAG.rawValue
+            case PreDestinys.TICEN.rawValue:
+                cell.titleLabel.text = DestinysText.TICEN.rawValue
+            case PreDestinys.OTHERS.rawValue:
+                cell.titleLabel.text = DestinysText.OTHERS.rawValue
             default:
                 break
         }

@@ -21,6 +21,7 @@
 		FA669D0D2149645000A9D09B /* ChooseGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA669D0C2149645000A9D09B /* ChooseGoalViewController.swift */; };
 		FA669D0F2149C8F900A9D09B /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA669D0E2149C8F900A9D09B /* FormViewController.swift */; };
 		FA669D112149D3AA00A9D09B /* DaysCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA669D102149D3AA00A9D09B /* DaysCell.swift */; };
+		FA83B123215938A40049C07C /* RideInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA83B122215938A40049C07C /* RideInfoView.swift */; };
 		FA90FF53214706A700A55FFD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90FF52214706A700A55FFD /* AppDelegate.swift */; };
 		FA90FF55214706A700A55FFD /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90FF54214706A700A55FFD /* MainViewController.swift */; };
 		FA90FF5B214706A700A55FFD /* FimDeAula.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA90FF59214706A700A55FFD /* FimDeAula.xcdatamodeld */; };
@@ -51,6 +52,7 @@
 		FA669D0C2149645000A9D09B /* ChooseGoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseGoalViewController.swift; sourceTree = "<group>"; };
 		FA669D0E2149C8F900A9D09B /* FormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
 		FA669D102149D3AA00A9D09B /* DaysCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysCell.swift; sourceTree = "<group>"; };
+		FA83B122215938A40049C07C /* RideInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideInfoView.swift; sourceTree = "<group>"; };
 		FA90FF4F214706A700A55FFD /* FimDeAula.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FimDeAula.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA90FF52214706A700A55FFD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA90FF54214706A700A55FFD /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				FA90FF682147072600A55FFD /* BackgroundViewWithAnimate.swift */,
 				FA669D0A2149451100A9D09B /* DestinysCell.swift */,
 				FA4A9C24214C473200FA4DDE /* SchedullingCollection.swift */,
+				FA83B122215938A40049C07C /* RideInfoView.swift */,
 				FAFF6EDD21572C22003AF4C7 /* SuccesRegisterView.swift */,
 				FAFF6ED92155F88E003AF4C7 /* HomeRideCell.swift */,
 				FA669D102149D3AA00A9D09B /* DaysCell.swift */,
@@ -343,6 +346,7 @@
 				FA080FA52148B8F400C5B2B0 /* LoadingView.swift in Sources */,
 				FAFF6ED82155F24D003AF4C7 /* HomeRidesViewController.swift in Sources */,
 				FA669D0D2149645000A9D09B /* ChooseGoalViewController.swift in Sources */,
+				FA83B123215938A40049C07C /* RideInfoView.swift in Sources */,
 				FA90FF53214706A700A55FFD /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

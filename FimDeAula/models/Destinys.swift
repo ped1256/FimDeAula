@@ -7,7 +7,16 @@
 //
 
 import Foundation
-enum PreDestinys: String {
+enum PreDestinys: Int {
+    case TICAN = 0
+    case TISAN = 1
+    case TITRI = 2
+    case TICEN = 3
+    case TILAG = 4
+    case OTHERS = 5
+}
+
+enum DestinysText: String {
     case TICAN = "Terminal de integração de Canasvieiras"
     case TISAN = "Terminal de integração de Santo Antonio de Lisboa"
     case TITRI = "Terminal de integração da Trindade"
@@ -32,12 +41,12 @@ class Destiny: NSObject {
     
     static func getPredestinys() -> [Destiny] {
         var destinys: [Destiny] = []
-        destinys.append(Destiny(title: PreDestinys.TICAN.rawValue, slug: "TICAN"))
-        destinys.append(Destiny(title: PreDestinys.TISAN.rawValue, slug: "TISAN"))
-        destinys.append(Destiny(title: PreDestinys.TITRI.rawValue, slug: "TITRI"))
-        destinys.append(Destiny(title: PreDestinys.TICEN.rawValue, slug: "TICEN"))
-        destinys.append(Destiny(title: PreDestinys.TILAG.rawValue, slug: "TILAG"))
-        destinys.append(Destiny(title: PreDestinys.OTHERS.rawValue, slug: "OTHERS"))
+        destinys.append(Destiny(title: DestinysText.TICAN.rawValue, slug: "TICAN"))
+        destinys.append(Destiny(title: DestinysText.TISAN.rawValue, slug: "TISAN"))
+        destinys.append(Destiny(title: DestinysText.TITRI.rawValue, slug: "TITRI"))
+        destinys.append(Destiny(title: DestinysText.TICEN.rawValue, slug: "TICEN"))
+        destinys.append(Destiny(title: DestinysText.TILAG.rawValue, slug: "TILAG"))
+        destinys.append(Destiny(title: DestinysText.OTHERS.rawValue, slug: "OTHERS"))
         
         return destinys
     }

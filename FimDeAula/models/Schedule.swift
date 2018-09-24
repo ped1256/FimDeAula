@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class Schedule: NSObject {
-    var destiny = Destiny(title: PreDestinys.OTHERS.rawValue, slug: "OTHERS")
+    var destiny = Destiny(title: DestinysText.OTHERS.rawValue, slug: "OTHERS")
     var decisionType: DecisionType = .driver
     var hour: String = ""
     var space: String = "1"

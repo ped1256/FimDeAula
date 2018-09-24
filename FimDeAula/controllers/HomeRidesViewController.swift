@@ -137,6 +137,9 @@ extension HomeRidesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     
+        let ri = RideInfoView(frame: self.view.frame)
+        ri.buildUI()
+        self.view.addSubview(ri)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
