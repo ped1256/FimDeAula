@@ -111,7 +111,7 @@ class HomeRideCell: UITableViewCell {
         destinyDescription.translatesAutoresizingMaskIntoConstraints = false
         destinyDescription.leftAnchor.constraint(equalTo: destinyTitle.rightAnchor, constant: 15).isActive = true
         destinyDescription.rightAnchor.constraint(equalTo: whitebackView.rightAnchor, constant: -8).isActive = true
-        destinyDescription.topAnchor.constraint(equalTo: destinyTitle.topAnchor, constant: 0).isActive = true
+        destinyDescription.topAnchor.constraint(equalTo: destinyTitle.topAnchor, constant: 3).isActive = true
         destinyDescription.numberOfLines = 3
         destinyDescription.textAlignment = .center
         destinyDescription.textColor = #colorLiteral(red: 0.01176470588, green: 0.01176470588, blue: 0.01176470588, alpha: 1).withAlphaComponent(0.6)

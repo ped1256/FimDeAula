@@ -25,6 +25,7 @@ class RideInfoView: UIView {
     let sendMessageIcon = UIImageView()
     let closeButton = UIButton()
     let rideSpaceInfoView = UIView()
+    let distinyInfoView = UIView()
     var delegate: RideInfoViewDelegate?
     
     func buildUI(){
@@ -35,6 +36,21 @@ class RideInfoView: UIView {
         buildContatsInfo()
         buildDriverName()
         buildRideSpaceInfoView()
+        buildDistinyInfo()
+        buildDriverCommentView()
+        buildCloseButton()
+    }
+    
+    func buildCloseButton() {
+        modalView.addSubview(closeButton)
+        closeButton.setImage(#imageLiteral(resourceName: "Grey_close"), for: .normal)
+        closeButton.addTarget(self, action: #selector(closeButtonAction(_:)), for: .touchUpInside)
+        
+        closeButton.translatesAutoresizingMaskIntoConstraints = false
+        closeButton.widthAnchor.constraint(equalToConstant: 22).isActive = true
+        closeButton.heightAnchor.constraint(equalToConstant: 22).isActive = true
+        closeButton.rightAnchor.constraint(equalTo: modalView.rightAnchor, constant: -15).isActive = true
+        closeButton.topAnchor.constraint(equalTo: rideTitleView.topAnchor).isActive = true
     }
     
     func buildModalLayout() {
@@ -163,10 +179,56 @@ class RideInfoView: UIView {
         rideSpaceInfoView.backgroundColor = #colorLiteral(red: 0.8470588235, green: 0.8470588235, blue: 0.8470588235, alpha: 1)
         
         let rideSpaceInfoText = UILabel()
+        rideSpaceInfoView.addSubview(rideSpaceInfoText)
+        rideSpaceInfoText.translatesAutoresizingMaskIntoConstraints = false
+        rideSpaceInfoText.centerXAnchor.constraint(equalTo: rideSpaceInfoView.centerXAnchor).isActive = true
+        rideSpaceInfoText.centerYAnchor.constraint(equalTo: rideSpaceInfoView.centerYAnchor).isActive = true
+        rideSpaceInfoText.font = UIFont.systemFont(ofSize: 14, weight: .bold)
+        rideSpaceInfoText.textColor = #colorLiteral(red: 0.01176470588, green: 0.01176470588, blue: 0.01176470588, alpha: 1)
+        rideSpaceInfoText.textAlignment = .center
+        rideSpaceInfoText.text = "Vagas: 2"
+    }
+    
+    func buildDistinyInfo() {
+        self.modalView.addSubview(distinyInfoView)
+        distinyInfoView.translatesAutoresizingMaskIntoConstraints = false
         
+        distinyInfoView.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        distinyInfoView.widthAnchor.constraint(equalToConstant: 113).isActive = true
+        distinyInfoView.topAnchor.constraint(equalTo: driverNameText.bottomAnchor, constant: 30).isActive = true
+        distinyInfoView.leftAnchor.constraint(equalTo: modalView.centerXAnchor, constant: 15).isActive = true
+        distinyInfoView.layer.cornerRadius = 7
+        distinyInfoView.clipsToBounds = true
+        distinyInfoView.backgroundColor = #colorLiteral(red: 0.8470588235, green: 0.8470588235, blue: 0.8470588235, alpha: 1)
+        
+        let distinyInfoText = UILabel()
+        distinyInfoView.addSubview(distinyInfoText)
+        distinyInfoText.translatesAutoresizingMaskIntoConstraints = false
+        distinyInfoText.centerXAnchor.constraint(equalTo: distinyInfoView.centerXAnchor).isActive = true
+        distinyInfoText.centerYAnchor.constraint(equalTo: distinyInfoView.centerYAnchor).isActive = true
+        distinyInfoText.font = UIFont.systemFont(ofSize: 14, weight: .bold)
+        distinyInfoText.textColor = #colorLiteral(red: 0.01176470588, green: 0.01176470588, blue: 0.01176470588, alpha: 1)
+        distinyInfoText.textAlignment = .center
+        distinyInfoText.text = "TICAN - 22: 30"
+    }
+    
+    func buildDriverCommentView(){
+        let label = UILabel()
+        self.modalView.addSubview(label)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.leftAnchor.constraint(equalTo: modalView.leftAnchor, constant: 20).isActive = true
+        label.rightAnchor.constraint(equalTo: modalView.rightAnchor, constant: -20).isActive = true
+        label.topAnchor.constraint(equalTo: distinyInfoView.bottomAnchor, constant: 10).isActive = true
+        label.numberOfLines = 3
+        label.textAlignment = .center
+        label.text = "estarei esperando no portao, 22: 30 estou partindo."
     }
     
     @objc func closeButtonAction(_ sender: Any){
-        
+        UIView.animate(withDuration: 0.5, animations: {
+            self.alpha = 0.0
+        }) { finish in
+            self.removeFromSuperview()
+        }
     }
 }

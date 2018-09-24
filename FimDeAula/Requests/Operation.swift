@@ -149,7 +149,6 @@ class Operation: NSObject {
             }
         }
         
-        
         return ordenedRides
     }
 }

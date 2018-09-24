@@ -35,10 +35,6 @@ class ChooseGoalViewController: UIViewController{
                 self.user = user
             }
         }
-        
-        let ri = RideInfoView(frame: self.view.frame)
-        ri.buildUI()
-        self.view.addSubview(ri)
     }
     
     override func didReceiveMemoryWarning() {

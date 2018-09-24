@@ -95,7 +95,7 @@ class LoginViewController: UIViewController {
     
     func addMessage(){
         self.view.addSubview(messageLabel)
-        messageLabel.text = "Para sua segurança é preciso que faça login com a matricula da faculdade."
+        messageLabel.text = "Para sua segurança é preciso que faça login."
         messageLabel.translatesAutoresizingMaskIntoConstraints = false
         messageLabel.leftAnchor.constraint(equalTo: modalView.leftAnchor, constant: 2).isActive = true
         messageLabel.rightAnchor.constraint(equalTo: modalView.rightAnchor, constant: -2).isActive = true
