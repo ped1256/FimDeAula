@@ -154,25 +154,10 @@ class FormViewController: UIViewController {
     }
     
     @objc func acceptAction(_ sender: Any){
-        guard let user = self.user else { return }
-        
         if schedule.decisionType == .driver {
             registerRide()
         } else {
-            let loadingView = LoadingView(frame: self.view.frame)
-            self.view.addSubview(loadingView)
-            loadingView.animating.startAnimating()
-            
-            Operation().retriveRides(schedule: schedule) { schedules in
-                let rides = Operation().filterRides(schedule: self.schedule, rides: schedules)
-                let homeRidesViewController = HomeRidesViewController()
-                homeRidesViewController.rides = rides
-                homeRidesViewController.user = user
-                self.navigationController?.pushViewController(homeRidesViewController, animated: true)
-                
-                loadingView.animating.stopAnimating()
-                loadingView.removeFromSuperview()
-            }
+            findRider()
         }
     }
     
@@ -187,20 +172,39 @@ class FormViewController: UIViewController {
         self.view.addSubview(loadingView)
         loadingView.animating.startAnimating()
         
-        //            Operation().registerScheduleInUserAccount(user: user, schedule: schedule) {
-        loadingView.animating.stopAnimating()
-        loadingView.removeFromSuperview()
-        
-        let succesRegisterView = SuccesRegisterView(frame: self.view.frame)
-        succesRegisterView.buildUI()
-        succesRegisterView.alpha = 0.0
-        self.view.addSubview(succesRegisterView)
-        
-        UIView.animate(withDuration: 1.5) {
-            succesRegisterView.alpha = 1.0
+        Operation().registerScheduleInUserAccount(user: user, schedule: schedule) {
+            loadingView.animating.stopAnimating()
+            loadingView.removeFromSuperview()
+            
+            let succesRegisterView = SuccesRegisterView(frame: self.view.frame)
+            succesRegisterView.buildUI()
+            succesRegisterView.alpha = 0.0
+            succesRegisterView.delegate = self
+            self.view.addSubview(succesRegisterView)
+            
+            UIView.animate(withDuration: 1.5) {
+                succesRegisterView.alpha = 1.0
+            }
         }
+    }
+    
+    func findRider(){
+        guard let user = self.user else { return }
         
-        //            }
+        let loadingView = LoadingView(frame: self.view.frame)
+        self.view.addSubview(loadingView)
+        loadingView.animating.startAnimating()
+        
+        Operation().retriveRides(schedule: schedule) { schedules in
+            let rides = Operation().filterRides(schedule: self.schedule, rides: schedules)
+            let homeRidesViewController = HomeRidesViewController()
+            homeRidesViewController.rides = rides
+            homeRidesViewController.user = user
+            self.navigationController?.pushViewController(homeRidesViewController, animated: true)
+            
+            loadingView.animating.stopAnimating()
+            loadingView.removeFromSuperview()
+        }
     }
     
     let hourViewIdentifier = "hourViewIdentifier"
@@ -270,4 +274,12 @@ extension FormViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         return cell
     }
+}
+
+extension FormViewController: SuccesRegisterViewDelegate {
+    
+    func confirmSuccessButtonDidTouch() {
+        self.dismiss(animated: true, completion: nil)
+    }
+
 }
