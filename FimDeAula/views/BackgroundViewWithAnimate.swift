@@ -14,6 +14,7 @@ class BackgroundViewWithAnimate: UIView {
     var backView = UIView()
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.backgroundColor = UIColor.white
         self.addSubview(backView)
         backView.frame = CGRect(x: self.frame.origin.x, y: self.frame.origin.y, width: 1000, height: 1000)
         
@@ -21,8 +22,6 @@ class BackgroundViewWithAnimate: UIView {
         imageView.frame = backView.frame
         
         backView.addSubview(imageView)
-        
-        startbackGroundAnimate()
         
     }
     

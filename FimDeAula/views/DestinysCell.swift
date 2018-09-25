@@ -12,12 +12,6 @@ class DestinyCell: UITableViewCell {
     static var destinyCellIdentifier = "destinyCellIdentifier"
     var checkBoxImageView = UIImageView()
     var titleLabel = UILabel()
-
-    var cellIsSelected: Bool = false {
-        didSet {
-           updateUI()
-        }
-    }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -40,10 +34,10 @@ class DestinyCell: UITableViewCell {
         self.contentView.addSubview(checkBoxImageView)
         
         checkBoxImageView.translatesAutoresizingMaskIntoConstraints = false
-//        checkBoxImageView.image = #imageLiteral(resourceName: "checkBox")
+        checkBoxImageView.image = #imageLiteral(resourceName: "nextIcon")
         
-        checkBoxImageView.heightAnchor.constraint(equalToConstant: 25).isActive = true
-        checkBoxImageView.widthAnchor.constraint(equalToConstant: 25).isActive = true
+        checkBoxImageView.heightAnchor.constraint(equalToConstant: 15).isActive = true
+        checkBoxImageView.widthAnchor.constraint(equalToConstant: 10).isActive = true
         checkBoxImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
         checkBoxImageView.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -15).isActive = true
     }
@@ -59,13 +53,5 @@ class DestinyCell: UITableViewCell {
         titleLabel.numberOfLines = 0
         titleLabel.textAlignment = .left
         titleLabel.textColor = #colorLiteral(red: 0.9568627451, green: 0.9568627451, blue: 0.9568627451, alpha: 1)
-    }
-    
-    func updateUI() {
-        if cellIsSelected {
-            checkBoxImageView.image = #imageLiteral(resourceName: "checkBoxSelected")
-        } else {
-            checkBoxImageView.image = #imageLiteral(resourceName: "checkBox")
-        }
     }
 }

@@ -25,8 +25,8 @@ class HomeRidesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .white
         self.navigationController?.isNavigationBarHidden = true
+
         let backgroundView = BackgroundViewWithAnimate(frame: self.view.frame)
         
         backgroundView.addSubview(grayBackground)
@@ -51,7 +51,7 @@ class HomeRidesViewController: UIViewController {
     
     func addTitle() {
         self.view.addSubview(titleLabel)
-        titleLabel.text = "Fim de aula App"
+        titleLabel.text = "Fim de aula"
         titleLabel.textColor = .white
         titleLabel.font = UIFont.systemFont(ofSize: 30, weight: .bold)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -88,7 +88,7 @@ class HomeRidesViewController: UIViewController {
         backButtonView.translatesAutoresizingMaskIntoConstraints = false
         backButtonView.setImage(#imageLiteral(resourceName: "backButton"), for: .normal)
         backButtonView.heightAnchor.constraint(equalToConstant: 29).isActive = true
-        backButtonView.widthAnchor.constraint(equalToConstant: 17).isActive = true
+        backButtonView.widthAnchor.constraint(equalToConstant: 29).isActive = true
         backButtonView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 10).isActive = true
         backButtonView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 30).isActive = true
         backButtonView.addTarget(self, action: #selector(backAction(_:)), for: .touchUpInside)
@@ -136,6 +136,7 @@ extension HomeRidesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
         let rideInfo = RideInfoView(frame: self.view.frame)
         rideInfo.alpha = 0.0
         rideInfo.buildUI()
@@ -144,6 +145,7 @@ extension HomeRidesViewController: UITableViewDelegate, UITableViewDataSource {
         UIView.animate(withDuration: 1.0) {
             rideInfo.alpha = 1.0
         }
+
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

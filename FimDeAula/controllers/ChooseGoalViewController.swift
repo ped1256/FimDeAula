@@ -13,14 +13,14 @@ class ChooseGoalViewController: UIViewController{
     var modalView = UIView()
     var titleLabel = UILabel()
     var logoImageView = UIImageView()
-    var backgroundView = UIView()
     var user: User?
     var shouldGetuUserInfo: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        backgroundView = BackgroundViewWithAnimate(frame: self.view.frame)
         
+        let backgroundView = BackgroundViewWithAnimate(frame: self.view.frame)
+        backgroundView.startbackGroundAnimate()
         self.view.addSubview(backgroundView)
         self.navigationController?.navigationBar.isHidden = true
         
@@ -56,7 +56,7 @@ class ChooseGoalViewController: UIViewController{
     
     func addTitle() {
         self.view.addSubview(titleLabel)
-        titleLabel.text = "Fim de aula App"
+        titleLabel.text = "Fim de aula"
         titleLabel.textColor = .white
         titleLabel.font = UIFont.systemFont(ofSize: 36, weight: .bold)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false

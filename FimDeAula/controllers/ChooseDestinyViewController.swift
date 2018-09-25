@@ -18,17 +18,16 @@ class ChooseDestinyViewController: UIViewController {
     var subtitleView = UIView()
     var tableview = UITableView()
     var backButtonView = UIButton()
-    var cellSelectedIndex: Int = -1
-    
+    var backgroundView = UIView()
     var nav = UINavigationController()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .white
         self.navigationController?.isNavigationBarHidden = true
-        let backgroundView = BackgroundViewWithAnimate(frame: self.view.frame)
 
+        backgroundView = BackgroundViewWithAnimate(frame: self.view.frame)
+        backgroundView.backgroundColor = .white
         backgroundView.addSubview(grayBackground)
         grayBackground.modalStyle()
         grayBackground.layer.cornerRadius = 0
@@ -51,7 +50,7 @@ class ChooseDestinyViewController: UIViewController {
     
     func addTitle() {
         self.view.addSubview(titleLabel)
-        titleLabel.text = "Fim de aula App"
+        titleLabel.text = "Fim de aula"
         titleLabel.textColor = .white
         titleLabel.font = UIFont.systemFont(ofSize: 30, weight: .bold)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -88,7 +87,7 @@ class ChooseDestinyViewController: UIViewController {
         backButtonView.translatesAutoresizingMaskIntoConstraints = false
         backButtonView.setImage(#imageLiteral(resourceName: "backButton"), for: .normal)
         backButtonView.heightAnchor.constraint(equalToConstant: 29).isActive = true
-        backButtonView.widthAnchor.constraint(equalToConstant: 17).isActive = true
+        backButtonView.widthAnchor.constraint(equalToConstant: 29).isActive = true
         backButtonView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 10).isActive = true
         backButtonView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 30).isActive = true
         backButtonView.addTarget(self, action: #selector(backAction(_:)), for: .touchUpInside)
@@ -136,11 +135,6 @@ extension ChooseDestinyViewController: UITableViewDelegate, UITableViewDataSourc
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.cellForRow(at: indexPath) as? DestinyCell else { return }
-        cell.cellIsSelected = true
-        self.cellSelectedIndex = indexPath.row
-        tableview.reloadData()
-
         let formViewController = FormViewController()
         formViewController.user = self.user
         formViewController.schedule.decisionType = self.decisionType
@@ -167,12 +161,6 @@ extension ChooseDestinyViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DestinyCell.destinyCellIdentifier, for: indexPath) as? DestinyCell else { return
             UITableViewCell() }
-
-        if indexPath.row == cellSelectedIndex {
-            cell.cellIsSelected = true
-        } else {
-            cell.cellIsSelected = false
-        }
 
         switch indexPath.row {
             case PreDestinys.TICAN.rawValue:

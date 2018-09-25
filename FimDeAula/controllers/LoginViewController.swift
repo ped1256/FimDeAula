@@ -19,14 +19,14 @@ class LoginViewController: UIViewController {
     var messageLabel = UILabel()
     var userTextField = UITextField()
     var passwordTextField = UITextField()
-    var backgroundView = UIView()
     
     var shouldTransformerLayout = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        backgroundView = BackgroundViewWithAnimate(frame: self.view.frame)
         
+        let backgroundView = BackgroundViewWithAnimate(frame: self.view.frame)
+        backgroundView.startbackGroundAnimate()
         self.view.addSubview(backgroundView)
         self.navigationController?.navigationBar.isHidden = true
         
@@ -75,7 +75,7 @@ class LoginViewController: UIViewController {
     
     func addTitle() {
         self.view.addSubview(titleLabel)
-        titleLabel.text = "Fim de aula App"
+        titleLabel.text = "Fim de aula"
         titleLabel.textColor = .white
         titleLabel.font = UIFont.systemFont(ofSize: 36, weight: .bold)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false

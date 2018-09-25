@@ -28,7 +28,7 @@ class FormViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = .clear
         let backgroundView = BackgroundViewWithAnimate(frame: self.view.frame)
         
         backgroundView.addSubview(grayBackground)
@@ -54,7 +54,7 @@ class FormViewController: UIViewController {
     
     func addTitle() {
         self.view.addSubview(titleLabel)
-        titleLabel.text = "Fim de aula App"
+        titleLabel.text = "Fim de aula"
         titleLabel.textColor = .white
         titleLabel.font = UIFont.systemFont(ofSize: 30, weight: .bold)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -91,7 +91,7 @@ class FormViewController: UIViewController {
         backButtonView.translatesAutoresizingMaskIntoConstraints = false
         backButtonView.setImage(#imageLiteral(resourceName: "backButton"), for: .normal)
         backButtonView.heightAnchor.constraint(equalToConstant: 29).isActive = true
-        backButtonView.widthAnchor.constraint(equalToConstant: 17).isActive = true
+        backButtonView.widthAnchor.constraint(equalToConstant: 29).isActive = true
         backButtonView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 10).isActive = true
         backButtonView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 30).isActive = true
         backButtonView.addTarget(self, action: #selector(backAction(_:)), for: .touchUpInside)

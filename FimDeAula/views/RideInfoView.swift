@@ -21,8 +21,8 @@ class RideInfoView: UIView {
     let rideTitleView = UIView()
     let driverNameText = UILabel()
     let driverImageView = UIImageView()
-    let phoneIcon = UIImageView()
-    let sendMessageIcon = UIImageView()
+    let phoneIcon = UIButton()
+    let sendMessageIcon = UIButton()
     let closeButton = UIButton()
     let rideSpaceInfoView = UIView()
     let distinyInfoView = UIView()
@@ -142,7 +142,7 @@ class RideInfoView: UIView {
         phoneIcon.widthAnchor.constraint(equalToConstant: 23).isActive = true
         phoneIcon.leftAnchor.constraint(equalTo: rideTitleView.leftAnchor).isActive = true
         phoneIcon.bottomAnchor.constraint(equalTo: modalHeaderBackground.bottomAnchor, constant: -20).isActive = true
-        phoneIcon.image = #imageLiteral(resourceName: "phoneIcon1")
+        phoneIcon.setImage(#imageLiteral(resourceName: "phoneIcon1"), for: .normal)
         
         modalView.addSubview(sendMessageIcon)
         sendMessageIcon.translatesAutoresizingMaskIntoConstraints = false
@@ -150,7 +150,7 @@ class RideInfoView: UIView {
         sendMessageIcon.widthAnchor.constraint(equalToConstant: 33).isActive = true
         sendMessageIcon.bottomAnchor.constraint(equalTo: modalHeaderBackground.bottomAnchor, constant: -15).isActive = true
         sendMessageIcon.rightAnchor.constraint(equalTo: rideTitleView.rightAnchor).isActive = true
-        sendMessageIcon.image = #imageLiteral(resourceName: "messageIcon")
+        sendMessageIcon.setImage(#imageLiteral(resourceName: "messageIcon"), for: .normal)
     }
     
     func buildDriverName() {

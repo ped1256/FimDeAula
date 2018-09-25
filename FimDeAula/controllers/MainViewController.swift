@@ -18,7 +18,9 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let backgroundView = BackgroundViewWithAnimate(frame: self.view.frame)
+        backgroundView.startbackGroundAnimate()
         self.view.addSubview(backgroundView)
         self.navigationController?.navigationBar.isHidden = true
         addButtonaccept()
@@ -62,7 +64,7 @@ class MainViewController: UIViewController {
     
     func addTitle() {
         self.view.addSubview(titleLabel)
-        titleLabel.text = "Fim de aula App"
+        titleLabel.text = "Fim de aula"
         titleLabel.textColor = .white
         titleLabel.font = UIFont.systemFont(ofSize: 36, weight: .bold)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
