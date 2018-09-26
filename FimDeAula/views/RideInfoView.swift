@@ -15,21 +15,28 @@ protocol RideInfoViewDelegate {
 
 class RideInfoView: UIView {
     
+    var user: User?
+    var schedule: Schedule?
     let imageView = UIImageView()
     let modalView = UIView()
     let modalHeaderBackground = UIView()
     let rideTitleView = UIView()
+    let rideText = UILabel()
     let driverNameText = UILabel()
     let driverImageView = UIImageView()
     let phoneIcon = UIButton()
     let sendMessageIcon = UIButton()
     let closeButton = UIButton()
     let rideSpaceInfoView = UIView()
+    let rideSpaceInfoText = UILabel()
     let distinyInfoView = UIView()
+    let distinyInfoText = UILabel()
     var delegate: RideInfoViewDelegate?
     
     func buildUI(){
         self.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        self.alpha = 0.0
+        
         buildModalLayout()
         buildRideTitleView()
         builDriverImageView()
@@ -39,6 +46,19 @@ class RideInfoView: UIView {
         buildDistinyInfo()
         buildDriverCommentView()
         buildCloseButton()
+        getDriverInfo()
+        
+        UIView.animate(withDuration: 1.0) {
+            self.alpha = 1.0
+        }
+    }
+    
+    func getDriverInfo(){
+        guard let driverId = schedule?.user?.id else { return }
+        Operation().getUserInfo(id: driverId ) { user in
+            self.user = user
+            self.updateUI()
+        }
     }
     
     func buildCloseButton() {
@@ -106,7 +126,6 @@ class RideInfoView: UIView {
         rideTitleView.clipsToBounds = true
         rideTitleView.backgroundColor = #colorLiteral(red: 0.8470588235, green: 0.8470588235, blue: 0.8470588235, alpha: 1)
         
-        let rideText = UILabel()
         rideTitleView.addSubview(rideText)
         rideText.translatesAutoresizingMaskIntoConstraints = false
         rideText.centerXAnchor.constraint(equalTo: rideTitleView.centerXAnchor).isActive = true
@@ -116,7 +135,7 @@ class RideInfoView: UIView {
         rideText.numberOfLines = 0
         rideText.textColor = #colorLiteral(red: 0.01176470588, green: 0.01176470588, blue: 0.01176470588, alpha: 1)
         rideText.textAlignment = .center
-        rideText.text = "TICAN - terminal de integração de canasvieiras"
+        
         rideText.font = UIFont.systemFont(ofSize: 14, weight: .bold)
     }
     
@@ -132,6 +151,7 @@ class RideInfoView: UIView {
         driverImageView.layer.borderColor = #colorLiteral(red: 0.368627451, green: 0.368627451, blue: 0.368627451, alpha: 1)
         driverImageView.clipsToBounds = true
         driverImageView.layer.cornerRadius = 62
+        
     }
     
     func buildContatsInfo(){
@@ -178,7 +198,7 @@ class RideInfoView: UIView {
         rideSpaceInfoView.clipsToBounds = true
         rideSpaceInfoView.backgroundColor = #colorLiteral(red: 0.8470588235, green: 0.8470588235, blue: 0.8470588235, alpha: 1)
         
-        let rideSpaceInfoText = UILabel()
+        
         rideSpaceInfoView.addSubview(rideSpaceInfoText)
         rideSpaceInfoText.translatesAutoresizingMaskIntoConstraints = false
         rideSpaceInfoText.centerXAnchor.constraint(equalTo: rideSpaceInfoView.centerXAnchor).isActive = true
@@ -201,7 +221,6 @@ class RideInfoView: UIView {
         distinyInfoView.clipsToBounds = true
         distinyInfoView.backgroundColor = #colorLiteral(red: 0.8470588235, green: 0.8470588235, blue: 0.8470588235, alpha: 1)
         
-        let distinyInfoText = UILabel()
         distinyInfoView.addSubview(distinyInfoText)
         distinyInfoText.translatesAutoresizingMaskIntoConstraints = false
         distinyInfoText.centerXAnchor.constraint(equalTo: distinyInfoView.centerXAnchor).isActive = true
@@ -222,6 +241,24 @@ class RideInfoView: UIView {
         label.numberOfLines = 3
         label.textAlignment = .center
         label.text = "estarei esperando no portao, 22: 30 estou partindo."
+    }
+    
+    func updateUI(){
+        guard let driverName = self.user?.name,
+            let image = user?.picture,
+            let slug = schedule?.destiny.slug,
+            let hour = schedule?.hour,
+            let space = schedule?.space,
+            let title = schedule?.destiny.title else { return  }
+        
+        DispatchQueue.main.async {
+            self.driverNameText.text = driverName
+            self.driverImageView.image = image
+            self.distinyInfoText.text = "\(slug) - \(hour)"
+            self.rideSpaceInfoText.text = space
+            self.rideText.text = "\(slug) - \(title)"
+        }
+        
     }
     
     @objc func closeButtonAction(_ sender: Any){

@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import FBSDKLoginKit
 
 class User: NSObject {
     var name: String
@@ -15,11 +16,7 @@ class User: NSObject {
     var email: String?
     var picture: UIImage?
     var phoneNumber: String = "21 965444987"
-    var picturePath: String? {
-        didSet {
-            parseImage()
-        }
-    }
+    var picturePath: String?
 
     var schedules = [Schedule]()
     
@@ -28,26 +25,29 @@ class User: NSObject {
         self.id = id
     }
 
-    static func parseInfoFromFacebook(result: Any) -> User? {
+    
+    static func parseInfoFromFacebook(result: Any, completion: @escaping (User) -> ()){
         guard let result = result as? [String: AnyObject],
-        let id = result["id"] as? String,
-        let name = result["name"] as? String,
-        let picture = result["picture"] as? [String: Any],
-        let imageData = picture["data"] as? [String: Any],
-        let imageURL = imageData["url"] as? String else { return nil  }
+            let id = result["id"] as? String,
+            let name = result["name"] as? String,
+            let picture = result["picture"] as? [String: Any],
+            let imageData = picture["data"] as? [String: Any] else { return }
         
         let user = User(name: name, id: id)
-        user.picturePath = imageURL
-        return user
+        user.picturePath = "http://graph.facebook.com/\(user.id)/picture?type=large"
+        user.parseImage {
+            completion(user)
+        }
     }
     
-    func parseImage(){
+    func parseImage(completion: @escaping () -> ()){
         guard let path = self.picturePath, let url = URL(string: path) else { return }
        
         URLSession.shared.dataTask(with: url) { data, response, error in
             guard let imageData = data else { return  }
             let image = UIImage(data: imageData)
             self.picture = image
+            completion()
         }.resume()
     }
 }

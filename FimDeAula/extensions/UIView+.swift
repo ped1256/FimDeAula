@@ -37,4 +37,12 @@ extension UIView {
 //    UIApplication.shared.openURL(url)
 //    }
 //    }
+    func makeBlurImage(targetImageView: UIView) {
+        let blurEffect = UIBlurEffect(style: .regular)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = targetImageView.bounds
+        
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        targetImageView.addSubview(blurEffectView)
+    }
 }

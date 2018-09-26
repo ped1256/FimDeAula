@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import FBSDKLoginKit
+import FirebaseCore
 
 class LoginViewController: UIViewController {
  
@@ -124,10 +125,13 @@ extension LoginViewController: FBSDKLoginButtonDelegate {
     
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         Operation().retrieverUserFacebookInfo { user in
-            let chooseGoalViewController = ChooseGoalViewController()
-            chooseGoalViewController.user = user
-            Operation().registerOnlyUser(user: user)
-            self.navigationController?.pushViewController(chooseGoalViewController, animated: true)
+            DispatchQueue.main.async {
+                let chooseGoalViewController = ChooseGoalViewController()
+                chooseGoalViewController.user = user
+                Operation().registerOnlyUser(user: user)
+                self.navigationController?.pushViewController(chooseGoalViewController, animated: true)
+            }
+//            http://graph.facebook.com/\(userID)/picture?type=large
         }
     }
 }

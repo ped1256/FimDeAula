@@ -137,14 +137,12 @@ extension HomeRidesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
+        let schedule = self.rides[indexPath.row]
+        
         let rideInfo = RideInfoView(frame: self.view.frame)
-        rideInfo.alpha = 0.0
+        rideInfo.schedule = schedule
         rideInfo.buildUI()
         self.view.addSubview(rideInfo)
-        
-        UIView.animate(withDuration: 1.0) {
-            rideInfo.alpha = 1.0
-        }
 
     }
     

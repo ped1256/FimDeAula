@@ -15,10 +15,11 @@ class ChooseGoalViewController: UIViewController{
     var logoImageView = UIImageView()
     var user: User?
     var shouldGetuUserInfo: Bool = false
+    let accountIcon = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         let backgroundView = BackgroundViewWithAnimate(frame: self.view.frame)
         backgroundView.startbackGroundAnimate()
         self.view.addSubview(backgroundView)
@@ -28,18 +29,33 @@ class ChooseGoalViewController: UIViewController{
         addTitle()
         addLogo()
         addPassagerAndDriverButton()
+        addAccountButton()
         
-        // get user info when user not loged
         if shouldGetuUserInfo {
             Operation().retrieverUserFacebookInfo { (user) in
                 self.user = user
+                self.accountIcon.isHidden = false
             }
+        } else {
+            self.accountIcon.isHidden = false
         }
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func addAccountButton(){
+        self.view.addSubview(accountIcon)
+        accountIcon.isHidden = true
+        accountIcon.translatesAutoresizingMaskIntoConstraints = false
+        accountIcon.heightAnchor.constraint(equalToConstant: 47).isActive = true
+        accountIcon.widthAnchor.constraint(equalToConstant: 47).isActive = true
+        accountIcon.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -10).isActive = true
+        accountIcon.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 30).isActive = true
+        accountIcon.setImage(#imageLiteral(resourceName: "accountIcon").withRenderingMode(.alwaysOriginal), for: .normal)
+        accountIcon.addTarget(self, action: #selector(accountAction(_:)), for: .touchUpInside)
     }
     
     func addBackModalView() {
@@ -124,5 +140,10 @@ class ChooseGoalViewController: UIViewController{
         let nav = UINavigationController(rootViewController: chooseDestinyViewController)
         self.present(nav, animated: true, completion: nil)
     }
+    
+    @objc func accountAction(_ sender: Any){
+        let userAccountViewController = AccountViewController()
+        userAccountViewController.user = user
+        self.navigationController?.pushViewController(userAccountViewController, animated: true)
+    }
 }
-

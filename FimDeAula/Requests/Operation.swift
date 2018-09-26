@@ -18,11 +18,12 @@ class Operation: NSObject {
         let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, email, gender, cover, picture"])
         _ = graphRequest?.start(completionHandler: {
             (connection, result, error) -> Void in
-            
             guard error == nil else { return }
             UserDefaults.standard.setValue(true, forKey: Identifier().userIsLogedIdentifier)
-            guard let user = User.parseInfoFromFacebook(result: result) else { return }
-            completion(user)
+            
+            User.parseInfoFromFacebook(result: result, completion: { user in
+                completion(user)
+            })
         })
     }
     
@@ -64,12 +65,13 @@ class Operation: NSObject {
             guard let name = data["name"] as? String else { return }
             guard let id = data["id"] as? String else { return }
             guard let email = data["email"] as? String else  { return }
-            guard let picturePath = data["picturePath"] as? String else { return }
             
             let user = User(name: name, id: id)
             user.email = email
-            user.picturePath = picturePath
-            completion(user)
+            user.picturePath = "http://graph.facebook.com/\(user.id)/picture?type=large"
+            user.parseImage {
+                completion(user)
+            }
         }
     }
     
