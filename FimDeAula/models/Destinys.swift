@@ -46,7 +46,7 @@ class Destiny: NSObject {
         destinys.append(Destiny(title: DestinysText.TITRI.rawValue, slug: "TITRI"))
         destinys.append(Destiny(title: DestinysText.TICEN.rawValue, slug: "TICEN"))
         destinys.append(Destiny(title: DestinysText.TILAG.rawValue, slug: "TILAG"))
-        destinys.append(Destiny(title: DestinysText.OTHERS.rawValue, slug: "OTHERS"))
+        destinys.append(Destiny(title: DestinysText.OTHERS.rawValue, slug: "OUTRO"))
         
         return destinys
     }

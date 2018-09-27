@@ -34,7 +34,9 @@ class ChooseGoalViewController: UIViewController{
         if shouldGetuUserInfo {
             Operation().retrieverUserFacebookInfo { (user) in
                 self.user = user
-                self.accountIcon.isHidden = false
+                DispatchQueue.main.async {
+                    self.accountIcon.isHidden = false
+                }
             }
         } else {
             self.accountIcon.isHidden = false
@@ -129,7 +131,7 @@ class ChooseGoalViewController: UIViewController{
         chooseDestinyViewController.decisionType = .driver
         chooseDestinyViewController.user = self.user
         
-        let nav = UINavigationController(rootViewController: chooseDestinyViewController)
+        let nav = AppNavigationController(rootViewController: chooseDestinyViewController)
         self.present(nav, animated: true, completion: nil)
     }
     
@@ -137,13 +139,13 @@ class ChooseGoalViewController: UIViewController{
         let chooseDestinyViewController = ChooseDestinyViewController()
         chooseDestinyViewController.user = self.user
         chooseDestinyViewController.decisionType = .passenger
-        let nav = UINavigationController(rootViewController: chooseDestinyViewController)
+        let nav = AppNavigationController(rootViewController: chooseDestinyViewController)
         self.present(nav, animated: true, completion: nil)
     }
     
     @objc func accountAction(_ sender: Any){
         let userAccountViewController = AccountViewController()
         userAccountViewController.user = user
-        self.navigationController?.pushViewController(userAccountViewController, animated: true)
+        self.present(userAccountViewController, animated: true, completion: nil)
     }
 }

@@ -21,7 +21,7 @@ class HomeRidesViewController: UIViewController {
     var backButtonView = UIButton()
     var cellSelectedIndex: Int = -1
     
-    var nav = UINavigationController()
+    var nav = AppNavigationController()
     
     override func viewDidLoad() {
         super.viewDidLoad()

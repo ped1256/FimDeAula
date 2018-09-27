@@ -22,17 +22,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
-        
-        let nav = UINavigationController()
+        let nav = AppNavigationController()
         if UserDefaults.standard.value(forKeyPath: Identifier().userFirstTimeIdentifier) == nil {
             let mainController = MainViewController()
             nav.viewControllers = [mainController]
         } else if UserDefaults.standard.value(forKeyPath: Identifier().userIsLogedIdentifier) != nil {
             if let userIsloged = UserDefaults.standard.value(forKeyPath: Identifier().userIsLogedIdentifier) as? Bool, userIsloged == true {
-//                let choosegoalViewController = ChooseGoalViewController()
-                let accounttestController = AccountViewController()
-//                choosegoalViewController.shouldGetuUserInfo = true
-                nav.viewControllers = [accounttestController]
+                let choosegoalViewController = ChooseGoalViewController()
+                choosegoalViewController.shouldGetuUserInfo = true
+                nav.viewControllers = [choosegoalViewController]
             } else {
                 let loginViewController = LoginViewController()
                 nav.viewControllers = [loginViewController]

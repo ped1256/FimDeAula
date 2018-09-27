@@ -18,4 +18,13 @@ class App: NSObject {
             return false
         }
     }
+    
+    func isIphoneX() -> Bool {
+        let screen = UIScreen.main.bounds
+        if screen.size.height >= 812 {
+            return true
+        } else {
+            return false
+        }
+    }
 }

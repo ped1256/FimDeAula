@@ -16,8 +16,13 @@ class MainViewController: UIViewController {
     var logoImageView = UIImageView()
     var messageLabel = UILabel()
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
         
         let backgroundView = BackgroundViewWithAnimate(frame: self.view.frame)
         backgroundView.startbackGroundAnimate()
@@ -41,8 +46,12 @@ class MainViewController: UIViewController {
         
         acceptButton.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
         acceptButton.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
-        acceptButton.heightAnchor.constraint(equalToConstant: 70).isActive = true
         acceptButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        if App().isIphoneX() {
+            acceptButton.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        } else {
+            acceptButton.heightAnchor.constraint(equalToConstant: 70).isActive = true
+        }
         
         acceptButton.backgroundColor = #colorLiteral(red: 0.8823529412, green: 0.1215686275, blue: 0.1215686275, alpha: 1)
         

@@ -32,6 +32,7 @@
 		FA93C97B215AFA9700AD95FE /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA93C97A215AFA9700AD95FE /* AccountViewController.swift */; };
 		FA93C99E215B54D300AD95FE /* Utilitys.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA93C99D215B54D300AD95FE /* Utilitys.swift */; };
 		FA93C9A0215BD8F900AD95FE /* AccounRideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA93C99F215BD8F900AD95FE /* AccounRideCell.swift */; };
+		FA93C9B1215C36E300AD95FE /* AppNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA93C9B0215C36E300AD95FE /* AppNavigationController.swift */; };
 		FAA88810215BEDF7009634AA /* AccountTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA8880F215BEDF7009634AA /* AccountTableViewDelegate.swift */; };
 		FADC91DC2155427B00188AEE /* Identifier+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADC91DB2155427B00188AEE /* Identifier+.swift */; };
 		FADC91DF215546ED00188AEE /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADC91DE215546ED00188AEE /* Operation.swift */; };
@@ -70,6 +71,8 @@
 		FA93C97A215AFA9700AD95FE /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		FA93C99D215B54D300AD95FE /* Utilitys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilitys.swift; sourceTree = "<group>"; };
 		FA93C99F215BD8F900AD95FE /* AccounRideCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccounRideCell.swift; sourceTree = "<group>"; };
+		FA93C9A1215C24F200AD95FE /* FimDeAula.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FimDeAula.entitlements; sourceTree = "<group>"; };
+		FA93C9B0215C36E300AD95FE /* AppNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigationController.swift; sourceTree = "<group>"; };
 		FAA8880F215BEDF7009634AA /* AccountTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewDelegate.swift; sourceTree = "<group>"; };
 		FADC91DB2155427B00188AEE /* Identifier+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Identifier+.swift"; sourceTree = "<group>"; };
 		FADC91DE215546ED00188AEE /* Operation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
@@ -121,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				FA90FF54214706A700A55FFD /* MainViewController.swift */,
+				FA93C9B0215C36E300AD95FE /* AppNavigationController.swift */,
 				FAFF6ED72155F24D003AF4C7 /* HomeRidesViewController.swift */,
 				FA080FA2214861FD00C5B2B0 /* LoginViewController.swift */,
 				FA080FA62148BAB400C5B2B0 /* ChooseDestinyViewController.swift */,
@@ -163,6 +167,7 @@
 		FA90FF51214706A700A55FFD /* FimDeAula */ = {
 			isa = PBXGroup;
 			children = (
+				FA93C9A1215C24F200AD95FE /* FimDeAula.entitlements */,
 				FA90FF52214706A700A55FFD /* AppDelegate.swift */,
 				FADC91DD215546CB00188AEE /* Requests */,
 				FA080FA92148BB1A00C5B2B0 /* models */,
@@ -238,6 +243,11 @@
 				TargetAttributes = {
 					FA90FF4E214706A700A55FFD = {
 						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -360,6 +370,7 @@
 				FA080FA72148BAB400C5B2B0 /* ChooseDestinyViewController.swift in Sources */,
 				FAFF6EDA2155F88E003AF4C7 /* HomeRideCell.swift in Sources */,
 				FA93C99E215B54D300AD95FE /* Utilitys.swift in Sources */,
+				FA93C9B1215C36E300AD95FE /* AppNavigationController.swift in Sources */,
 				FAA88810215BEDF7009634AA /* AccountTableViewDelegate.swift in Sources */,
 				FA93C97B215AFA9700AD95FE /* AccountViewController.swift in Sources */,
 				FA90FF5B214706A700A55FFD /* FimDeAula.xcdatamodeld in Sources */,
@@ -504,6 +515,7 @@
 			baseConfigurationReference = 458DF8D0FC8CC1055745A2D4 /* Pods-FimDeAula.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FimDeAula/FimDeAula.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WEP9UKL7GT;
@@ -516,7 +528,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -525,6 +537,7 @@
 			baseConfigurationReference = 6A4ACB59F24A16936C8D4686 /* Pods-FimDeAula.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FimDeAula/FimDeAula.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WEP9UKL7GT;
@@ -537,7 +550,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

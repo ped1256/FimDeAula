@@ -37,8 +37,8 @@ extension UIView {
 //    UIApplication.shared.openURL(url)
 //    }
 //    }
-    func makeBlurImage(targetImageView: UIView) {
-        let blurEffect = UIBlurEffect(style: .regular)
+    func makeBlurImage(targetImageView: UIView, style: UIBlurEffectStyle) {
+        let blurEffect = UIBlurEffect(style: style)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = targetImageView.bounds
         

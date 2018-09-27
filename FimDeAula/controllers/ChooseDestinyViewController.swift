@@ -19,7 +19,7 @@ class ChooseDestinyViewController: UIViewController {
     var tableview = UITableView()
     var backButtonView = UIButton()
     var backgroundView = UIView()
-    var nav = UINavigationController()
+    var nav = AppNavigationController()
     
     
     override func viewDidLoad() {

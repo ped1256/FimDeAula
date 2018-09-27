@@ -9,8 +9,8 @@
 import Foundation
 import UIKit
 
-protocol AccounRideCelDelegate {
-    func didTouchInRemoveButton()
+protocol AccounRideCellDelegate {
+    func didTouchInRemoveButton(schedule: Schedule)
 }
 
 class AccountRideCell: UITableViewCell {
@@ -20,7 +20,8 @@ class AccountRideCell: UITableViewCell {
     let rideDescriptionText = UILabel()
     let rideTitleText = UILabel()
     let deleteButton = UIButton()
-    var delegate: AccounRideCelDelegate?
+    var schedule = Schedule()
+    var delegate: AccounRideCellDelegate?
     
     func buildUI() {
         self.contentView.backgroundColor = .white
@@ -61,7 +62,7 @@ class AccountRideCell: UITableViewCell {
         
         rideTitleText.numberOfLines = 3
         rideTitleText.textColor = #colorLiteral(red: 0.7843137255, green: 0.7843137255, blue: 0.7843137255, alpha: 1)
-        rideTitleText.text = "Terça - 22:30"
+        rideTitleText.text = "\(schedule.day) - \(schedule.hour)"
     }
     
     func buildRideDescriptionText(){
@@ -80,7 +81,7 @@ class AccountRideCell: UITableViewCell {
         
         rideDescriptionText.numberOfLines = 3
         rideDescriptionText.textColor = #colorLiteral(red: 0.7843137255, green: 0.7843137255, blue: 0.7843137255, alpha: 1)
-        rideDescriptionText.text = "Terminal de integração de canasvieiras"
+        rideDescriptionText.text = schedule.destiny.title
     }
     
     func buildRemoveButtom(){
@@ -96,8 +97,8 @@ class AccountRideCell: UITableViewCell {
         deleteButton.layer.cornerRadius = 3
         deleteButton.addTarget(self, action: #selector(deleteAction(_:)), for: .touchUpInside)
     }
-    
+
     @objc func deleteAction(_ sender: Any) {
-        delegate?.didTouchInRemoveButton()
+        delegate?.didTouchInRemoveButton(schedule: schedule)
     }
 }

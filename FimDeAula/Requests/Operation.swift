@@ -58,6 +58,40 @@ class Operation: NSObject {
         ref?.child("user/\(user.id)").setValue(userInfo)
     }
     
+    func getUserSchedules(id: String, completion: @escaping ([Schedule]) -> ()) {
+        ref = Database.database().reference()
+        ref?.child("user/\(id)/schedules").queryOrderedByValue().observeSingleEvent(of: .value) { snapshot  in
+            guard let data = snapshot.value as? [String: AnyObject] else {
+                completion([Schedule]())
+                return
+            }
+            var schedules = [Schedule]()
+            
+            for response in data {
+                let scheduleresponse = response.value
+                guard let scheduleData = scheduleresponse as? [String: AnyObject] else { return }
+                guard let day = scheduleData["day"] as? String else { return }
+                guard let slug = scheduleData["destinySlug"] as? String else { return }
+                guard let title = scheduleData["destinyTitle"] as? String else { return }
+                guard let hour = scheduleData["hour"] as? String else { return }
+                guard let id = scheduleData["id"] as? String else { return }
+                guard let space = scheduleData["space"] as? String else { return }
+                guard let driverName = scheduleData["driverName"] as? String else { return }
+                guard let userId = scheduleData["userId"] as? String else { return }
+                
+                let schedule = Schedule()
+                schedule.day = day
+                schedule.destiny = Destiny(title: title, slug: slug)
+                schedule.hour = hour
+                schedule.id = id
+                schedule.space = space
+                schedule.user = User(name: driverName, id: userId)
+                schedules.append(schedule)
+            }
+            completion(schedules)
+        }
+    }
+    
     func getUserInfo(id: String, completion: @escaping (User) -> ()) {
         ref = Database.database().reference()
         ref?.child("user/\(id)").queryOrderedByValue().observeSingleEvent(of: .value) { snapshot  in
@@ -95,6 +129,15 @@ class Operation: NSObject {
             completion()
         }
     }
+
+    func removeScheduleInUserAccount(user: User, schedule: Schedule, completion: @escaping () -> ()){
+        ref = Database.database().reference()
+        ref?.child("user/\(user.id)/schedules/\(schedule.id)").removeValue()
+        ref?.child("rides/\(schedule.id)").removeValue()
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.5) {
+            completion()
+        }
+    }
     
     func addUserPhoneNumber(user: User, value: String){
         ref = Database.database().reference()
@@ -104,7 +147,11 @@ class Operation: NSObject {
     func retriveRides(schedule: Schedule, completion: @escaping (([Schedule]) ->() )) {
         ref = Database.database().reference()
         ref?.child("rides").queryOrderedByValue().observeSingleEvent(of: .value) { snapshot  in
-            guard let data = snapshot.value as? [String: Any] else { return }
+            guard let data = snapshot.value as? [String: Any] else {
+                completion([Schedule]())
+                return
+            }
+            
             var schedules = [Schedule]()
             
             for response in data {

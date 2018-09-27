@@ -19,8 +19,11 @@ class AccountViewController: UIViewController {
     let userNameTitle = UILabel()
     let ridesTitle = UILabel()
     let horizontalLineView = UIView()
+    let backButton = UIButton()
+    
     let scrollView = UIScrollView()
     let tableView = UITableView()
+    
     let accountTableViewDelegate = AccountTableViewDelegate()
     
     var userInfoBackgroundTopConstraint: NSLayoutConstraint!
@@ -43,6 +46,14 @@ class AccountViewController: UIViewController {
         builUserInfo()
         buildRidesTitles()
         buildTableView()
+        buildBackButton()
+        
+        guard let user = self.user else { return }
+        
+        Operation().getUserSchedules(id: user.id) { schedules in
+            self.schedules = schedules
+            self.tableView.reloadData()
+        }
     }
     
     func buildUserBackImage(){
@@ -54,8 +65,22 @@ class AccountViewController: UIViewController {
         backImageview.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
         backImageview.heightAnchor.constraint(equalToConstant: self.view.frame.height / 2).isActive = true
         backImageview.image = #imageLiteral(resourceName: "userBackImageDefault")
-        backImageview.makeBlurImage(targetImageView: backImageview)
+        backImageview.makeBlurImage(targetImageView: backImageview, style: .regular)
 
+    }
+    
+    func buildBackButton(){
+        self.scrollView.addSubview(backButton)
+        backButton.translatesAutoresizingMaskIntoConstraints = false
+        backButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        backButton.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        backButton.leftAnchor.constraint(equalTo: self.backImageview.leftAnchor, constant: 20).isActive = true
+        backButton.topAnchor.constraint(equalTo: self.backImageview.topAnchor, constant: 25).isActive = true
+        backButton.backgroundColor = UIColor.white.withAlphaComponent(0.6)
+        backButton.clipsToBounds = true
+        backButton.layer.cornerRadius = 20
+        backButton.setImage(#imageLiteral(resourceName: "backButton"), for: .normal)
+        backButton.addTarget(self, action: #selector(backAction(_:)), for: .touchUpInside)
     }
     
     func buildUserInfoBackground(){
@@ -133,7 +158,7 @@ class AccountViewController: UIViewController {
         userNameTitle.leftAnchor.constraint(equalTo: userInfoBackground.leftAnchor,constant: 20).isActive = true
         userNameTitle.rightAnchor.constraint(equalTo: userInfoBackground.rightAnchor, constant: -20).isActive = true
         userNameTitle.topAnchor.constraint(equalTo: userImageView.bottomAnchor, constant: 10).isActive = true
-        userNameTitle.text = "Pedro Emanuel Skaaf"
+        userNameTitle.text = self.user?.name
         userNameTitle.font = UIFont.systemFont(ofSize: 20)
         userNameTitle.textColor = #colorLiteral(red: 0.4117647059, green: 0.4117647059, blue: 0.4117647059, alpha: 1)
     }
@@ -161,7 +186,7 @@ class AccountViewController: UIViewController {
         horizontalLineViewTopContraint = horizontalLineView.topAnchor.constraint(equalTo: ridesTitle.bottomAnchor, constant: 10)
         horizontalLineViewTopContraint.isActive = true
 
-        horizontalLineView.backgroundColor = #colorLiteral(red: 0.5607843137, green: 0.5607843137, blue: 0.5607843137, alpha: 1)
+        horizontalLineView.backgroundColor = .clear
     }
     
     func buildTableView() {
@@ -180,32 +205,47 @@ class AccountViewController: UIViewController {
         
         tableView.register(AccountRideCell.self, forCellReuseIdentifier: AccountRideCell.identifier)
     }
-
+    
+    @objc func backAction(_ sender: Any){
+        self.userInfoBackgroundAnimator.stopAnimation(true)
+        self.ridesTitleAnimator.stopAnimation(true)
+        self.userimageViewAnimator.stopAnimation(true)
+        self.dismiss(animated: true, completion: nil)
+    }
 }
 
-extension AccountViewController: UITableViewDelegate, UITableViewDataSource, AccounRideCelDelegate {
+extension AccountViewController: UITableViewDelegate, UITableViewDataSource, AccounRideCellDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        guard let schedules = self.schedules else { return 0 }
+        return schedules.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: AccountRideCell.identifier, for: indexPath) as? AccountRideCell else { return UITableViewCell() }
-        cell.buildUI()
+        if let schedule = self.schedules?[indexPath.row] {
+            cell.schedule = schedule
+            cell.buildUI()
+        }
+        
         cell.delegate = self
         return cell
     }
-    
-    func didTouchInRemoveButton() {
+
+    func didTouchInRemoveButton(schedule: Schedule) {
         
         let alertController = UIAlertController()
         
         let confirmAction = UIAlertAction(title: "Remover", style: .default, handler: { action in
-            
+            guard let user = self.user else { return }
+            Operation().removeScheduleInUserAccount(user: user, schedule: schedule, completion: {
+                Operation().getUserSchedules(id: user.id, completion: { schedules in
+                    self.schedules = schedules
+                    self.tableView.reloadData()
+                })
+            })
         })
         
-        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: { action in
-            
-        })
+        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
         
         alertController.addAction(confirmAction)
         alertController.addAction(cancelAction)
