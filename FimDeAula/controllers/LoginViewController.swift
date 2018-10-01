@@ -131,7 +131,6 @@ extension LoginViewController: FBSDKLoginButtonDelegate {
                 Operation().registerOnlyUser(user: user)
                 self.navigationController?.pushViewController(chooseGoalViewController, animated: true)
             }
-//            http://graph.facebook.com/\(userID)/picture?type=large
         }
     }
 }

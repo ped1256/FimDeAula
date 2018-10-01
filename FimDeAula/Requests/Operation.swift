@@ -99,9 +99,11 @@ class Operation: NSObject {
             guard let name = data["name"] as? String else { return }
             guard let id = data["id"] as? String else { return }
             guard let email = data["email"] as? String else  { return }
+            let phone = data["userPhone"] as? String ?? ""
             
             let user = User(name: name, id: id)
             user.email = email
+            user.phoneNumber = phone
             user.picturePath = "http://graph.facebook.com/\(user.id)/picture?type=large"
             user.parseImage {
                 completion(user)

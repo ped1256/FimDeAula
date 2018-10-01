@@ -8,12 +8,13 @@
 
 import UIKit
 
-class ChooseGoalViewController: UIViewController{
+class ChooseGoalViewController: UIViewController {
     
     var modalView = UIView()
     var titleLabel = UILabel()
     var logoImageView = UIImageView()
     var user: User?
+    let driverButton = UIButton()
     var shouldGetuUserInfo: Bool = false
     let accountIcon = UIButton()
     
@@ -36,6 +37,7 @@ class ChooseGoalViewController: UIViewController{
                 self.user = user
                 DispatchQueue.main.async {
                     self.accountIcon.isHidden = false
+                    self.driverButton.isHidden = false
                 }
             }
         } else {
@@ -93,7 +95,6 @@ class ChooseGoalViewController: UIViewController{
     }
     
     func addPassagerAndDriverButton() {
-        let driverButton = UIButton()
         self.view.addSubview(driverButton)
         driverButton.translatesAutoresizingMaskIntoConstraints = false
         driverButton.rightAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
@@ -108,6 +109,7 @@ class ChooseGoalViewController: UIViewController{
         driverButton.setTitleColor(#colorLiteral(red: 0.521568656, green: 0.1098039225, blue: 0.05098039284, alpha: 1), for: .highlighted)
         driverButton.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         driverButton.addTarget(self, action: #selector(driverButtonAction(_:)), for: .touchUpInside)
+        driverButton.isHidden = true
         
         let passagerButton = UIButton()
         self.view.addSubview(passagerButton)
@@ -127,12 +129,35 @@ class ChooseGoalViewController: UIViewController{
     }
     
     @objc func driverButtonAction(_ sender: Any) {
-        let chooseDestinyViewController = ChooseDestinyViewController()
-        chooseDestinyViewController.decisionType = .driver
-        chooseDestinyViewController.user = self.user
-        
-        let nav = AppNavigationController(rootViewController: chooseDestinyViewController)
-        self.present(nav, animated: true, completion: nil)
+        guard let id = self.user?.id else { return }
+        let load = LoadingView(frame: self.view.frame)
+        self.view.addSubview(load)
+        load.animating.startAnimating()
+        Operation().getUserInfo(id: id) { user in
+            
+            DispatchQueue.main.async {
+                load.animating.stopAnimating()
+                load.removeFromSuperview()
+            }
+            
+            if user.phoneNumber.isEmpty {
+                DispatchQueue.main.async {
+                    let formNumber = UserPhoneNumberForm(frame: self.view.frame)
+                    formNumber.delegate = self
+                    formNumber.buildUI()
+                    self.view.addSubview(formNumber)
+                }
+            } else {
+                DispatchQueue.main.async {
+                    let chooseDestinyViewController = ChooseDestinyViewController()
+                    chooseDestinyViewController.decisionType = .driver
+                    chooseDestinyViewController.user = self.user
+                    
+                    let nav = AppNavigationController(rootViewController: chooseDestinyViewController)
+                    self.present(nav, animated: true, completion: nil)
+                }
+            }
+        }
     }
     
     @objc func passagerButtonAction(_ sender: Any) {
@@ -147,5 +172,21 @@ class ChooseGoalViewController: UIViewController{
         let userAccountViewController = AccountViewController()
         userAccountViewController.user = user
         self.present(userAccountViewController, animated: true, completion: nil)
+    }
+}
+
+extension ChooseGoalViewController: UserPhoneNumberFormDelegate {
+    
+    func didTouchAcceptButton(value: String) {
+        guard let user = self.user else { return }
+        Operation().addUserPhoneNumber(user: user , value: value)
+        
+        let chooseDestinyViewController = ChooseDestinyViewController()
+        chooseDestinyViewController.decisionType = .driver
+        chooseDestinyViewController.user = self.user
+        chooseDestinyViewController.user?.phoneNumber = value
+        
+        let nav = AppNavigationController(rootViewController: chooseDestinyViewController)
+        self.present(nav, animated: true, completion: nil)
     }
 }

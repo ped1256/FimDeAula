@@ -64,7 +64,6 @@ class HomeRideCell: UITableViewCell {
         dayLabel.bottomAnchor.constraint(equalTo: whitebackView.topAnchor, constant: -5).isActive = true
         dayLabel.numberOfLines = 1
         dayLabel.textColor = #colorLiteral(red: 0.7215686275, green: 0.7215686275, blue: 0.7215686275, alpha: 1)
-        dayLabel.text = "\("Terça"):"
         dayLabel.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         
         self.contentView.addSubview(hourLabel)
@@ -73,7 +72,6 @@ class HomeRideCell: UITableViewCell {
         hourLabel.centerYAnchor.constraint(equalTo: dayLabel.centerYAnchor).isActive = true
         hourLabel.numberOfLines = 1
         hourLabel.textColor = #colorLiteral(red: 0.7215686275, green: 0.7215686275, blue: 0.7215686275, alpha: 1)
-        hourLabel.text = "\("22:00")"
         hourLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         
     }
@@ -84,7 +82,6 @@ class HomeRideCell: UITableViewCell {
         nameTitle.topAnchor.constraint(equalTo: whitebackView.topAnchor, constant: 12).isActive = true
         nameTitle.numberOfLines = 1
         nameTitle.textColor = #colorLiteral(red: 0.01176470588, green: 0.01176470588, blue: 0.01176470588, alpha: 1).withAlphaComponent(0.6)
-        nameTitle.text = "\("Nome"):"
         nameTitle.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         
         self.whitebackView.addSubview(driverName)
@@ -93,7 +90,6 @@ class HomeRideCell: UITableViewCell {
         driverName.centerYAnchor.constraint(equalTo: nameTitle.centerYAnchor).isActive = true
         driverName.numberOfLines = 1
         driverName.textColor = #colorLiteral(red: 0.01176470588, green: 0.01176470588, blue: 0.01176470588, alpha: 1).withAlphaComponent(0.6)
-        driverName.text = "\("Pedro Emanuel")"
         driverName.font = UIFont.systemFont(ofSize: 14, weight: .bold)
     }
     
@@ -104,7 +100,6 @@ class HomeRideCell: UITableViewCell {
         destinyTitle.topAnchor.constraint(equalTo: nameTitle.bottomAnchor , constant: 12).isActive = true
         destinyTitle.numberOfLines = 1
         destinyTitle.textColor = #colorLiteral(red: 0.01176470588, green: 0.01176470588, blue: 0.01176470588, alpha: 1).withAlphaComponent(0.6)
-        destinyTitle.text = "\("Destino"):"
         destinyTitle.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         
         self.whitebackView.addSubview(destinyDescription)

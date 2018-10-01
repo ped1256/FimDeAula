@@ -22,8 +22,6 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
         let backgroundView = BackgroundViewWithAnimate(frame: self.view.frame)
         backgroundView.startbackGroundAnimate()
         self.view.addSubview(backgroundView)

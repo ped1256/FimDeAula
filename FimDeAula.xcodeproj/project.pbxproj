@@ -13,6 +13,8 @@
 		FA080FA52148B8F400C5B2B0 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA080FA42148B8F400C5B2B0 /* LoadingView.swift */; };
 		FA080FA72148BAB400C5B2B0 /* ChooseDestinyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA080FA62148BAB400C5B2B0 /* ChooseDestinyViewController.swift */; };
 		FA080FAB2148BB3500C5B2B0 /* Destinys.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA080FAA2148BB3500C5B2B0 /* Destinys.swift */; };
+		FA366B6C215EE72200F39ACB /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA366B6B215EE72200F39ACB /* ModalView.swift */; };
+		FA448E55215D9A50004A1C53 /* UserPhoneNumberForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA448E54215D9A50004A1C53 /* UserPhoneNumberForm.swift */; };
 		FA4A9C25214C473200FA4DDE /* SchedullingCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4A9C24214C473200FA4DDE /* SchedullingCollection.swift */; };
 		FA5520E82153FBB40054B29B /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5520E72153FBB40054B29B /* Schedule.swift */; };
 		FA5520EC2154293A0054B29B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA5520EB2154293A0054B29B /* GoogleService-Info.plist */; };
@@ -50,6 +52,8 @@
 		FA080FA42148B8F400C5B2B0 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		FA080FA62148BAB400C5B2B0 /* ChooseDestinyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseDestinyViewController.swift; sourceTree = "<group>"; };
 		FA080FAA2148BB3500C5B2B0 /* Destinys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destinys.swift; sourceTree = "<group>"; };
+		FA366B6B215EE72200F39ACB /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
+		FA448E54215D9A50004A1C53 /* UserPhoneNumberForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPhoneNumberForm.swift; sourceTree = "<group>"; };
 		FA4A9C24214C473200FA4DDE /* SchedullingCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedullingCollection.swift; sourceTree = "<group>"; };
 		FA5520E72153FBB40054B29B /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		FA5520EB2154293A0054B29B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -190,8 +194,10 @@
 				FA90FF682147072600A55FFD /* BackgroundViewWithAnimate.swift */,
 				FA93C99F215BD8F900AD95FE /* AccounRideCell.swift */,
 				FA669D0A2149451100A9D09B /* DestinysCell.swift */,
+				FA366B6B215EE72200F39ACB /* ModalView.swift */,
 				FA4A9C24214C473200FA4DDE /* SchedullingCollection.swift */,
 				FA83B122215938A40049C07C /* RideInfoView.swift */,
+				FA448E54215D9A50004A1C53 /* UserPhoneNumberForm.swift */,
 				FAFF6EDD21572C22003AF4C7 /* SuccesRegisterView.swift */,
 				FAFF6ED92155F88E003AF4C7 /* HomeRideCell.swift */,
 				FA669D102149D3AA00A9D09B /* DaysCell.swift */,
@@ -362,6 +368,7 @@
 				FA4A9C25214C473200FA4DDE /* SchedullingCollection.swift in Sources */,
 				FA080FA3214861FD00C5B2B0 /* LoginViewController.swift in Sources */,
 				FAFF6EDE21572C22003AF4C7 /* SuccesRegisterView.swift in Sources */,
+				FA448E55215D9A50004A1C53 /* UserPhoneNumberForm.swift in Sources */,
 				FA080FA1214855D200C5B2B0 /* UIView+.swift in Sources */,
 				FA90FF692147072600A55FFD /* BackgroundViewWithAnimate.swift in Sources */,
 				FA93C9A0215BD8F900AD95FE /* AccounRideCell.swift in Sources */,
@@ -378,6 +385,7 @@
 				FAFF6ED82155F24D003AF4C7 /* HomeRidesViewController.swift in Sources */,
 				FA669D0D2149645000A9D09B /* ChooseGoalViewController.swift in Sources */,
 				FA83B123215938A40049C07C /* RideInfoView.swift in Sources */,
+				FA366B6C215EE72200F39ACB /* ModalView.swift in Sources */,
 				FA90FF53214706A700A55FFD /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

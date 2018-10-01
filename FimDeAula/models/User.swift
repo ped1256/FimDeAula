@@ -15,7 +15,7 @@ class User: NSObject {
     var id: String
     var email: String?
     var picture: UIImage?
-    var phoneNumber: String = "21 965444987"
+    var phoneNumber: String = ""
     var picturePath: String?
 
     var schedules = [Schedule]()

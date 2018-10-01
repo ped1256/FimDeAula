@@ -163,6 +163,7 @@ class RideInfoView: UIView {
         phoneIcon.leftAnchor.constraint(equalTo: rideTitleView.leftAnchor).isActive = true
         phoneIcon.bottomAnchor.constraint(equalTo: modalHeaderBackground.bottomAnchor, constant: -20).isActive = true
         phoneIcon.setImage(#imageLiteral(resourceName: "phoneIcon1"), for: .normal)
+        phoneIcon.addTarget(self, action: #selector(callAction), for: .touchUpInside)
         
         modalView.addSubview(sendMessageIcon)
         sendMessageIcon.translatesAutoresizingMaskIntoConstraints = false
@@ -171,6 +172,15 @@ class RideInfoView: UIView {
         sendMessageIcon.bottomAnchor.constraint(equalTo: modalHeaderBackground.bottomAnchor, constant: -15).isActive = true
         sendMessageIcon.rightAnchor.constraint(equalTo: rideTitleView.rightAnchor).isActive = true
         sendMessageIcon.setImage(#imageLiteral(resourceName: "messageIcon"), for: .normal)
+    }
+    
+    @objc func callAction(_ sender: Any){
+        guard let user = user else { return }
+        if let url = URL(string: "telprompt:\(user.phoneNumber)") {
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:])
+            }
+        }
     }
     
     func buildDriverName() {
@@ -182,7 +192,6 @@ class RideInfoView: UIView {
         driverNameText.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         driverNameText.textAlignment = .center
         driverNameText.textColor = #colorLiteral(red: 0.2705882353, green: 0.2549019608, blue: 0.2549019608, alpha: 1)
-        driverNameText.text = "Pedro Emanuel Skaaf"
         
     }
     
@@ -206,7 +215,6 @@ class RideInfoView: UIView {
         rideSpaceInfoText.font = UIFont.systemFont(ofSize: 14, weight: .bold)
         rideSpaceInfoText.textColor = #colorLiteral(red: 0.01176470588, green: 0.01176470588, blue: 0.01176470588, alpha: 1)
         rideSpaceInfoText.textAlignment = .center
-        rideSpaceInfoText.text = "Vagas: 2"
     }
     
     func buildDistinyInfo() {
@@ -228,7 +236,6 @@ class RideInfoView: UIView {
         distinyInfoText.font = UIFont.systemFont(ofSize: 14, weight: .bold)
         distinyInfoText.textColor = #colorLiteral(red: 0.01176470588, green: 0.01176470588, blue: 0.01176470588, alpha: 1)
         distinyInfoText.textAlignment = .center
-        distinyInfoText.text = "TICAN - 22: 30"
     }
     
     func buildDriverCommentView(){
@@ -240,7 +247,6 @@ class RideInfoView: UIView {
         label.topAnchor.constraint(equalTo: distinyInfoView.bottomAnchor, constant: 10).isActive = true
         label.numberOfLines = 3
         label.textAlignment = .center
-        label.text = "estarei esperando no portao, 22: 30 estou partindo."
     }
     
     func updateUI(){
