@@ -111,7 +111,6 @@ class RideInfoView: UIView {
         // move the gray view to front
         modalView.addSubview(modalHeaderBackground)
         
-        
     }
     
     func buildRideTitleView() {
@@ -172,11 +171,21 @@ class RideInfoView: UIView {
         sendMessageIcon.bottomAnchor.constraint(equalTo: modalHeaderBackground.bottomAnchor, constant: -15).isActive = true
         sendMessageIcon.rightAnchor.constraint(equalTo: rideTitleView.rightAnchor).isActive = true
         sendMessageIcon.setImage(#imageLiteral(resourceName: "messageIcon"), for: .normal)
+        sendMessageIcon.addTarget(self, action: #selector(openWhatsaap(_:)), for: .touchUpInside)
     }
     
     @objc func callAction(_ sender: Any){
         guard let user = user else { return }
         if let url = URL(string: "telprompt:\(user.phoneNumber)") {
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:])
+            }
+        }
+    }
+    
+    @objc func openWhatsaap(_ sender: Any) {
+        guard let user = user else { return }
+        if let url = URL(string:"https://api.whatsapp.com/send?phone=+55\(user.phoneNumber)") {
             if UIApplication.shared.canOpenURL(url) {
                 UIApplication.shared.open(url, options: [:])
             }
