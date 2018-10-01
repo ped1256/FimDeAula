@@ -27,7 +27,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         let backgroundView = BackgroundViewWithAnimate(frame: self.view.frame)
-        backgroundView.startbackGroundAnimate()
+        backgroundView.startBackgroundAnimate()
         self.view.addSubview(backgroundView)
         self.navigationController?.navigationBar.isHidden = true
         

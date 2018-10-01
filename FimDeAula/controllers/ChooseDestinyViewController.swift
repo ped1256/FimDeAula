@@ -73,7 +73,11 @@ class ChooseDestinyViewController: UIViewController {
         subtitleView.addSubview(subtitleTextLabel)
         
         subtitleTextLabel.text = "Escolha o destino"
-        subtitleTextLabel.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+        if App().isIphoneSE() {
+            subtitleTextLabel.font = UIFont.systemFont(ofSize: 19, weight: .bold)
+        } else {
+            subtitleTextLabel.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+        }
         subtitleTextLabel.textColor = #colorLiteral(red: 0.9568627451, green: 0.9568627451, blue: 0.9568627451, alpha: 1)
         
         subtitleTextLabel.translatesAutoresizingMaskIntoConstraints = false

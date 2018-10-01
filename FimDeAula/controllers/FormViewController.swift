@@ -77,11 +77,17 @@ class FormViewController: UIViewController {
         subtitleView.addSubview(subtitleTextLabel)
         
         subtitleTextLabel.text = "Selecione Dia e horario"
-        subtitleTextLabel.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+        if App().isIphoneSE() {
+            subtitleTextLabel.font = UIFont.systemFont(ofSize: 19, weight: .bold)
+        } else {
+            subtitleTextLabel.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+        }
+        
         subtitleTextLabel.textColor = #colorLiteral(red: 0.9568627451, green: 0.9568627451, blue: 0.9568627451, alpha: 1)
         
         subtitleTextLabel.translatesAutoresizingMaskIntoConstraints = false
         subtitleTextLabel.centerXAnchor.constraint(equalTo: subtitleView.centerXAnchor, constant: 5).isActive = true
+        
         subtitleTextLabel.centerYAnchor.constraint(equalTo: subtitleView.centerYAnchor).isActive = true
     }
     

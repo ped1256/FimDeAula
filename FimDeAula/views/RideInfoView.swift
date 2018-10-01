@@ -70,7 +70,15 @@ class RideInfoView: UIView {
         closeButton.widthAnchor.constraint(equalToConstant: 22).isActive = true
         closeButton.heightAnchor.constraint(equalToConstant: 22).isActive = true
         closeButton.rightAnchor.constraint(equalTo: modalView.rightAnchor, constant: -15).isActive = true
-        closeButton.topAnchor.constraint(equalTo: rideTitleView.topAnchor).isActive = true
+        
+        if App().isIphoneSE() {
+            closeButton.bottomAnchor.constraint(equalTo: modalView.bottomAnchor, constant: -20).isActive = true
+        } else {
+            closeButton.topAnchor.constraint(equalTo: rideTitleView.topAnchor).isActive = true
+        }
+
+        self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(closeButtonAction(_:))))
+        
     }
     
     func buildModalLayout() {
@@ -170,7 +178,7 @@ class RideInfoView: UIView {
         sendMessageIcon.widthAnchor.constraint(equalToConstant: 33).isActive = true
         sendMessageIcon.bottomAnchor.constraint(equalTo: modalHeaderBackground.bottomAnchor, constant: -15).isActive = true
         sendMessageIcon.rightAnchor.constraint(equalTo: rideTitleView.rightAnchor).isActive = true
-        sendMessageIcon.setImage(#imageLiteral(resourceName: "messageIcon"), for: .normal)
+        sendMessageIcon.setImage(#imageLiteral(resourceName: "whatsaapLogo"), for: .normal)
         sendMessageIcon.addTarget(self, action: #selector(openWhatsaap(_:)), for: .touchUpInside)
     }
     

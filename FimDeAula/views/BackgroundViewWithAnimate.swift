@@ -29,7 +29,7 @@ class BackgroundViewWithAnimate: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func startbackGroundAnimate(){
+    func startBackgroundAnimate(){
         UIView.animate(withDuration: 15.0, animations: {
             self.backView.frame = CGRect(x: self.frame.origin.x - self.frame.width, y: self.frame.origin.y - 40, width: self.frame.width + self.frame.width, height: self.frame.height)
             
@@ -37,7 +37,7 @@ class BackgroundViewWithAnimate: UIView {
             UIView.animate(withDuration: 15.0, animations: {
                 self.backView.frame = CGRect(x: self.frame.origin.x, y: self.frame.origin.y, width: self.frame.width + self.frame.width, height: self.frame.height)
             }, completion: { finished in
-                self.startbackGroundAnimate()
+                self.startBackgroundAnimate()
             })
         }
     }
