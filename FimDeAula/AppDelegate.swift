@@ -22,6 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
+        
+        
+        
         let nav = AppNavigationController()
         if UserDefaults.standard.value(forKeyPath: Identifier().userFirstTimeIdentifier) == nil {
             let mainController = MainViewController()
@@ -46,9 +49,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-//    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-//        FBSDKApplicationDelegate.sharedInstance().application(app, open: url, sourceApplication: [UIApplicationOpenURLOptionsKey]() as! String, annotation: option[UIApplicationOpenURLOptionsKey])
-//    }
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        
+        guard let handled = FBSDKApplicationDelegate.sharedInstance()?.application(app, open: url, options: options) else {
+            return false
+        }
+        
+        return handled
+    }
     
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

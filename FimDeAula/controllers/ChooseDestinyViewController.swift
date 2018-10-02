@@ -21,11 +21,14 @@ class ChooseDestinyViewController: UIViewController {
     var backgroundView = UIView()
     var nav = AppNavigationController()
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
-
+        
         backgroundView = BackgroundViewWithAnimate(frame: self.view.frame)
         backgroundView.backgroundColor = .white
         backgroundView.addSubview(grayBackground)

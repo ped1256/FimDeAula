@@ -27,8 +27,21 @@
 			</array>
 		</dict>
 	</array>
+    <key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>fb329426707603080</string>
+            </array>
+        </dict>
+    </array>
+    <key>FacebookAppID</key>
+    <string>329426707603080</string>
+    <key>FacebookDisplayName</key>
+    <string>Fim de Aula</string>
 	<key>CFBundleVersion</key>
-	<string>4</string>
+	<string>6</string>
 	<key>FacebookAppID</key>
 	<string>329426707603080</string>
 	<key>FacebookDisplayName</key>

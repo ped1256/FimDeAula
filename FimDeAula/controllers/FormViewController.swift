@@ -26,6 +26,10 @@ class FormViewController: UIViewController {
     var schedule = Schedule()
     var acceptButton = UIButton()
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .clear

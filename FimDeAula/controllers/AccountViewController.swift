@@ -32,6 +32,10 @@ class AccountViewController: UIViewController {
     var userimageViewAnimator: UIViewPropertyAnimator!
     var ridesTitleAnimator: UIViewPropertyAnimator!
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true

@@ -18,6 +18,10 @@ class ChooseGoalViewController: UIViewController {
     var shouldGetuUserInfo: Bool = false
     let accountIcon = UIButton()
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

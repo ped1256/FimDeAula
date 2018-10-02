@@ -23,6 +23,10 @@ class HomeRidesViewController: UIViewController {
     
     var nav = AppNavigationController()
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
