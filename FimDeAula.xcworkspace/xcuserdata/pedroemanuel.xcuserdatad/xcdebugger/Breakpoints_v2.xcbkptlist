@@ -10,13 +10,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FimDeAula/controllers/LoginViewController.swift"
-            timestampString = "560183911.695191"
+            timestampString = "560193208.356084"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "42"
             endingLineNumber = "42"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FimDeAula/AppDelegate.swift"
-            timestampString = "560183911.695737"
+            timestampString = "560193208.356516"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "29"
@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FimDeAula/AppDelegate.swift"
-            timestampString = "560183911.695796"
+            timestampString = "560193208.356653"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "33"
@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FimDeAula/AppDelegate.swift"
-            timestampString = "560183911.695847"
+            timestampString = "560193208.356701"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "38"
@@ -650,13 +650,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FimDeAula/controllers/LoginViewController.swift"
-            timestampString = "560183911.696888"
+            timestampString = "560193208.3576061"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "131"
             endingLineNumber = "131"
-            landmarkName = "loginButton(_:didCompleteWith:error:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
@@ -698,13 +698,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FimDeAula/controllers/LoginViewController.swift"
-            timestampString = "560183911.697171"
+            timestampString = "560193208.35787"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "132"
             endingLineNumber = "132"
-            landmarkName = "loginButton(_:didCompleteWith:error:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
@@ -746,13 +746,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FimDeAula/controllers/LoginViewController.swift"
-            timestampString = "560183911.69743"
+            timestampString = "560193208.358119"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "133"
             endingLineNumber = "133"
-            landmarkName = "loginButton(_:didCompleteWith:error:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -762,7 +762,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FimDeAula/AppDelegate.swift"
-            timestampString = "560183911.69769"
+            timestampString = "560193208.358367"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "55"
@@ -778,7 +778,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FimDeAula/AppDelegate.swift"
-            timestampString = "560183911.6977431"
+            timestampString = "560193208.358416"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "58"

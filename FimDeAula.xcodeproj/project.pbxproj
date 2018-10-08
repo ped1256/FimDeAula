@@ -226,7 +226,6 @@
 				FA90FF4C214706A700A55FFD /* Frameworks */,
 				FA90FF4D214706A700A55FFD /* Resources */,
 				D47253D4E89EF6D23B717DCD /* [CP] Embed Pods Frameworks */,
-				68337F55896E854C7A8830A9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -290,21 +289,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		68337F55896E854C7A8830A9 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FimDeAula/Pods-FimDeAula-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		69174B78374866F2CEF02C5E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -528,6 +512,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WEP9UKL7GT;
 				INFOPLIST_FILE = FimDeAula/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -550,6 +535,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WEP9UKL7GT;
 				INFOPLIST_FILE = FimDeAula/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
