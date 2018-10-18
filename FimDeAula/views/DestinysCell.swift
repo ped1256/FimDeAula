@@ -23,8 +23,8 @@ class DestinyCell: UITableViewCell {
     }
     
     func buildUI() {
-        self.contentView.backgroundColor = #colorLiteral(red: 0.2117647059, green: 0.2078431373, blue: 0.2078431373, alpha: 1)
-        self.backgroundColor = #colorLiteral(red: 0.3058823529, green: 0.3058823529, blue: 0.3058823529, alpha: 1)
+        self.contentView.backgroundColor = ThemeColor.shared.cellBackgroundColor
+        self.backgroundColor = ThemeColor.shared.tableViewBackgroundColor
         self.selectionStyle = UITableViewCellSelectionStyle.none
         addCheckBox()
         addTitle()
@@ -52,6 +52,6 @@ class DestinyCell: UITableViewCell {
         titleLabel.font = UIFont.systemFont(ofSize: 18)
         titleLabel.numberOfLines = 0
         titleLabel.textAlignment = .left
-        titleLabel.textColor = #colorLiteral(red: 0.9568627451, green: 0.9568627451, blue: 0.9568627451, alpha: 1)
+        titleLabel.textColor = ThemeColor.shared.textColor
     }
 }

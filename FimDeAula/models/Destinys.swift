@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import CoreLocation
+
 enum PreDestinys: Int {
     case TICAN = 0
     case TISAN = 1
@@ -33,20 +35,23 @@ enum DecisionType: Int {
 class Destiny: NSObject {
     var title: String
     var slug: String
+    var location: CLLocationCoordinate2D?
     
-    init(title: String, slug: String) {
+    init(title: String, slug: String, location: CLLocationCoordinate2D?) {
         self.title = title
         self.slug = slug
+        self.location = location
     }
     
     static func getPredestinys() -> [Destiny] {
         var destinys: [Destiny] = []
-        destinys.append(Destiny(title: DestinysText.TICAN.rawValue, slug: "TICAN"))
-        destinys.append(Destiny(title: DestinysText.TISAN.rawValue, slug: "TISAN"))
-        destinys.append(Destiny(title: DestinysText.TITRI.rawValue, slug: "TITRI"))
-        destinys.append(Destiny(title: DestinysText.TICEN.rawValue, slug: "TICEN"))
-        destinys.append(Destiny(title: DestinysText.TILAG.rawValue, slug: "TILAG"))
-        destinys.append(Destiny(title: DestinysText.OTHERS.rawValue, slug: "OUTRO"))
+
+        destinys.append(Destiny(title: DestinysText.TICAN.rawValue, slug: "TICAN", location: DefaultDestinyLocation.ticanLocation))
+        destinys.append(Destiny(title: DestinysText.TISAN.rawValue, slug: "TISAN", location: DefaultDestinyLocation.tisanLocation))
+        destinys.append(Destiny(title: DestinysText.TITRI.rawValue, slug: "TITRI", location: DefaultDestinyLocation.titriLocation))
+        destinys.append(Destiny(title: DestinysText.TICEN.rawValue, slug: "TICEN", location: DefaultDestinyLocation.ticenLocation))
+        destinys.append(Destiny(title: DestinysText.TILAG.rawValue, slug: "TILAG", location: DefaultDestinyLocation.tilagLocation))
+        destinys.append(Destiny(title: DestinysText.OTHERS.rawValue, slug: "OUTRO", location: DefaultDestinyLocation.othersLocation))
         
         return destinys
     }

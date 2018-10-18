@@ -8,14 +8,16 @@
 
 import Foundation
 import UIKit
+import CoreLocation
 
 class Schedule: NSObject {
-    var destiny = Destiny(title: DestinysText.OTHERS.rawValue, slug: "OTHERS")
+    var destiny = Destiny(title: DestinysText.OTHERS.rawValue, slug: "OTHERS", location: nil)
     var decisionType: DecisionType = .driver
     var hour: String = ""
     var space: String = "1"
     var day: String = ""
     var user: User?
+    var location: CLLocationCoordinate2D?
     var id = ""
     
     func isEmpty() -> Bool {

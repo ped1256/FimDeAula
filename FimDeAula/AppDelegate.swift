@@ -14,6 +14,9 @@ import FBSDKCoreKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    
+    var remoteConfig: RemoteConfig?
+    
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -22,33 +25,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
-        
-        
-        
         let nav = AppNavigationController()
-        if UserDefaults.standard.value(forKeyPath: Identifier().userFirstTimeIdentifier) == nil {
-            let mainController = MainViewController()
-            nav.viewControllers = [mainController]
-        } else if UserDefaults.standard.value(forKeyPath: Identifier().userIsLogedIdentifier) != nil {
-            if let userIsloged = UserDefaults.standard.value(forKeyPath: Identifier().userIsLogedIdentifier) as? Bool, userIsloged == true {
-                let choosegoalViewController = ChooseGoalViewController()
-                choosegoalViewController.shouldGetuUserInfo = true
-                nav.viewControllers = [choosegoalViewController]
+        let launchScreen = UIViewController()
+        launchScreen.view.backgroundColor = .white
+        nav.isNavigationBarHidden = true
+        nav.viewControllers = [launchScreen]
+        
+        self.window?.rootViewController = nav
+        self.window?.makeKeyAndVisible()
+        
+        ThemeManager().start {
+            let nav = AppNavigationController()
+            if UserDefaults.standard.value(forKeyPath: Identifier().userFirstTimeIdentifier) == nil {
+                let mainController = MainViewController()
+                nav.viewControllers = [mainController]
+            } else if UserDefaults.standard.value(forKeyPath: Identifier().userIsLogedIdentifier) != nil {
+                if let userIsloged = UserDefaults.standard.value(forKeyPath: Identifier().userIsLogedIdentifier) as? Bool, userIsloged == true {
+                    let choosegoalViewController = ChooseGoalViewController()
+                    choosegoalViewController.shouldGetuUserInfo = true
+                    nav.viewControllers = [choosegoalViewController]
+                } else {
+                    let loginViewController = LoginViewController()
+                    nav.viewControllers = [loginViewController]
+                }
             } else {
                 let loginViewController = LoginViewController()
                 nav.viewControllers = [loginViewController]
             }
-        } else {
-            let loginViewController = LoginViewController()
-            nav.viewControllers = [loginViewController]
+            
+            self.window?.rootViewController = nav
+            self.window?.makeKeyAndVisible()
         }
-
-        window?.rootViewController = nav
-        window?.makeKeyAndVisible()
         
         return true
     }
-
+    
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         
         guard let handled = FBSDKApplicationDelegate.sharedInstance()?.application(app, open: url, options: options) else {

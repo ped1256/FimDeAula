@@ -59,7 +59,7 @@ class FormViewController: UIViewController {
     func addTitle() {
         self.view.addSubview(titleLabel)
         titleLabel.text = "Fim de aula"
-        titleLabel.textColor = .white
+        titleLabel.textColor = ThemeColor.shared.textColor
         titleLabel.font = UIFont.systemFont(ofSize: 30, weight: .bold)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
@@ -67,7 +67,7 @@ class FormViewController: UIViewController {
     }
     func addSubtitleView() {
         self.view.addSubview(subtitleView)
-        subtitleView.backgroundColor = #colorLiteral(red: 0.6235294118, green: 0.2, blue: 0.2, alpha: 1)
+        subtitleView.backgroundColor = ThemeColor.shared.actionButtonSecondaryColor
         subtitleView.translatesAutoresizingMaskIntoConstraints = false
         subtitleView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: -10).isActive = true
         subtitleView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -100).isActive = true
@@ -87,7 +87,7 @@ class FormViewController: UIViewController {
             subtitleTextLabel.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         }
         
-        subtitleTextLabel.textColor = #colorLiteral(red: 0.9568627451, green: 0.9568627451, blue: 0.9568627451, alpha: 1)
+        subtitleTextLabel.textColor = ThemeColor.shared.textColor
         
         subtitleTextLabel.translatesAutoresizingMaskIntoConstraints = false
         subtitleTextLabel.centerXAnchor.constraint(equalTo: subtitleView.centerXAnchor, constant: 5).isActive = true
@@ -145,7 +145,7 @@ class FormViewController: UIViewController {
         acceptButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
         acceptButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         
-        acceptButton.backgroundColor = #colorLiteral(red: 0.8823529412, green: 0.1215686275, blue: 0.1215686275, alpha: 1)
+        acceptButton.backgroundColor = ThemeColor.shared.actionButtonColor
         acceptButton.isHidden = true
         
         if schedule.decisionType == .driver {
@@ -155,7 +155,7 @@ class FormViewController: UIViewController {
         }
         
         acceptButton.titleLabel?.font = UIFont.systemFont(ofSize: 25)
-        acceptButton.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: .highlighted)
+        acceptButton.setTitleColor(ThemeColor.shared.textColor.withAlphaComponent(0.5), for: .highlighted)
         acceptButton.addTarget(self, action: #selector(acceptAction(_:)), for: .touchUpInside)
     }
     

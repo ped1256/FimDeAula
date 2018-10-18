@@ -9,6 +9,7 @@
 import Foundation
 import FBSDKLoginKit
 import Firebase
+import CoreLocation
 
 class Operation: NSObject {
 
@@ -39,6 +40,12 @@ class Operation: NSObject {
         scheduleInfo["day"] = schedule.day
         scheduleInfo["userId"] = schedule.user?.id
         scheduleInfo["driverName"] = schedule.user?.name
+
+        var destinyLocation = [String: Any]()
+        destinyLocation["lat"] = schedule.destiny.location?.latitude
+        destinyLocation["long"] = schedule.destiny.location?.longitude
+
+        scheduleInfo["destinyLocation"] = destinyLocation
         
         ref?.child("rides/\(schedule.id)").setValue(scheduleInfo)
     }
@@ -78,10 +85,14 @@ class Operation: NSObject {
                 guard let space = scheduleData["space"] as? String else { return }
                 guard let driverName = scheduleData["driverName"] as? String else { return }
                 guard let userId = scheduleData["userId"] as? String else { return }
+                guard let destinyLocation = scheduleData["destinyLocation"] as? [String: Any] else { return }
+                guard let lat = destinyLocation["lat"] as? Double else { return }
+                guard let long = destinyLocation["long"] as? Double else { return }
                 
                 let schedule = Schedule()
                 schedule.day = day
-                schedule.destiny = Destiny(title: title, slug: slug)
+                let location = CLLocationCoordinate2D(latitude: lat, longitude: long)
+                schedule.destiny = Destiny(title: title, slug: slug, location: location)
                 schedule.hour = hour
                 schedule.id = id
                 schedule.space = space
@@ -123,6 +134,12 @@ class Operation: NSObject {
         scheduleInfo["day"] = schedule.day
         scheduleInfo["userId"] = schedule.user?.id
         scheduleInfo["driverName"] = user.name
+        
+        var destinyLocation = [String: Any]()
+        destinyLocation["lat"] = schedule.destiny.location?.latitude
+        destinyLocation["long"] = schedule.destiny.location?.longitude
+        
+        scheduleInfo["destinyLocation"] = destinyLocation
         
         ref?.child("user/\(user.id)/schedules/\(schedule.id)").setValue(scheduleInfo)
         self.registerOnlyRideSchedules(schedule: schedule)
@@ -167,11 +184,14 @@ class Operation: NSObject {
                 guard let space = scheduleData["space"] as? String else { return }
                 guard let driverName = scheduleData["driverName"] as? String else { return }
                 guard let userId = scheduleData["userId"] as? String else { return }
-                
+                guard let destinyLocation = scheduleData["destinyLocation"] as? [String: Any] else { return }
+                guard let lat = destinyLocation["lat"] as? Double else { return }
+                guard let long = destinyLocation["long"] as? Double else { return }
                 
                 let schedule = Schedule()
                 schedule.day = day
-                schedule.destiny = Destiny(title: title, slug: slug)
+                let location = CLLocationCoordinate2D(latitude: lat, longitude: long)
+                schedule.destiny = Destiny(title: title, slug: slug, location: location)
                 schedule.hour = hour
                 schedule.id = id
                 schedule.space = space

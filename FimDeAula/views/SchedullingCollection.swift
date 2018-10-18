@@ -55,7 +55,7 @@ class SchedulingCollection: UICollectionViewCell, UICollectionViewDelegate, UICo
         daysCollectioView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         daysCollectioView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         daysCollectioView.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        daysCollectioView.backgroundColor = #colorLiteral(red: 0.4470588235, green: 0.4235294118, blue: 0.4235294118, alpha: 1)
+        daysCollectioView.backgroundColor = ThemeColor.shared.tableViewBackgroundColor
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -76,7 +76,7 @@ class SchedulingCollection: UICollectionViewCell, UICollectionViewDelegate, UICo
         
         if indexPath.row == cellSelectedIndex {
             cell.contentView.backgroundColor = .white
-            cell.titleLabel.textColor = #colorLiteral(red: 0.7215686275, green: 0.7215686275, blue: 0.7215686275, alpha: 1)
+            cell.titleLabel.textColor = ThemeColor.shared.secondaryTextColor
         }
         
         switch self.section {
@@ -140,7 +140,7 @@ class SchedulingCollection: UICollectionViewCell, UICollectionViewDelegate, UICo
         cellSelectedIndex = indexPath.row
         
         cell.contentView.backgroundColor = .white
-        cell.titleLabel.textColor = #colorLiteral(red: 0.7215686275, green: 0.7215686275, blue: 0.7215686275, alpha: 1)
+        cell.titleLabel.textColor = ThemeColor.shared.secondaryTextColor
         cellSelectedIndex = indexPath.row
         collectionView.reloadData()
         

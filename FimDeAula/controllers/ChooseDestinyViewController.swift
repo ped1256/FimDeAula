@@ -62,7 +62,7 @@ class ChooseDestinyViewController: UIViewController {
     }
     func addSubtitleView() {
         self.view.addSubview(subtitleView)
-        subtitleView.backgroundColor = #colorLiteral(red: 0.6235294118, green: 0.2, blue: 0.2, alpha: 1)
+        subtitleView.backgroundColor = ThemeColor.shared.actionButtonSecondaryColor
         subtitleView.translatesAutoresizingMaskIntoConstraints = false
         subtitleView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: -10).isActive = true
         subtitleView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -100).isActive = true
@@ -81,7 +81,7 @@ class ChooseDestinyViewController: UIViewController {
         } else {
             subtitleTextLabel.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         }
-        subtitleTextLabel.textColor = #colorLiteral(red: 0.9568627451, green: 0.9568627451, blue: 0.9568627451, alpha: 1)
+        subtitleTextLabel.textColor = ThemeColor.shared.textColor
         
         subtitleTextLabel.translatesAutoresizingMaskIntoConstraints = false
         subtitleTextLabel.centerXAnchor.constraint(equalTo: subtitleView.centerXAnchor, constant: -10).isActive = true
@@ -117,7 +117,7 @@ extension ChooseDestinyViewController: UITableViewDelegate, UITableViewDataSourc
         
         tableview.tableFooterView = UIView()
         tableview.backgroundColor = .clear
-        tableview.separatorColor = #colorLiteral(red: 0.3058823529, green: 0.3058823529, blue: 0.3058823529, alpha: 1)
+        tableview.separatorColor = ThemeColor.shared.tableViewBackgroundColor
         tableview.allowsSelection = true
 
         tableview.translatesAutoresizingMaskIntoConstraints = false
@@ -147,17 +147,17 @@ extension ChooseDestinyViewController: UITableViewDelegate, UITableViewDataSourc
         formViewController.schedule.decisionType = self.decisionType
         switch indexPath.row {
         case PreDestinys.TICAN.rawValue:
-            formViewController.schedule.destiny = Destiny(title: DestinysText.TICAN.rawValue, slug: "TICAN")
+            formViewController.schedule.destiny = Destiny(title: DestinysText.TICAN.rawValue, slug: "TICAN", location: DefaultDestinyLocation.ticanLocation)
         case PreDestinys.TISAN.rawValue:
-            formViewController.schedule.destiny = Destiny(title: DestinysText.TISAN.rawValue, slug: "TISAN")
+            formViewController.schedule.destiny = Destiny(title: DestinysText.TISAN.rawValue, slug: "TISAN", location: DefaultDestinyLocation.tisanLocation)
         case PreDestinys.TITRI.rawValue:
-            formViewController.schedule.destiny = Destiny(title: DestinysText.TITRI.rawValue, slug: "TITRI")
+            formViewController.schedule.destiny = Destiny(title: DestinysText.TITRI.rawValue, slug: "TITRI", location: DefaultDestinyLocation.titriLocation)
         case PreDestinys.TILAG.rawValue:
-            formViewController.schedule.destiny = Destiny(title: DestinysText.TILAG.rawValue, slug: "TILAG")
+            formViewController.schedule.destiny = Destiny(title: DestinysText.TILAG.rawValue, slug: "TILAG", location: DefaultDestinyLocation.tilagLocation)
         case PreDestinys.TICEN.rawValue:
-            formViewController.schedule.destiny = Destiny(title: DestinysText.TICEN.rawValue, slug: "TICEN")
+            formViewController.schedule.destiny = Destiny(title: DestinysText.TICEN.rawValue, slug: "TICEN", location: DefaultDestinyLocation.ticenLocation)
         case PreDestinys.OTHERS.rawValue:
-            formViewController.schedule.destiny = Destiny(title: DestinysText.OTHERS.rawValue, slug: "OTHERS")
+            formViewController.schedule.destiny = Destiny(title: DestinysText.OTHERS.rawValue, slug: "OTHERS", location: DefaultDestinyLocation.othersLocation)
         default:
             break
         }

@@ -81,7 +81,7 @@ class LoginViewController: UIViewController {
     func addTitle() {
         self.view.addSubview(titleLabel)
         titleLabel.text = "Fim de aula"
-        titleLabel.textColor = .white
+        titleLabel.textColor = ThemeColor.shared.textColor
         titleLabel.font = UIFont.systemFont(ofSize: 36, weight: .bold)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
@@ -89,13 +89,13 @@ class LoginViewController: UIViewController {
     }
     
     func addLogo(){
-        self.view.addSubview(logoImageView)
-        logoImageView.translatesAutoresizingMaskIntoConstraints = false
-        logoImageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        logoImageView.topAnchor.constraint(equalTo: self.modalView.topAnchor, constant: 20).isActive = true
-        logoImageView.heightAnchor.constraint(equalToConstant: 130).isActive = true
-        logoImageView.widthAnchor.constraint(equalToConstant: 175).isActive = true
-        logoImageView.image = #imageLiteral(resourceName: "logo")
+        let universityNameView = UniversityNameView()
+        self.view.addSubview(universityNameView)
+        universityNameView.translatesAutoresizingMaskIntoConstraints = false
+        universityNameView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        universityNameView.topAnchor.constraint(equalTo: self.modalView.topAnchor, constant: 20).isActive = true
+        universityNameView.heightAnchor.constraint(equalToConstant: 175).isActive = true
+        universityNameView.widthAnchor.constraint(equalToConstant: 230).isActive = true
     }
     
     func addMessage(){
@@ -111,7 +111,7 @@ class LoginViewController: UIViewController {
             messageLabel.bottomAnchor.constraint(equalTo: modalView.bottomAnchor, constant: -30).isActive = true
         }
         
-        messageLabel.textColor = .white
+        messageLabel.textColor = ThemeColor.shared.textColor
         messageLabel.numberOfLines = 0
         messageLabel.textAlignment = .center
         messageLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)

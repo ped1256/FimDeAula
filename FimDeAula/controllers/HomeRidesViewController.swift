@@ -56,7 +56,7 @@ class HomeRidesViewController: UIViewController {
     func addTitle() {
         self.view.addSubview(titleLabel)
         titleLabel.text = "Fim de aula"
-        titleLabel.textColor = .white
+        titleLabel.textColor = ThemeColor.shared.textColor
         titleLabel.font = UIFont.systemFont(ofSize: 30, weight: .bold)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
@@ -64,7 +64,7 @@ class HomeRidesViewController: UIViewController {
     }
     func addSubtitleView() {
         self.view.addSubview(subtitleView)
-        subtitleView.backgroundColor = #colorLiteral(red: 0.6235294118, green: 0.2, blue: 0.2, alpha: 1)
+        subtitleView.backgroundColor = ThemeColor.shared.actionButtonSecondaryColor
         subtitleView.translatesAutoresizingMaskIntoConstraints = false
         subtitleView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: -10).isActive = true
         subtitleView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -100).isActive = true
@@ -83,7 +83,7 @@ class HomeRidesViewController: UIViewController {
         } else {
             subtitleTextLabel.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         }
-        subtitleTextLabel.textColor = #colorLiteral(red: 0.9568627451, green: 0.9568627451, blue: 0.9568627451, alpha: 1)
+        subtitleTextLabel.textColor = ThemeColor.shared.textColor
         
         subtitleTextLabel.translatesAutoresizingMaskIntoConstraints = false
         subtitleTextLabel.centerXAnchor.constraint(equalTo: subtitleView.centerXAnchor, constant: -10).isActive = true
@@ -119,7 +119,7 @@ extension HomeRidesViewController: UITableViewDelegate, UITableViewDataSource {
         
         tableview.tableFooterView = UIView()
         tableview.backgroundColor = .clear
-        tableview.separatorColor = #colorLiteral(red: 0.3058823529, green: 0.3058823529, blue: 0.3058823529, alpha: 1)
+        tableview.separatorColor = .clear
         tableview.allowsSelection = true
         
         tableview.translatesAutoresizingMaskIntoConstraints = false
@@ -140,7 +140,7 @@ extension HomeRidesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 162
+        return 300
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

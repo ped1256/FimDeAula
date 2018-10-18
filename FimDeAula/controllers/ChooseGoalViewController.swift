@@ -82,7 +82,7 @@ class ChooseGoalViewController: UIViewController {
     func addTitle() {
         self.view.addSubview(titleLabel)
         titleLabel.text = "Fim de aula"
-        titleLabel.textColor = .white
+        titleLabel.textColor = ThemeColor.shared.textColor
         titleLabel.font = UIFont.systemFont(ofSize: 36, weight: .bold)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
@@ -106,12 +106,12 @@ class ChooseGoalViewController: UIViewController {
         driverButton.leftAnchor.constraint(equalTo: self.modalView.leftAnchor).isActive = true
         driverButton.topAnchor.constraint(equalTo: self.modalView.centerYAnchor).isActive = true
         driverButton.heightAnchor.constraint(equalToConstant: 55).isActive = true
-        driverButton.backgroundColor = #colorLiteral(red: 0.8784313725, green: 0.1019607843, blue: 0.1019607843, alpha: 1)
+        driverButton.backgroundColor = ThemeColor.shared.actionButtonColor
         driverButton.clipsToBounds = true
         driverButton.layer.cornerRadius = 10
         driverButton.setTitle("Dar Carona", for: .normal)
-        driverButton.setTitleColor(.white, for: .normal)
-        driverButton.setTitleColor(#colorLiteral(red: 0.521568656, green: 0.1098039225, blue: 0.05098039284, alpha: 1), for: .highlighted)
+        driverButton.setTitleColor(ThemeColor.shared.textColor, for: .normal)
+        driverButton.setTitleColor(ThemeColor.shared.actionButtonSecondaryColor, for: .highlighted)
         driverButton.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         driverButton.addTarget(self, action: #selector(driverButtonAction(_:)), for: .touchUpInside)
         driverButton.isHidden = true
@@ -127,8 +127,8 @@ class ChooseGoalViewController: UIViewController {
         passagerButton.clipsToBounds = true
         passagerButton.layer.cornerRadius = 10
         passagerButton.setTitle("Pegar Carona", for: .normal)
-        passagerButton.setTitleColor(#colorLiteral(red: 0.8784313725, green: 0.1019607843, blue: 0.1019607843, alpha: 1), for: .normal)
-        passagerButton.setTitleColor(#colorLiteral(red: 0.3058823529, green: 0.3058823529, blue: 0.3058823529, alpha: 1), for: .highlighted)
+        passagerButton.setTitleColor(ThemeColor.shared.actionButtonColor, for: .normal)
+        passagerButton.setTitleColor(ThemeColor.shared.cellBackgroundColor, for: .highlighted)
         passagerButton.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         passagerButton.addTarget(self, action: #selector(passagerButtonAction(_:)), for: .touchUpInside)
     }

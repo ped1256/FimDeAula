@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "866C5CB0DCE4AC5ADBD28AB60C27EA78"
+               BlueprintIdentifier = "7813BC263658D829F026B212083F39FA"
                BuildableName = "Pods_FimDeAula.framework"
                BlueprintName = "Pods-FimDeAula"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "866C5CB0DCE4AC5ADBD28AB60C27EA78"
+            BlueprintIdentifier = "7813BC263658D829F026B212083F39FA"
             BuildableName = "Pods_FimDeAula.framework"
             BlueprintName = "Pods-FimDeAula"
             ReferencedContainer = "container:Pods.xcodeproj">
