@@ -13,7 +13,7 @@ class HomeRidesViewController: UIViewController {
     
     var rides = [Schedule]()
     var decisionType: DecisionType = .passenger
-    var user: User?
+//    var user: User?
     let grayBackground = UIView()
     var titleLabel = UILabel()
     var subtitleView = UIView()

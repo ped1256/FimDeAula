@@ -199,7 +199,7 @@ class FormViewController: UIViewController {
     }
     
     func findRider(){
-        guard let user = self.user else { return }
+//        guard let user = self.user else { return }
         
         let loadingView = LoadingView(frame: self.view.frame)
         self.view.addSubview(loadingView)
@@ -209,7 +209,7 @@ class FormViewController: UIViewController {
             let rides = Operation().filterRides(schedule: self.schedule, rides: schedules)
             let homeRidesViewController = HomeRidesViewController()
             homeRidesViewController.rides = rides
-            homeRidesViewController.user = user
+//            homeRidesViewController.user = user
             self.navigationController?.pushViewController(homeRidesViewController, animated: true)
             
             loadingView.animating.stopAnimating()

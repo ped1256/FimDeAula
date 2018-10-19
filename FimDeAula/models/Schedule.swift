@@ -17,7 +17,6 @@ class Schedule: NSObject {
     var space: String = "1"
     var day: String = ""
     var user: User?
-    var location: CLLocationCoordinate2D?
     var id = ""
     
     func isEmpty() -> Bool {

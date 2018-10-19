@@ -14,7 +14,7 @@ class ChooseGoalViewController: UIViewController {
     var titleLabel = UILabel()
     var logoImageView = UIImageView()
     var user: User?
-    let driverButton = UIButton()
+    let driverButton = FAActionButtom()
     var shouldGetuUserInfo: Bool = false
     let accountIcon = UIButton()
     
@@ -41,12 +41,12 @@ class ChooseGoalViewController: UIViewController {
                 self.user = user
                 DispatchQueue.main.async {
                     self.accountIcon.isHidden = false
-                    self.driverButton.isHidden = false
+                    self.driverButton.status = .loaded
                 }
             }
         } else {
-            self.accountIcon.isHidden = false
-            self.driverButton.isHidden = false
+            accountIcon.isHidden = false
+            driverButton.isHidden = false
         }
     }
     
@@ -114,7 +114,7 @@ class ChooseGoalViewController: UIViewController {
         driverButton.setTitleColor(ThemeColor.shared.actionButtonSecondaryColor, for: .highlighted)
         driverButton.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         driverButton.addTarget(self, action: #selector(driverButtonAction(_:)), for: .touchUpInside)
-        driverButton.isHidden = true
+        driverButton.status = .loading
         
         let passagerButton = UIButton()
         self.view.addSubview(passagerButton)

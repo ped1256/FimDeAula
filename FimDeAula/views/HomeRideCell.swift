@@ -116,8 +116,7 @@ class HomeRideCell: UITableViewCell {
         dayLabel.font = UIFont.systemFont(ofSize: 18)
         dayLabel.isHidden = true
     }
-    
-    
+
     func updateUI() {
         slugDestinyLabel.text = ride.destiny.slug
         dayLabel.text = "\(ride.day) : \(ride.hour)"
@@ -129,8 +128,8 @@ class HomeRideCell: UITableViewCell {
                 self.driverImageView.image = self.ride.user?.picture
             }
         }
-        
-        Util.makeMapSnapshot(location: ride.location, completion: { (image) in
+
+        Util.makeMapSnapshot(location: ride.destiny.location, completion: { (image) in
             self.mapView.image = image
             self.mapView.isHidden = false
             self.rideInfoView.isHidden = false

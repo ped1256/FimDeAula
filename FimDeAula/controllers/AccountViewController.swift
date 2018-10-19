@@ -271,11 +271,10 @@ extension AccountViewController: UIScrollViewDelegate {
         if value > 30 && value < 230 {
             userInfoBackgroundTopConstraint.constant = -value
         }
-        
-        // value adjuste the  precision of contentOffset.y
+
+        // value adjust the precision of contentOffset.y
         value -= 50
-        dump(value)
-        
+
         var horizoltanViewTopConstant: CGFloat = 30
         
         if !App().isIphoneSE() {

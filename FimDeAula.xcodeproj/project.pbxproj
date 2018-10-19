@@ -44,6 +44,7 @@
 		FACE24E62179368B004D2499 /* AppIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FACE24E52179368B004D2499 /* AppIcon.xcassets */; };
 		FADC91DC2155427B00188AEE /* Identifier+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADC91DB2155427B00188AEE /* Identifier+.swift */; };
 		FADC91DF215546ED00188AEE /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADC91DE215546ED00188AEE /* Operation.swift */; };
+		FAFBA5F9217A4DDB0065F53F /* FAActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFBA5F8217A4DDB0065F53F /* FAActionButton.swift */; };
 		FAFF6ED82155F24D003AF4C7 /* HomeRidesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFF6ED72155F24D003AF4C7 /* HomeRidesViewController.swift */; };
 		FAFF6EDA2155F88E003AF4C7 /* HomeRideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFF6ED92155F88E003AF4C7 /* HomeRideCell.swift */; };
 		FAFF6EDE21572C22003AF4C7 /* SuccesRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFF6EDD21572C22003AF4C7 /* SuccesRegisterView.swift */; };
@@ -92,6 +93,7 @@
 		FACE24E52179368B004D2499 /* AppIcon.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = AppIcon.xcassets; sourceTree = "<group>"; };
 		FADC91DB2155427B00188AEE /* Identifier+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Identifier+.swift"; sourceTree = "<group>"; };
 		FADC91DE215546ED00188AEE /* Operation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
+		FAFBA5F8217A4DDB0065F53F /* FAActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAActionButton.swift; sourceTree = "<group>"; };
 		FAFF6ED72155F24D003AF4C7 /* HomeRidesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRidesViewController.swift; sourceTree = "<group>"; };
 		FAFF6ED92155F88E003AF4C7 /* HomeRideCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRideCell.swift; sourceTree = "<group>"; };
 		FAFF6EDD21572C22003AF4C7 /* SuccesRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccesRegisterView.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 			children = (
 				FA90FF682147072600A55FFD /* BackgroundViewWithAnimate.swift */,
 				FA93C99F215BD8F900AD95FE /* AccounRideCell.swift */,
+				FAFBA5F8217A4DDB0065F53F /* FAActionButton.swift */,
 				FA669D0A2149451100A9D09B /* DestinysCell.swift */,
 				FA366B6B215EE72200F39ACB /* ModalView.swift */,
 				FA4A9C24214C473200FA4DDE /* SchedullingCollection.swift */,
@@ -383,6 +386,7 @@
 				FA669D0B2149451100A9D09B /* DestinysCell.swift in Sources */,
 				FACE24C521792C62004D2499 /* DestinyLocation.swift in Sources */,
 				FA669D112149D3AA00A9D09B /* DaysCell.swift in Sources */,
+				FAFBA5F9217A4DDB0065F53F /* FAActionButton.swift in Sources */,
 				FA5520E82153FBB40054B29B /* Schedule.swift in Sources */,
 				FA5520EE21546EFA0054B29B /* User.swift in Sources */,
 				FADC91DF215546ED00188AEE /* Operation.swift in Sources */,

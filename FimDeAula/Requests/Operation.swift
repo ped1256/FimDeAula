@@ -207,14 +207,14 @@ class Operation: NSObject {
         
         var ordenedRides = [Schedule]()
         
-        let ordenedridesOptional = rides.map { ride -> Schedule? in
+        let ordenedRidesOptional = rides.map { ride -> Schedule? in
             if ride.destiny.slug == schedule.destiny.slug {
                 return ride
             }
             return nil
         }
         
-        for ride in ordenedridesOptional {
+        for ride in ordenedRidesOptional {
             if let ride = ride {
                 ordenedRides.append(ride)
             }
