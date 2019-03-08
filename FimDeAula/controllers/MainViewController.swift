@@ -30,7 +30,7 @@ class MainViewController: UIViewController {
         addButtonaccept()
         addBackModalView()
         addTitle()
-        addLogo()
+//        addLogo()
         addMessage()
     }
 

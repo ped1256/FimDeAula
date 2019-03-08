@@ -23,7 +23,7 @@ class DaysCell: UICollectionViewCell {
     }
     
     func buildUI() {
-        self.contentView.backgroundColor = #colorLiteral(red: 0.2117647059, green: 0.2078431373, blue: 0.2078431373, alpha: 1)
+        self.contentView.backgroundColor = ThemeColor.shared.cellBackgroundColor
         self.contentView.layer.cornerRadius = 5
         self.contentView.clipsToBounds = true
     }
@@ -34,12 +34,13 @@ class DaysCell: UICollectionViewCell {
         titleLabel.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor).isActive = true
         titleLabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
         titleLabel.numberOfLines = 1
-        titleLabel.textColor = #colorLiteral(red: 0.7215686275, green: 0.7215686275, blue: 0.7215686275, alpha: 1)
+        titleLabel.textColor = ThemeColor.shared.cellTitleColor
         titleLabel.font = UIFont.systemFont(ofSize: 18)
         
     }
 
     override func prepareForReuse() {
-        self.contentView.backgroundColor = #colorLiteral(red: 0.2117647059, green: 0.2078431373, blue: 0.2078431373, alpha: 1)
+        self.contentView.backgroundColor = ThemeColor.shared.cellBackgroundColor
+        self.titleLabel.textColor = ThemeColor.shared.cellTitleColor
     }
 }

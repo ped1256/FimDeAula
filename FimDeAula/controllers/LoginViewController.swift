@@ -37,7 +37,7 @@ class LoginViewController: UIViewController {
         
         addBackModalView()
         addTitle()
-        addLogo()
+//        addLogo()
         addMessage()
         prepareFramesForfacebookLoginButton()
     }

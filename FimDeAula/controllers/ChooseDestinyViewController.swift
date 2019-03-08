@@ -62,7 +62,7 @@ class ChooseDestinyViewController: UIViewController {
     }
     func addSubtitleView() {
         self.view.addSubview(subtitleView)
-        subtitleView.backgroundColor = ThemeColor.shared.actionButtonSecondaryColor
+        subtitleView.backgroundColor = ThemeColor.shared.actionButtonColor
         subtitleView.translatesAutoresizingMaskIntoConstraints = false
         subtitleView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: -10).isActive = true
         subtitleView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -100).isActive = true

@@ -26,8 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         let nav = AppNavigationController()
-        let launchScreen = UIViewController()
-        launchScreen.view.backgroundColor = .white
+        let launchScreen = LaunchScreenViewController()
         nav.isNavigationBarHidden = true
         nav.viewControllers = [launchScreen]
         
@@ -52,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let loginViewController = LoginViewController()
                 nav.viewControllers = [loginViewController]
             }
-            
+
             self.window?.rootViewController = nav
             self.window?.makeKeyAndVisible()
         }

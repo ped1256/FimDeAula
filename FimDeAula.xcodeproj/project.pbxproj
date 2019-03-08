@@ -42,6 +42,7 @@
 		FAA88810215BEDF7009634AA /* AccountTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA8880F215BEDF7009634AA /* AccountTableViewDelegate.swift */; };
 		FACE24C521792C62004D2499 /* DestinyLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACE24C421792C62004D2499 /* DestinyLocation.swift */; };
 		FACE24E62179368B004D2499 /* AppIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FACE24E52179368B004D2499 /* AppIcon.xcassets */; };
+		FAD2EF7E2232EABB003DFA29 /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2EF7D2232EABA003DFA29 /* LaunchScreenViewController.swift */; };
 		FADC91DC2155427B00188AEE /* Identifier+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADC91DB2155427B00188AEE /* Identifier+.swift */; };
 		FADC91DF215546ED00188AEE /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADC91DE215546ED00188AEE /* Operation.swift */; };
 		FAFBA5F9217A4DDB0065F53F /* FAActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFBA5F8217A4DDB0065F53F /* FAActionButton.swift */; };
@@ -91,6 +92,7 @@
 		FAA8880F215BEDF7009634AA /* AccountTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewDelegate.swift; sourceTree = "<group>"; };
 		FACE24C421792C62004D2499 /* DestinyLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinyLocation.swift; sourceTree = "<group>"; };
 		FACE24E52179368B004D2499 /* AppIcon.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = AppIcon.xcassets; sourceTree = "<group>"; };
+		FAD2EF7D2232EABA003DFA29 /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		FADC91DB2155427B00188AEE /* Identifier+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Identifier+.swift"; sourceTree = "<group>"; };
 		FADC91DE215546ED00188AEE /* Operation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
 		FAFBA5F8217A4DDB0065F53F /* FAActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAActionButton.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				FAFF6ED72155F24D003AF4C7 /* HomeRidesViewController.swift */,
 				FA080FA2214861FD00C5B2B0 /* LoginViewController.swift */,
 				FA080FA62148BAB400C5B2B0 /* ChooseDestinyViewController.swift */,
+				FAD2EF7D2232EABA003DFA29 /* LaunchScreenViewController.swift */,
 				FA669D0C2149645000A9D09B /* ChooseGoalViewController.swift */,
 				FA669D0E2149C8F900A9D09B /* FormViewController.swift */,
 				FAA8880F215BEDF7009634AA /* AccountTableViewDelegate.swift */,
@@ -382,6 +385,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAD2EF7E2232EABB003DFA29 /* LaunchScreenViewController.swift in Sources */,
 				FA669D0F2149C8F900A9D09B /* FormViewController.swift in Sources */,
 				FA669D0B2149451100A9D09B /* DestinysCell.swift in Sources */,
 				FACE24C521792C62004D2499 /* DestinyLocation.swift in Sources */,

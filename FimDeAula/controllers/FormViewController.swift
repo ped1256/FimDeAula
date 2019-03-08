@@ -14,7 +14,7 @@ enum SchedulingSection: Int {
 class FormViewController: UIViewController {
     
     var cellTypes: [Destiny] = Destiny.getPredestinys()
-    let grayBackground = UIView()
+    let modalBackground = UIView()
     var titleLabel = UILabel()
     var subtitleView = UIView()
     var collectionView: UICollectionView?
@@ -35,14 +35,14 @@ class FormViewController: UIViewController {
         self.view.backgroundColor = .clear
         let backgroundView = BackgroundViewWithAnimate(frame: self.view.frame)
         
-        backgroundView.addSubview(grayBackground)
-        grayBackground.modalStyle()
-        grayBackground.layer.cornerRadius = 0
-        grayBackground.translatesAutoresizingMaskIntoConstraints = false
-        grayBackground.leftAnchor.constraint(equalTo: backgroundView.leftAnchor).isActive = true
-        grayBackground.rightAnchor.constraint(equalTo: backgroundView.rightAnchor).isActive = true
-        grayBackground.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor).isActive = true
-        grayBackground.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: 80).isActive = true
+        backgroundView.addSubview(modalBackground)
+        modalBackground.modalStyle()
+        modalBackground.layer.cornerRadius = 0
+        modalBackground.translatesAutoresizingMaskIntoConstraints = false
+        modalBackground.leftAnchor.constraint(equalTo: backgroundView.leftAnchor).isActive = true
+        modalBackground.rightAnchor.constraint(equalTo: backgroundView.rightAnchor).isActive = true
+        modalBackground.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor).isActive = true
+        modalBackground.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: 80).isActive = true
         
         self.view.addSubview(backgroundView)
         self.buildUI()
@@ -67,11 +67,11 @@ class FormViewController: UIViewController {
     }
     func addSubtitleView() {
         self.view.addSubview(subtitleView)
-        subtitleView.backgroundColor = ThemeColor.shared.actionButtonSecondaryColor
+        subtitleView.backgroundColor = ThemeColor.shared.actionButtonColor
         subtitleView.translatesAutoresizingMaskIntoConstraints = false
         subtitleView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: -10).isActive = true
         subtitleView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -100).isActive = true
-        subtitleView.topAnchor.constraint(equalTo: self.grayBackground.topAnchor, constant: 30).isActive = true
+        subtitleView.topAnchor.constraint(equalTo: self.modalBackground.topAnchor, constant: 30).isActive = true
         subtitleView.heightAnchor.constraint(equalToConstant: 44).isActive = true
         
         subtitleView.clipsToBounds = true
@@ -241,6 +241,13 @@ extension FormViewController: UICollectionViewDelegate, UICollectionViewDataSour
             self.schedule.hour = value
         case .space:
             self.acceptButton.isHidden = false
+            
+            acceptButton.alpha = 0
+            
+            UIView.animate(withDuration: 0.5) {
+                self.acceptButton.alpha = 1.0
+            }
+            
             self.schedule.space = value
         }
         
@@ -255,7 +262,6 @@ extension FormViewController: UICollectionViewDelegate, UICollectionViewDataSour
         return 1
     }
     
-
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var cell = UICollectionViewCell()
         guard let section = SchedulingSection(rawValue: indexPath.section) else { return UICollectionViewCell() }

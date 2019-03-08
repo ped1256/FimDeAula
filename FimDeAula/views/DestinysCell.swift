@@ -23,7 +23,7 @@ class DestinyCell: UITableViewCell {
     }
     
     func buildUI() {
-        self.contentView.backgroundColor = ThemeColor.shared.cellBackgroundColor
+        self.contentView.backgroundColor = .white
         self.backgroundColor = ThemeColor.shared.tableViewBackgroundColor
         self.selectionStyle = UITableViewCellSelectionStyle.none
         addCheckBox()
@@ -52,6 +52,6 @@ class DestinyCell: UITableViewCell {
         titleLabel.font = UIFont.systemFont(ofSize: 18)
         titleLabel.numberOfLines = 0
         titleLabel.textAlignment = .left
-        titleLabel.textColor = ThemeColor.shared.textColor
+        titleLabel.textColor = ThemeColor.shared.cellTitleColor
     }
 }

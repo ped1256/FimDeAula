@@ -45,6 +45,7 @@ class ChooseGoalViewController: UIViewController {
                 }
             }
         } else {
+            self.driverButton.status = .loaded
             accountIcon.isHidden = false
             driverButton.isHidden = false
         }
