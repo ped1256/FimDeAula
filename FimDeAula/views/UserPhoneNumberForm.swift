@@ -40,7 +40,7 @@ class UserPhoneNumberForm: UIView {
         buildConfirmButton()
         buildDeclineButton()
         
-        UIView.animate(withDuration: 1.0) {
+        UIView.animate(withDuration: 0.7) {
             self.alpha = 1.0
         }
     }

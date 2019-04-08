@@ -61,12 +61,12 @@ class SuccesRegisterView: UIView {
         confirmButton.widthAnchor.constraint(equalToConstant: 146).isActive = true
         confirmButton.centerXAnchor.constraint(equalTo: modalView.centerXAnchor).isActive = true
         confirmButton.bottomAnchor.constraint(equalTo: modalView.bottomAnchor, constant: -20).isActive = true
-        confirmButton.backgroundColor = #colorLiteral(red: 0.8470588235, green: 0.8470588235, blue: 0.8470588235, alpha: 1)
+        confirmButton.backgroundColor = ThemeColor.shared.actionButtonColor
         confirmButton.layer.cornerRadius = 8
         confirmButton.clipsToBounds = true
         confirmButton.setTitle("OK", for: .normal)
-        confirmButton.setTitleColor(#colorLiteral(red: 0.01176470588, green: 0.01176470588, blue: 0.01176470588, alpha: 1).withAlphaComponent(0.6), for: .normal)
-        confirmButton.setTitleColor(#colorLiteral(red: 0.6078431373, green: 0.6078431373, blue: 0.6078431373, alpha: 1), for: .highlighted)
+        confirmButton.setTitleColor(.white, for: .normal)
+        confirmButton.setTitleColor(ThemeColor.shared.actionButtonSecondaryColor, for: .highlighted)
         confirmButton.addTarget(self, action: #selector(confirmAction(_:)), for: .touchUpInside)
         
     }

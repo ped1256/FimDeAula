@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseStorage
+
 enum SchedulingSection: Int {
     case days, hour, space
 }
@@ -192,14 +194,22 @@ class FormViewController: UIViewController {
             succesRegisterView.delegate = self
             self.view.addSubview(succesRegisterView)
             
-            UIView.animate(withDuration: 1.5) {
+            UIView.animate(withDuration: 0.7) {
                 succesRegisterView.alpha = 1.0
             }
         }
+
+        guard let image = UIImage(named: "whatsaapLogo") else { return }
+        guard let data = UIImagePNGRepresentation(image) else { return }
+        let storage = Storage.storage()
+        let reference = storage.reference().child("images.jpg")
+        
+        reference.putData(data)
+        
     }
     
     func findRider(){
-//        guard let user = self.user else { return }
+
         
         let loadingView = LoadingView(frame: self.view.frame)
         self.view.addSubview(loadingView)
@@ -209,7 +219,7 @@ class FormViewController: UIViewController {
             let rides = Operation().filterRides(schedule: self.schedule, rides: schedules)
             let homeRidesViewController = HomeRidesViewController()
             homeRidesViewController.rides = rides
-//            homeRidesViewController.user = user
+
             self.navigationController?.pushViewController(homeRidesViewController, animated: true)
             
             loadingView.animating.stopAnimating()

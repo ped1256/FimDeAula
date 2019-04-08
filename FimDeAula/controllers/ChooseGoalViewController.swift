@@ -32,7 +32,7 @@ class ChooseGoalViewController: UIViewController {
         
         addBackModalView()
         addTitle()
-        addLogo()
+//        addLogo()
         addPassagerAndDriverButton()
         addAccountButton()
         
@@ -139,7 +139,9 @@ class ChooseGoalViewController: UIViewController {
         let load = LoadingView(frame: self.view.frame)
         self.view.addSubview(load)
         load.animating.startAnimating()
+        
         Operation().getUserInfo(id: id) { user in
+            guard let user = user else { return }
             
             DispatchQueue.main.async {
                 load.animating.stopAnimating()

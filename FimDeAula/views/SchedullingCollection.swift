@@ -81,7 +81,7 @@ class SchedulingCollection: UICollectionViewCell, UICollectionViewDelegate, UICo
         
         if indexPath.row == cellSelectedIndex {
             cell.contentView.backgroundColor = ThemeColor.shared.actionButtonColor
-            cell.titleLabel.textColor = .white
+            cell.titleLabel.textColor = ThemeColor.shared.cellTitleColor
         }
         
         switch self.section {

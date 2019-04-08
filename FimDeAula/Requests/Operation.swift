@@ -50,19 +50,33 @@ class Operation: NSObject {
         ref?.child("rides/\(schedule.id)").setValue(scheduleInfo)
     }
     
+    func userIsRegistered(user: User, completion: @escaping (Bool) -> ()) {
+        self.getUserInfo(id: user.id) { user in
+            if user != nil {
+                completion(true)
+            } else {
+                completion(false)
+            }
+        }
+    }
+    
     func registerOnlyUser(user: User){
-        ref = Database.database().reference()
-        
-        var userInfo = [String: Any]()
-        userInfo["name"] = user.name
-        userInfo["id"] = user.id
-        userInfo["email"] = user.email ?? ""
-        userInfo["picturePath"] = user.picturePath
-        
-        let schedulesInfo = [[String: Any]]()
-        userInfo["schedules"] = schedulesInfo
-        
-        ref?.child("user/\(user.id)").setValue(userInfo)
+        userIsRegistered(user: user) { isRegistered in
+            guard !isRegistered else { return }
+            
+            self.ref = Database.database().reference()
+            
+            var userInfo = [String: Any]()
+            userInfo["name"] = user.name
+            userInfo["id"] = user.id
+            userInfo["email"] = user.email ?? ""
+            userInfo["picturePath"] = user.picturePath
+            
+            let schedulesInfo = [[String: Any]]()
+            userInfo["schedules"] = schedulesInfo
+            
+            self.ref?.child("user/\(user.id)").setValue(userInfo)
+        }
     }
     
     func getUserSchedules(id: String, completion: @escaping ([Schedule]) -> ()) {
@@ -103,10 +117,14 @@ class Operation: NSObject {
         }
     }
     
-    func getUserInfo(id: String, completion: @escaping (User) -> ()) {
+    func getUserInfo(id: String, completion: @escaping (User?) -> ()) {
         ref = Database.database().reference()
         ref?.child("user/\(id)").queryOrderedByValue().observeSingleEvent(of: .value) { snapshot  in
-            guard let data = snapshot.value as? [String: AnyObject] else { return }
+            guard let data = snapshot.value as? [String: AnyObject] else {
+                completion(nil)
+                return
+            }
+
             guard let name = data["name"] as? String else { return }
             guard let id = data["id"] as? String else { return }
             guard let email = data["email"] as? String else  { return }

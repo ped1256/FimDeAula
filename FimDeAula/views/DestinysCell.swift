@@ -23,8 +23,9 @@ class DestinyCell: UITableViewCell {
     }
     
     func buildUI() {
-        self.contentView.backgroundColor = .white
+        self.contentView.backgroundColor = .none
         self.backgroundColor = ThemeColor.shared.tableViewBackgroundColor
+        self.backgroundColor = .none
         self.selectionStyle = UITableViewCellSelectionStyle.none
         addCheckBox()
         addTitle()

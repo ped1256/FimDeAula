@@ -112,6 +112,7 @@ extension ChooseDestinyViewController: UITableViewDelegate, UITableViewDataSourc
     
     func configureTableView() {
         self.view.addSubview(tableview)
+        self.tableview.backgroundColor = .none
         tableview.delegate = self
         tableview.dataSource = self
         

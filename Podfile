@@ -10,5 +10,6 @@ target 'FimDeAula' do
   pod 'Firebase/Database'
   pod 'FBSDKLoginKit'
   pod 'Firebase/RemoteConfig'
+  pod 'Firebase/Storage'
 
 end

@@ -23,7 +23,7 @@ class DaysCell: UICollectionViewCell {
     }
     
     func buildUI() {
-        self.contentView.backgroundColor = ThemeColor.shared.cellBackgroundColor
+        self.contentView.backgroundColor = ThemeColor.shared.cellBackgroundColor.withAlphaComponent(0.1)
         self.contentView.layer.cornerRadius = 5
         self.contentView.clipsToBounds = true
     }
@@ -40,7 +40,7 @@ class DaysCell: UICollectionViewCell {
     }
 
     override func prepareForReuse() {
-        self.contentView.backgroundColor = ThemeColor.shared.cellBackgroundColor
+        self.contentView.backgroundColor = ThemeColor.shared.cellBackgroundColor.withAlphaComponent(0.1)
         self.titleLabel.textColor = ThemeColor.shared.cellTitleColor
     }
 }
