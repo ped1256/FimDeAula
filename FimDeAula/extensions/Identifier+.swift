@@ -10,4 +10,5 @@ import Foundation
 class Identifier: NSObject {
     var userFirstTimeIdentifier = "userFirstTimeIdentifier"
     var userIsLogedIdentifier = "userIsLogedIdentifier"
+    var userIsAuthenticatedIdentifier = "userIsAuthenticatedIdentifier"
 }

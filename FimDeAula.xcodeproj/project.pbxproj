@@ -42,6 +42,7 @@
 		FA93C9B1215C36E300AD95FE /* AppNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA93C9B0215C36E300AD95FE /* AppNavigationController.swift */; };
 		FAA88810215BEDF7009634AA /* AccountTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA8880F215BEDF7009634AA /* AccountTableViewDelegate.swift */; };
 		FABE04A3225E6F6300664DEC /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABE04A2225E6F6300664DEC /* SpinnerView.swift */; };
+		FABE04A7225E8ABB00664DEC /* UserInfoFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABE04A6225E8ABB00664DEC /* UserInfoFormViewController.swift */; };
 		FACE24C521792C62004D2499 /* DestinyLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACE24C421792C62004D2499 /* DestinyLocation.swift */; };
 		FACE24E62179368B004D2499 /* AppIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FACE24E52179368B004D2499 /* AppIcon.xcassets */; };
 		FAD2EF7E2232EABB003DFA29 /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2EF7D2232EABA003DFA29 /* LaunchScreenViewController.swift */; };
@@ -94,6 +95,7 @@
 		FA93C9B0215C36E300AD95FE /* AppNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigationController.swift; sourceTree = "<group>"; };
 		FAA8880F215BEDF7009634AA /* AccountTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewDelegate.swift; sourceTree = "<group>"; };
 		FABE04A2225E6F6300664DEC /* SpinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
+		FABE04A6225E8ABB00664DEC /* UserInfoFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoFormViewController.swift; sourceTree = "<group>"; };
 		FACE24C421792C62004D2499 /* DestinyLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinyLocation.swift; sourceTree = "<group>"; };
 		FACE24E52179368B004D2499 /* AppIcon.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = AppIcon.xcassets; sourceTree = "<group>"; };
 		FAD2EF7D2232EABA003DFA29 /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				FA080FA2214861FD00C5B2B0 /* LoginViewController.swift */,
 				FA080FA62148BAB400C5B2B0 /* ChooseDestinyViewController.swift */,
 				FAD2EF7D2232EABA003DFA29 /* LaunchScreenViewController.swift */,
+				FABE04A6225E8ABB00664DEC /* UserInfoFormViewController.swift */,
 				FA669D0C2149645000A9D09B /* ChooseGoalViewController.swift */,
 				FA669D0E2149C8F900A9D09B /* FormViewController.swift */,
 				FAA8880F215BEDF7009634AA /* AccountTableViewDelegate.swift */,
@@ -395,6 +398,7 @@
 			files = (
 				FAD2EF7E2232EABB003DFA29 /* LaunchScreenViewController.swift in Sources */,
 				FABE04A3225E6F6300664DEC /* SpinnerView.swift in Sources */,
+				FABE04A7225E8ABB00664DEC /* UserInfoFormViewController.swift in Sources */,
 				FA669D0F2149C8F900A9D09B /* FormViewController.swift in Sources */,
 				FA669D0B2149451100A9D09B /* DestinysCell.swift in Sources */,
 				FACE24C521792C62004D2499 /* DestinyLocation.swift in Sources */,

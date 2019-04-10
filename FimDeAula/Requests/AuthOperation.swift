@@ -18,8 +18,8 @@ class AuthOperation: NSObject {
         return URLRequest(url: url)
     }
     
-    static func processLogin(url: URL, completion: @escaping () -> ()) {
-        if url.absoluteString.contains(logedPointerString) {
+    func processLogin(url: URL, completion: @escaping () -> ()) {
+        if url.absoluteString.contains(AuthOperation.logedPointerString) {
             completion()
         }
     }

@@ -208,26 +208,30 @@ class LoginViewController: UIViewController {
             self.logginButtonWidthContraint?.constant = UIScreen.main.bounds.width
             self.logginButtonheightContraint?.constant = UIScreen.main.bounds.height
             self.loginButton.layer.cornerRadius = 0
+            self.loginButton.backgroundColor = ThemeColor.shared.modalBackgroundColor
             self.logginButtonBottomContraint?.constant = 0
             
             self.view.layoutIfNeeded()
         }) { finished in
             // present view here
-        
-            self.navigationController?.present(ChooseGoalViewController(), animated: false, completion: nil)
-            UIView.animate(withDuration: 1.0, animations: {
-                self.loginButton.alpha = 0.0
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                self.navigationController?.present(UserInfoFormViewController(), animated: false, completion: {
+                    self.loginButton.isHidden = true
+                })
+                
             })
-
         }
     }
+    
 }
 
 extension LoginViewController: UIWebViewDelegate {
     func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         guard let url = webView.request?.url else { return true }
         
-        AuthOperation.processLogin(url: url, completion: {
+        AuthOperation().processLogin(url: url, completion: {
+            UserDefaults.standard.setValue(true, forKey: Identifier().userIsAuthenticatedIdentifier)
             self.removeWebViewWithAnimate()
         })
         
