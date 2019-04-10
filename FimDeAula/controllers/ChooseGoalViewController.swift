@@ -198,3 +198,22 @@ extension ChooseGoalViewController: UserPhoneNumberFormDelegate {
         self.present(nav, animated: true, completion: nil)
     }
 }
+
+//extension ChooseGoalViewController: UIWebViewDelegate {
+//    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+//        print("URL :", webView.request?.url?.absoluteString)
+//
+//        return true
+//    }
+//}
+
+//webView.frame = self.view.frame
+//
+//
+//self.view.addSubview(webView)
+//
+//guard let url = URL(string: "http://graduacao.cesusc.edu.br/projetos/nucleo/uteis/login.php?&tid=0&lid=0&pid=24&arq_ret=R5QT1WSRQBMCVQVPFFQSF99MCT5RT44Q9WRW0RBM0FMM5QQ4R4CV59RWRF1F5SWCW0")
+//    else { return }
+//
+//webView.delegate = self
+//webView.loadRequest(URLRequest(url: url))

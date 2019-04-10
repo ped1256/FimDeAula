@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FimDeAula/controllers/LoginViewController.swift"
-            timestampString = "573871619.044809"
+            timestampString = "576618353.88661"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FimDeAula/Requests/Operation.swift"
-            timestampString = "573878367.486215"
+            timestampString = "576455255.049595"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "121"
@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FimDeAula/views/DaysCell.swift"
-            timestampString = "576427687.164265"
+            timestampString = "576461079.990877"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "32"
@@ -57,24 +57,8 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FimDeAula/controllers/ChooseGoalViewController.swift"
-            timestampString = "576427687.1643389"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "181"
-            endingLineNumber = "181"
-            landmarkName = "accountAction(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "FimDeAula/Requests/Operation.swift"
-            timestampString = "573878367.48649"
+            timestampString = "576455255.050239"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "26"
@@ -218,7 +202,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FimDeAula/Requests/Operation.swift"
-            timestampString = "573878367.487229"
+            timestampString = "576455255.050725"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "137"
@@ -266,7 +250,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FimDeAula/Requests/Operation.swift"
-            timestampString = "573878367.487319"
+            timestampString = "576455255.051072"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "131"
@@ -282,7 +266,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FimDeAula/Requests/Operation.swift"
-            timestampString = "573878367.487409"
+            timestampString = "576455255.051415"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "138"
@@ -298,7 +282,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FimDeAula/controllers/ChooseGoalViewController.swift"
-            timestampString = "576427687.164947"
+            timestampString = "576618353.887522"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "138"
@@ -314,7 +298,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FimDeAula/Requests/Operation.swift"
-            timestampString = "573878367.487581"
+            timestampString = "576455255.051818"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "19"
@@ -330,7 +314,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FimDeAula/views/BackgroundViewWithAnimate.swift"
-            timestampString = "560117286.559394"
+            timestampString = "576618353.8876081"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "32"
@@ -342,27 +326,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FimDeAula/controllers/LoginViewController.swift"
-            timestampString = "573871619.047314"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "133"
-            endingLineNumber = "133"
-            landmarkName = "loginButton(_:didCompleteWith:error:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FimDeAula/AppDelegate.swift"
-            timestampString = "573878367.487748"
+            timestampString = "576614071.256169"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "65"
@@ -378,7 +346,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FimDeAula/AppDelegate.swift"
-            timestampString = "573878367.487833"
+            timestampString = "576614071.256225"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "68"
@@ -394,7 +362,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FimDeAula/Layout/ThemeColor.swift"
-            timestampString = "576427687.1653171"
+            timestampString = "576461079.991245"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "17"
@@ -410,7 +378,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FimDeAula/Layout/ThemeColor.swift"
-            timestampString = "576427687.165372"
+            timestampString = "576461079.991299"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "28"
@@ -537,7 +505,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FimDeAula/views/UniversityNameView.swift"
-            timestampString = "560963092.449995"
+            timestampString = "576461079.9914089"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "31"
@@ -569,7 +537,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FimDeAula/Requests/Operation.swift"
-            timestampString = "573878367.488189"
+            timestampString = "576455255.052482"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "133"
@@ -585,7 +553,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FimDeAula/Requests/Operation.swift"
-            timestampString = "573878367.488281"
+            timestampString = "576455255.052796"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "135"
@@ -601,7 +569,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FimDeAula/Requests/Operation.swift"
-            timestampString = "573878367.4883699"
+            timestampString = "576455255.053075"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "186"
@@ -649,7 +617,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FimDeAula/Requests/Operation.swift"
-            timestampString = "573878367.488459"
+            timestampString = "576455255.053352"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "185"
@@ -728,30 +696,153 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FimDeAula/controllers/FormViewController.swift"
-            timestampString = "575595118.103699"
+            filePath = "FimDeAula/Codable/AppLayout.swift"
+            timestampString = "576454769.9232"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "204"
-            endingLineNumber = "204"
-            landmarkName = "registerRide()"
+            startingLineNumber = "10"
+            endingLineNumber = "10"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FimDeAula/controllers/ChooseDestinyViewController.swift"
+            timestampString = "576456095.968778"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
+            landmarkName = "tableView(_:didSelectRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FimDeAula/controllers/FormViewController.swift"
-            timestampString = "575595118.10379"
+            filePath = "FimDeAula/controllers/LoginViewController.swift"
+            timestampString = "576618353.8882819"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "207"
-            endingLineNumber = "207"
-            landmarkName = "registerRide()"
-            landmarkType = "7">
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "webView"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FimDeAula.LoginViewController.(webView in _6DFE9948597D14BD50FE539EAF658427).getter : __C.UIWebView"
+                  moduleName = "FimDeAula"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pedroemanuel/Documents/FimDeAula/FimDeAula/controllers/LoginViewController.swift"
+                  timestampString = "576608885.343127"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "188">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FimDeAula.LoginViewController.(webView in _6DFE9948597D14BD50FE539EAF658427).setter : __C.UIWebView"
+                  moduleName = "FimDeAula"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pedroemanuel/Documents/FimDeAula/FimDeAula/controllers/LoginViewController.swift"
+                  timestampString = "576608885.345453"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "192">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FimDeAula.LoginViewController.(webView in _6DFE9948597D14BD50FE539EAF658427).modify : __C.UIWebView"
+                  moduleName = "FimDeAula"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pedroemanuel/Documents/FimDeAula/FimDeAula/controllers/LoginViewController.swift"
+                  timestampString = "576608885.34755"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FimDeAula.LoginViewController.(webView in _6DFE9948597D14BD50FE539EAF658427).modify : __C.UIWebView with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "FimDeAula"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pedroemanuel/Documents/FimDeAula/FimDeAula/controllers/LoginViewController.swift"
+                  timestampString = "576608885.3496"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "32">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FimDeAula.LoginViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; FimDeAula.LoginViewController"
+                  moduleName = "FimDeAula"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pedroemanuel/Documents/FimDeAula/FimDeAula/controllers/LoginViewController.swift"
+                  timestampString = "576608885.353278"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "620">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FimDeAula.LoginViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;FimDeAula.LoginViewController&gt;"
+                  moduleName = "FimDeAula"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pedroemanuel/Documents/FimDeAula/FimDeAula/controllers/LoginViewController.swift"
+                  timestampString = "576608885.355547"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "568">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; __C.UIWebView in FimDeAula.LoginViewController.(webView in _6DFE9948597D14BD50FE539EAF658427).getter : __C.UIWebView"
+                  moduleName = "FimDeAula"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pedroemanuel/Documents/FimDeAula/FimDeAula/controllers/LoginViewController.swift"
+                  timestampString = "576608885.357788"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "56">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

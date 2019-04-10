@@ -13,6 +13,7 @@
 		FA080FA52148B8F400C5B2B0 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA080FA42148B8F400C5B2B0 /* LoadingView.swift */; };
 		FA080FA72148BAB400C5B2B0 /* ChooseDestinyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA080FA62148BAB400C5B2B0 /* ChooseDestinyViewController.swift */; };
 		FA080FAB2148BB3500C5B2B0 /* Destinys.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA080FAA2148BB3500C5B2B0 /* Destinys.swift */; };
+		FA2F12FD225C172E009CF59A /* AuthOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2F12FC225C172E009CF59A /* AuthOperation.swift */; };
 		FA366B6C215EE72200F39ACB /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA366B6B215EE72200F39ACB /* ModalView.swift */; };
 		FA448E55215D9A50004A1C53 /* UserPhoneNumberForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA448E54215D9A50004A1C53 /* UserPhoneNumberForm.swift */; };
 		FA4A9C25214C473200FA4DDE /* SchedullingCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4A9C24214C473200FA4DDE /* SchedullingCollection.swift */; };
@@ -40,6 +41,7 @@
 		FA93C9A0215BD8F900AD95FE /* AccounRideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA93C99F215BD8F900AD95FE /* AccounRideCell.swift */; };
 		FA93C9B1215C36E300AD95FE /* AppNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA93C9B0215C36E300AD95FE /* AppNavigationController.swift */; };
 		FAA88810215BEDF7009634AA /* AccountTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA8880F215BEDF7009634AA /* AccountTableViewDelegate.swift */; };
+		FABE04A3225E6F6300664DEC /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABE04A2225E6F6300664DEC /* SpinnerView.swift */; };
 		FACE24C521792C62004D2499 /* DestinyLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACE24C421792C62004D2499 /* DestinyLocation.swift */; };
 		FACE24E62179368B004D2499 /* AppIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FACE24E52179368B004D2499 /* AppIcon.xcassets */; };
 		FAD2EF7E2232EABB003DFA29 /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2EF7D2232EABA003DFA29 /* LaunchScreenViewController.swift */; };
@@ -60,6 +62,7 @@
 		FA080FA42148B8F400C5B2B0 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		FA080FA62148BAB400C5B2B0 /* ChooseDestinyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseDestinyViewController.swift; sourceTree = "<group>"; };
 		FA080FAA2148BB3500C5B2B0 /* Destinys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destinys.swift; sourceTree = "<group>"; };
+		FA2F12FC225C172E009CF59A /* AuthOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthOperation.swift; sourceTree = "<group>"; };
 		FA366B6B215EE72200F39ACB /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
 		FA448E54215D9A50004A1C53 /* UserPhoneNumberForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPhoneNumberForm.swift; sourceTree = "<group>"; };
 		FA4A9C24214C473200FA4DDE /* SchedullingCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedullingCollection.swift; sourceTree = "<group>"; };
@@ -90,6 +93,7 @@
 		FA93C9A1215C24F200AD95FE /* FimDeAula.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FimDeAula.entitlements; sourceTree = "<group>"; };
 		FA93C9B0215C36E300AD95FE /* AppNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigationController.swift; sourceTree = "<group>"; };
 		FAA8880F215BEDF7009634AA /* AccountTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewDelegate.swift; sourceTree = "<group>"; };
+		FABE04A2225E6F6300664DEC /* SpinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
 		FACE24C421792C62004D2499 /* DestinyLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinyLocation.swift; sourceTree = "<group>"; };
 		FACE24E52179368B004D2499 /* AppIcon.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = AppIcon.xcassets; sourceTree = "<group>"; };
 		FAD2EF7D2232EABA003DFA29 /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
@@ -235,6 +239,7 @@
 				FA669D0A2149451100A9D09B /* DestinysCell.swift */,
 				FA366B6B215EE72200F39ACB /* ModalView.swift */,
 				FA4A9C24214C473200FA4DDE /* SchedullingCollection.swift */,
+				FABE04A2225E6F6300664DEC /* SpinnerView.swift */,
 				FA52B7A1216F95DD00B8D35E /* UniversityNameView.swift */,
 				FA83B122215938A40049C07C /* RideInfoView.swift */,
 				FA448E54215D9A50004A1C53 /* UserPhoneNumberForm.swift */,
@@ -250,6 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				FADC91DE215546ED00188AEE /* Operation.swift */,
+				FA2F12FC225C172E009CF59A /* AuthOperation.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -388,6 +394,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAD2EF7E2232EABB003DFA29 /* LaunchScreenViewController.swift in Sources */,
+				FABE04A3225E6F6300664DEC /* SpinnerView.swift in Sources */,
 				FA669D0F2149C8F900A9D09B /* FormViewController.swift in Sources */,
 				FA669D0B2149451100A9D09B /* DestinysCell.swift in Sources */,
 				FACE24C521792C62004D2499 /* DestinyLocation.swift in Sources */,
@@ -402,6 +409,7 @@
 				FA080FA3214861FD00C5B2B0 /* LoginViewController.swift in Sources */,
 				FAFF6EDE21572C22003AF4C7 /* SuccesRegisterView.swift in Sources */,
 				FA448E55215D9A50004A1C53 /* UserPhoneNumberForm.swift in Sources */,
+				FA2F12FD225C172E009CF59A /* AuthOperation.swift in Sources */,
 				FA080FA1214855D200C5B2B0 /* UIView+.swift in Sources */,
 				FA90FF692147072600A55FFD /* BackgroundViewWithAnimate.swift in Sources */,
 				FA93C9A0215BD8F900AD95FE /* AccounRideCell.swift in Sources */,

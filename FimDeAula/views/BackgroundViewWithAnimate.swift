@@ -18,7 +18,7 @@ class BackgroundViewWithAnimate: UIView {
         self.addSubview(backView)
         backView.frame = CGRect(x: self.frame.origin.x, y: self.frame.origin.y, width: 1000, height: 1000)
         
-        let imageView = UIImageView(image: #imageLiteral(resourceName: "cesuscBackgroundImage"))
+        let imageView = UIImageView(image: #imageLiteral(resourceName: "fimDeAulaBackgroundImage"))
         imageView.frame = backView.frame
         
         backView.addSubview(imageView)
