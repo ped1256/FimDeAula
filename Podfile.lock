@@ -84,6 +84,7 @@ PODS:
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
   - Protobuf (3.6.1)
+  - TextFieldEffects (1.5.1)
 
 DEPENDENCIES:
   - FBSDKLoginKit
@@ -91,6 +92,7 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/RemoteConfig
   - Firebase/Storage
+  - TextFieldEffects
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -111,6 +113,7 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - Protobuf
+    - TextFieldEffects
 
 SPEC CHECKSUMS:
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
@@ -130,7 +133,8 @@ SPEC CHECKSUMS:
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
+  TextFieldEffects: 7d372f58aeaf9acd9626bbf962680aef926b085d
 
-PODFILE CHECKSUM: 9edfecb32066e5478fbb4c2265f675485c32eb77
+PODFILE CHECKSUM: 0a2047d5318c2875cae9ecd133de7b9fa86e6c29
 
 COCOAPODS: 1.5.3

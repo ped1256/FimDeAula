@@ -11,5 +11,6 @@ target 'FimDeAula' do
   pod 'FBSDKLoginKit'
   pod 'Firebase/RemoteConfig'
   pod 'Firebase/Storage'
+  pod 'TextFieldEffects'
 
 end
