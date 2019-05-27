@@ -41,6 +41,9 @@
 		FA93C9A0215BD8F900AD95FE /* AccounRideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA93C99F215BD8F900AD95FE /* AccounRideCell.swift */; };
 		FA93C9B1215C36E300AD95FE /* AppNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA93C9B0215C36E300AD95FE /* AppNavigationController.swift */; };
 		FAA88810215BEDF7009634AA /* AccountTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA8880F215BEDF7009634AA /* AccountTableViewDelegate.swift */; };
+		FAB31325229B44080012FD4A /* KeyboardAnimationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB31324229B44080012FD4A /* KeyboardAnimationHelper.swift */; };
+		FAB31327229B44120012FD4A /* PUCartHugeActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB31326229B44120012FD4A /* PUCartHugeActionButton.swift */; };
+		FAB31329229B44180012FD4A /* PUKeyboardFollowingButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB31328229B44180012FD4A /* PUKeyboardFollowingButtonController.swift */; };
 		FABE04A3225E6F6300664DEC /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABE04A2225E6F6300664DEC /* SpinnerView.swift */; };
 		FABE04A7225E8ABB00664DEC /* UserInfoFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABE04A6225E8ABB00664DEC /* UserInfoFormViewController.swift */; };
 		FACE24C521792C62004D2499 /* DestinyLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACE24C421792C62004D2499 /* DestinyLocation.swift */; };
@@ -94,6 +97,9 @@
 		FA93C9A1215C24F200AD95FE /* FimDeAula.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FimDeAula.entitlements; sourceTree = "<group>"; };
 		FA93C9B0215C36E300AD95FE /* AppNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigationController.swift; sourceTree = "<group>"; };
 		FAA8880F215BEDF7009634AA /* AccountTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewDelegate.swift; sourceTree = "<group>"; };
+		FAB31324229B44080012FD4A /* KeyboardAnimationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardAnimationHelper.swift; sourceTree = "<group>"; };
+		FAB31326229B44120012FD4A /* PUCartHugeActionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PUCartHugeActionButton.swift; sourceTree = "<group>"; };
+		FAB31328229B44180012FD4A /* PUKeyboardFollowingButtonController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PUKeyboardFollowingButtonController.swift; sourceTree = "<group>"; };
 		FABE04A2225E6F6300664DEC /* SpinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
 		FABE04A6225E8ABB00664DEC /* UserInfoFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoFormViewController.swift; sourceTree = "<group>"; };
 		FACE24C421792C62004D2499 /* DestinyLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinyLocation.swift; sourceTree = "<group>"; };
@@ -187,7 +193,10 @@
 		FA52B794216D449F00B8D35E /* Layout */ = {
 			isa = PBXGroup;
 			children = (
+				FAB31324229B44080012FD4A /* KeyboardAnimationHelper.swift */,
+				FAB31326229B44120012FD4A /* PUCartHugeActionButton.swift */,
 				FA52B795216D450900B8D35E /* ThemeManager.swift */,
+				FAB31328229B44180012FD4A /* PUKeyboardFollowingButtonController.swift */,
 				FA52B799216D539900B8D35E /* ThemeColor.swift */,
 			);
 			path = Layout;
@@ -398,6 +407,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAB31329229B44180012FD4A /* PUKeyboardFollowingButtonController.swift in Sources */,
+				FAB31325229B44080012FD4A /* KeyboardAnimationHelper.swift in Sources */,
 				FAD2EF7E2232EABB003DFA29 /* LaunchScreenViewController.swift in Sources */,
 				FABE04A3225E6F6300664DEC /* SpinnerView.swift in Sources */,
 				FABE04A7225E8ABB00664DEC /* UserInfoFormViewController.swift in Sources */,
@@ -416,6 +427,7 @@
 				FAFF6EDE21572C22003AF4C7 /* SuccesRegisterView.swift in Sources */,
 				FA448E55215D9A50004A1C53 /* UserPhoneNumberForm.swift in Sources */,
 				FA2F12FD225C172E009CF59A /* AuthOperation.swift in Sources */,
+				FAB31327229B44120012FD4A /* PUCartHugeActionButton.swift in Sources */,
 				FA080FA1214855D200C5B2B0 /* UIView+.swift in Sources */,
 				FA90FF692147072600A55FFD /* BackgroundViewWithAnimate.swift in Sources */,
 				FA93C9A0215BD8F900AD95FE /* AccounRideCell.swift in Sources */,

@@ -124,6 +124,7 @@ class LoginViewController: UIViewController {
         loginButton.backgroundColor = ThemeColor.shared.actionButtonColor
         loginButton.layer.cornerRadius = 10
         loginButton.clipsToBounds = true
+        loginButton.setTitle("Entrar", for: .normal)
         
         logginButtonWidthContraint = loginButton.widthAnchor.constraint(equalToConstant: 260)
         logginButtonWidthContraint?.isActive = true
@@ -193,6 +194,7 @@ class LoginViewController: UIViewController {
         
         UIView.animate(withDuration: 1.0) {
             self.logginButtonWidthContraint?.constant = 60
+            self.loginButton.setTitle("", for: .normal)
             self.loginButton.layer.cornerRadius = 30
             self.acessorySpinner.state = .spinning
             self.acessorySpinner.isHidden = false
@@ -204,7 +206,7 @@ class LoginViewController: UIViewController {
         acessorySpinner.state = .idle
 
         self.view.setNeedsLayout()
-        UIView.animate(withDuration: 0.8, animations: {
+        UIView.animate(withDuration: 0.4, animations: {
             self.logginButtonWidthContraint?.constant = UIScreen.main.bounds.width
             self.logginButtonheightContraint?.constant = UIScreen.main.bounds.height
             self.loginButton.layer.cornerRadius = 0
@@ -214,7 +216,6 @@ class LoginViewController: UIViewController {
             self.view.layoutIfNeeded()
         }) { finished in
             // present view here
-            
             DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
                 self.navigationController?.present(UserInfoFormViewController(), animated: false, completion: {
                     self.loginButton.isHidden = true

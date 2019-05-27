@@ -24,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        UITextField.appearance().keyboardAppearance = .dark
         
         let nav = AppNavigationController()
         let launchScreen = LaunchScreenViewController()
