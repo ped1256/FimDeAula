@@ -68,8 +68,8 @@ open class PUCartHugeActionButton: UIButton {
     
     private func updateUI(){
         titleLabel?.font = UIFont.systemFont(ofSize: 16)
-        backgroundColor = .blue
-        titleLabel?.textColor = .white
+        backgroundColor = ThemeColor.shared.actionButtonColor
+        titleLabel?.textColor = ThemeColor.shared.secondaryTextColor
     }
 
     open override func layoutSubviews() {

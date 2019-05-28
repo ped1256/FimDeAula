@@ -124,7 +124,7 @@ class UserInfoFormViewController: UIViewController {
         modalView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 5).isActive = true
         modalView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -5).isActive = true
         modalView.heightAnchor.constraint(equalToConstant: 230).isActive = true
-        modalView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
+        modalView.topAnchor.constraint(equalTo: view.topAnchor, constant: 80).isActive = true
         modalView.backgroundColor = #colorLiteral(red: 0.2253112676, green: 0.2723168075, blue: 0.3192648458, alpha: 1)
         modalView.layer.cornerRadius = 10
         modalView.clipsToBounds = true
@@ -134,7 +134,7 @@ class UserInfoFormViewController: UIViewController {
     private func buildTitle() {
         self.view.addSubview(titleLabel)
         titleLabel.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 16).isActive = true
-        titleLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 50).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 30).isActive = true
     }
     
     private func buildNameTextField() {
