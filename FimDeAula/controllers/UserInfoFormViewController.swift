@@ -100,9 +100,19 @@ class UserInfoFormViewController: UIViewController {
         buildAreaCodeTextField()
         buildPhoneNumberTextField()
         buildEmailTextField()
+        
+        buttonController.install(in: self)
     }
     
-    private lazy var PUKeyboardFollowingButtonController
+    private lazy var buttonController: PUKeyboardFollowingButtonController = {
+        let buttonController = PUKeyboardFollowingButtonController(actionTitle: "Confirmar")
+        
+        buttonController.buttonTapHandler = { [weak self] in
+            
+        }
+        
+       return buttonController
+    }()
     
     override func viewWillAppear(_ animated: Bool) {
         showWithAnimation()
