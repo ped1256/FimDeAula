@@ -41,9 +41,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 nav.viewControllers = [mainController]
             } else if UserDefaults.standard.value(forKeyPath: Identifier().userIsLogedIdentifier) != nil {
                 if let userIsloged = UserDefaults.standard.value(forKeyPath: Identifier().userIsLogedIdentifier) as? Bool, userIsloged == true {
-                    let choosegoalViewController = ChooseGoalViewController()
-                    choosegoalViewController.shouldGetuUserInfo = true
-                    nav.viewControllers = [choosegoalViewController]
+                    
+                    // salvar user ID para poder pegar info aqui e iniciar ChooseGoal
+//                    let choosegoalViewController = ChooseGoalViewController()
+//                    choosegoalViewController.shouldGetuUserInfo = true
+//                    nav.viewControllers = [choosegoalViewController]
                 } else {
                     let loginViewController = LoginViewController()
                     nav.viewControllers = [loginViewController]

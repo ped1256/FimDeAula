@@ -29,14 +29,6 @@ class UserInfoFormViewController: UIViewController {
         return l
     }()
     
-    private lazy var actionButton: UIButton = {
-        let b = UIButton()
-        b.translatesAutoresizingMaskIntoConstraints = false
-        b.backgroundColor = .black
-        b.alpha = 0
-        return b
-    }()
-    
     private lazy var nameTextfield: YoshikoTextField = {
         let l = YoshikoTextField()
         l.translatesAutoresizingMaskIntoConstraints = false
@@ -106,14 +98,47 @@ class UserInfoFormViewController: UIViewController {
     
     private lazy var buttonController: PUKeyboardFollowingButtonController = {
         let buttonController = PUKeyboardFollowingButtonController(actionTitle: "Confirmar")
+        buttonController.actionButton.isEnabled = false
         
         buttonController.buttonTapHandler = { [weak self] in
-            
+            self?.performRegister()
         }
         
        return buttonController
     }()
     
+    private func hideKeyboard() {
+        nameTextfield.resignFirstResponder()
+        areaCodeTextField.resignFirstResponder()
+        phoneNumberTextField.resignFirstResponder()
+        emailTextField.resignFirstResponder()
+    }
+    
+    private func performRegister() {
+        hideKeyboard()
+        
+        guard let name = nameTextfield.text, let email = emailTextField.text, let areaCode = areaCodeTextField.text, let number = phoneNumberTextField.text else { return }
+        let phoneNumber = "\(areaCode)\(number)"
+        let user = User(name: name , id: "test" , email: email, phoneNumber: phoneNumber)
+
+        Operation().registerOnlyUser(user: user)
+        
+        let loadingView = LoadingView(frame: self.view.frame)
+        self.view.addSubview(loadingView)
+        loadingView.animating.startAnimating()
+        
+        Operation().getUserInfo(id: user.id) { user in
+            DispatchQueue.main.async {
+                loadingView.animating.stopAnimating()
+                loadingView.removeFromSuperview()
+
+                guard let user = user else { return }
+                let choseGoalViewController = ChooseGoalViewController(user: user)
+                self.present(choseGoalViewController, animated: true, completion: nil)
+            }
+        }
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         showWithAnimation()
     }
@@ -143,6 +168,7 @@ class UserInfoFormViewController: UIViewController {
         nameTextfield.heightAnchor.constraint(equalToConstant: 50).isActive = true
         nameTextfield.leftAnchor.constraint(equalTo: modalView.leftAnchor, constant: 10).isActive = true
         nameTextfield.rightAnchor.constraint(equalTo: modalView.rightAnchor, constant: -10).isActive = true
+        nameTextfield.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
     
     private func buildAreaCodeTextField() {
@@ -151,6 +177,7 @@ class UserInfoFormViewController: UIViewController {
         areaCodeTextField.leftAnchor.constraint(equalTo: nameTextfield.leftAnchor).isActive = true
         areaCodeTextField.heightAnchor.constraint(equalToConstant: 50).isActive = true
         areaCodeTextField.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        areaCodeTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
 
     private func buildPhoneNumberTextField(){
@@ -159,6 +186,7 @@ class UserInfoFormViewController: UIViewController {
         phoneNumberTextField.leftAnchor.constraint(equalTo: areaCodeTextField.rightAnchor, constant: 10).isActive = true
         phoneNumberTextField.rightAnchor.constraint(equalTo: modalView.rightAnchor, constant: -10).isActive = true
         phoneNumberTextField.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        phoneNumberTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
     
     private func buildEmailTextField() {
@@ -167,15 +195,29 @@ class UserInfoFormViewController: UIViewController {
         emailTextField.leftAnchor.constraint(equalTo: modalView.leftAnchor, constant: 10).isActive = true
         emailTextField.widthAnchor.constraint(equalToConstant: 250).isActive = true
         emailTextField.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        emailTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
-    
-    
+
     private func showWithAnimation() {
         UIView.animate(withDuration: 0.6) {
-            self.actionButton.alpha = 1.0
             self.titleLabel.alpha = 1.0
             self.modalView.alpha = 1.0
         }
+    }
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        if !isFieldsEmpty {
+            buttonController.actionButton.isEnabled = true
+            return
+        } else if buttonController.actionButton.isEnabled {
+            buttonController.actionButton.isEnabled = false
+        }
+    }
+    
+    private var isFieldsEmpty: Bool {
+        guard let name = nameTextfield.text, let email = emailTextField.text, let areaCode = areaCodeTextField.text, let number = phoneNumberTextField.text else { return true }
+        
+        return name.isEmpty || areaCode.isEmpty || number.isEmpty || email.isEmpty
     }
 }
 

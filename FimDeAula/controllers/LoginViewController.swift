@@ -164,7 +164,6 @@ class LoginViewController: UIViewController {
         webView.loadRequest(request)
         showWebViewWithAnimate()
         startButtonAnimation()
-        
     }
     
     private func showWebViewWithAnimate(){

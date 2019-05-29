@@ -71,6 +71,7 @@ class Operation: NSObject {
             userInfo["id"] = user.id
             userInfo["email"] = user.email ?? ""
             userInfo["picturePath"] = user.picturePath
+            userInfo["userPhone"] = user.phoneNumber
             
             let schedulesInfo = [[String: Any]]()
             userInfo["schedules"] = schedulesInfo

@@ -209,8 +209,6 @@ class FormViewController: UIViewController {
     }
     
     func findRider(){
-
-        
         let loadingView = LoadingView(frame: self.view.frame)
         self.view.addSubview(loadingView)
         loadingView.animating.startAnimating()

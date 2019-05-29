@@ -25,6 +25,12 @@ class User: NSObject {
         self.id = id
     }
 
+    init(name: String, id: String, email: String, phoneNumber: String) {
+        self.name = name
+        self.id = id
+        self.email = email
+        self.phoneNumber = phoneNumber
+    }
     
     static func parseInfoFromFacebook(result: Any, completion: @escaping (User) -> ()){
         guard let result = result as? [String: AnyObject],

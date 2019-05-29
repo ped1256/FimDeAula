@@ -14,12 +14,21 @@ class ChooseGoalViewController: UIViewController {
     var titleLabel = UILabel()
     var logoImageView = UIImageView()
     var user: User?
-    let driverButton = FAActionButtom()
+    let driverButton = UIButton()
     var shouldGetuUserInfo: Bool = false
     let accountIcon = UIButton()
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+    }
+
+    init(user: User) {
+        self.user = user
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
@@ -36,19 +45,19 @@ class ChooseGoalViewController: UIViewController {
         addPassagerAndDriverButton()
         addAccountButton()
         
-        if shouldGetuUserInfo {
-            Operation().retrieverUserFacebookInfo { (user) in
-                self.user = user
-                DispatchQueue.main.async {
-                    self.accountIcon.isHidden = false
-                    self.driverButton.status = .loaded
-                }
-            }
-        } else {
-            self.driverButton.status = .loaded
-            accountIcon.isHidden = false
-            driverButton.isHidden = false
-        }
+//        if shouldGetuUserInfo {
+//            Operation().getUserInfo(id: ) { (user) in
+//                self.user = user
+//                DispatchQueue.main.async {
+//                    self.accountIcon.isHidden = false
+//                    self.driverButton.status = .loaded
+//                }
+//            }
+//        } else {
+//            self.driverButton.status = .loaded
+//            accountIcon.isHidden = false
+//            driverButton.isHidden = false
+//        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -58,7 +67,6 @@ class ChooseGoalViewController: UIViewController {
     
     func addAccountButton(){
         self.view.addSubview(accountIcon)
-        accountIcon.isHidden = true
         accountIcon.translatesAutoresizingMaskIntoConstraints = false
         accountIcon.heightAnchor.constraint(equalToConstant: 47).isActive = true
         accountIcon.widthAnchor.constraint(equalToConstant: 47).isActive = true
@@ -115,7 +123,7 @@ class ChooseGoalViewController: UIViewController {
         driverButton.setTitleColor(ThemeColor.shared.actionButtonSecondaryColor, for: .highlighted)
         driverButton.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         driverButton.addTarget(self, action: #selector(driverButtonAction(_:)), for: .touchUpInside)
-        driverButton.status = .loading
+//        driverButton.status = .loaded
         
         let passagerButton = UIButton()
         self.view.addSubview(passagerButton)
@@ -135,37 +143,39 @@ class ChooseGoalViewController: UIViewController {
     }
     
     @objc func driverButtonAction(_ sender: Any) {
-        guard let id = self.user?.id else { return }
-        let load = LoadingView(frame: self.view.frame)
-        self.view.addSubview(load)
-        load.animating.startAnimating()
+//        guard let id = self.user?.id else { return }
+//        let load = LoadingView(frame: self.view.frame)
+//        self.view.addSubview(load)
+//        load.animating.startAnimating()
         
-        Operation().getUserInfo(id: id) { user in
-            guard let user = user else { return }
-            
-            DispatchQueue.main.async {
-                load.animating.stopAnimating()
-                load.removeFromSuperview()
-            }
-            
-            if user.phoneNumber.isEmpty {
-                DispatchQueue.main.async {
-                    let formNumber = UserPhoneNumberForm(frame: self.view.frame)
-                    formNumber.delegate = self
-                    formNumber.buildUI()
-                    self.view.addSubview(formNumber)
-                }
-            } else {
-                DispatchQueue.main.async {
-                    let chooseDestinyViewController = ChooseDestinyViewController()
-                    chooseDestinyViewController.decisionType = .driver
-                    chooseDestinyViewController.user = self.user
-                    
-                    let nav = AppNavigationController(rootViewController: chooseDestinyViewController)
-                    self.present(nav, animated: true, completion: nil)
-                }
-            }
-        }
+        let chooseDestinyViewController = ChooseDestinyViewController()
+        chooseDestinyViewController.decisionType = .driver
+        chooseDestinyViewController.user = self.user
+        
+        let nav = AppNavigationController(rootViewController: chooseDestinyViewController)
+        self.present(nav, animated: true, completion: nil)
+        
+//        Operation().getUserInfo(id: id) { user in
+//            guard let user = user else { return }
+//
+//            DispatchQueue.main.async {
+//                load.animating.stopAnimating()
+//                load.removeFromSuperview()
+//            }
+//
+//            if user.phoneNumber.isEmpty {
+//                DispatchQueue.main.async {
+//                    let formNumber = UserPhoneNumberForm(frame: self.view.frame)
+//                    formNumber.delegate = self
+//                    formNumber.buildUI()
+//                    self.view.addSubview(formNumber)
+//                }
+//            } else {
+//                DispatchQueue.main.async {
+//
+//                }
+//            }
+//        }
     }
     
     @objc func passagerButtonAction(_ sender: Any) {
