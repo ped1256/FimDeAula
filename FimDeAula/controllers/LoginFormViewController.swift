@@ -65,7 +65,7 @@ class LoginFormViewController: UIViewController {
         buttonController.actionButton.isEnabled = false
         
         buttonController.buttonTapHandler = { [weak self] in
-            self?.performRegister()
+            self?.perform()
         }
         
         return buttonController
@@ -76,8 +76,8 @@ class LoginFormViewController: UIViewController {
         emailTextField.resignFirstResponder()
     }
     
-    private func performRegister() {
-        
+    private func perform() {
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
