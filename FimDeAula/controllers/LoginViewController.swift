@@ -13,6 +13,7 @@ import FirebaseCore
 
 class LoginViewController: UIViewController {
  
+    private var registerButton = UIButton()
     private var loginButton = UIButton()
     private var logginButtonWidthContraint: NSLayoutConstraint?
     private var logginButtonheightContraint: NSLayoutConstraint?
@@ -119,30 +120,46 @@ class LoginViewController: UIViewController {
     
     private func buildButton() {
         self.view.addSubview(loginButton)
-        loginButton.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(registerButton)
+        registerButton.translatesAutoresizingMaskIntoConstraints = false
         
+        registerButton.backgroundColor = ThemeColor.shared.modalBackgroundColor
+        registerButton.layer.cornerRadius = 10
+        registerButton.clipsToBounds = true
+        registerButton.setTitle("Cadastrar-se", for: .normal)
+        
+        logginButtonWidthContraint = registerButton.widthAnchor.constraint(equalToConstant: 260)
+        logginButtonWidthContraint?.isActive = true
+        logginButtonheightContraint = registerButton.heightAnchor.constraint(equalToConstant: 44)
+        logginButtonheightContraint?.isActive = true
+        
+        registerButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        logginButtonBottomContraint = registerButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -54)
+        logginButtonBottomContraint?.isActive = true
+        
+        registerButton.addTarget(self, action: #selector(registerAction(_:)), for: .touchUpInside)
+        
+        registerButton.addSubview(acessorySpinner)
+        acessorySpinner.centerXAnchor.constraint(equalTo: registerButton.centerXAnchor).isActive = true
+        acessorySpinner.centerYAnchor.constraint(equalTo: registerButton.centerYAnchor).isActive = true
+        acessorySpinner.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        acessorySpinner.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        
+        loginButton.translatesAutoresizingMaskIntoConstraints = false
+
         loginButton.backgroundColor = ThemeColor.shared.actionButtonColor
         loginButton.layer.cornerRadius = 10
         loginButton.clipsToBounds = true
         loginButton.setTitle("Entrar", for: .normal)
         
-        logginButtonWidthContraint = loginButton.widthAnchor.constraint(equalToConstant: 260)
-        logginButtonWidthContraint?.isActive = true
-        logginButtonheightContraint = loginButton.heightAnchor.constraint(equalToConstant: 60)
-        logginButtonheightContraint?.isActive = true
-        
         loginButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        logginButtonBottomContraint = loginButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -100)
-        logginButtonBottomContraint?.isActive = true
+        loginButton.widthAnchor.constraint(equalToConstant: 260).isActive = true
+        loginButton.bottomAnchor.constraint(equalTo: registerButton.topAnchor, constant: -8).isActive = true
+        loginButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        loginButton.addTarget(self, action: #selector(loginAction), for: .touchUpInside)
         
-        loginButton.addTarget(self, action: #selector(loginAction(_:)), for: .touchUpInside)
-        
-        loginButton.addSubview(acessorySpinner)
-        acessorySpinner.centerXAnchor.constraint(equalTo: loginButton.centerXAnchor).isActive = true
-        acessorySpinner.centerYAnchor.constraint(equalTo: loginButton.centerYAnchor).isActive = true
-        acessorySpinner.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        acessorySpinner.widthAnchor.constraint(equalToConstant: 30).isActive = true
     }
+    
     
     private func buildBackgroundView() {
         self.view.addSubview(darkBackgroundView)
@@ -158,7 +175,7 @@ class LoginViewController: UIViewController {
         webView.heightAnchor.constraint(equalTo: modalView.heightAnchor).isActive = true
     }
     
-    @objc private func loginAction(_ sender: Any) {
+    @objc private func registerAction(_ sender: Any) {
         guard let request = AuthOperation().request() else { return }
         
         webView.loadRequest(request)
@@ -166,7 +183,11 @@ class LoginViewController: UIViewController {
         startButtonAnimation()
     }
     
-    private func showWebViewWithAnimate(){
+    @objc private func loginAction() {
+        self.navigationController?.pushViewController(LoginFormViewController(), animated: true)
+    }
+    
+    private func showWebViewWithAnimate() {
         webView.isHidden = false
         darkBackgroundView.isHidden = false
         
@@ -192,13 +213,22 @@ class LoginViewController: UIViewController {
         self.view.setNeedsLayout()
         
         UIView.animate(withDuration: 1.0) {
-            self.logginButtonWidthContraint?.constant = 60
-            self.loginButton.setTitle("", for: .normal)
-            self.loginButton.layer.cornerRadius = 30
+            self.logginButtonWidthContraint?.constant = 44
+            self.registerButton.setTitle("", for: .normal)
+            self.registerButton.layer.cornerRadius = 22
             self.acessorySpinner.state = .spinning
             self.acessorySpinner.isHidden = false
             self.view.layoutIfNeeded()
         }
+    }
+    
+    private func cancelButtonAnimation() {
+        self.logginButtonWidthContraint?.constant = 260
+        self.registerButton.setTitle("Cadastrar-se", for: .normal)
+        self.registerButton.layer.cornerRadius = 10
+        self.acessorySpinner.state = .idle
+        self.acessorySpinner.isHidden = true
+        self.view.layoutIfNeeded()
     }
     
     @objc private func finishButtonAnimation() {
@@ -208,16 +238,17 @@ class LoginViewController: UIViewController {
         UIView.animate(withDuration: 0.4, animations: {
             self.logginButtonWidthContraint?.constant = UIScreen.main.bounds.width
             self.logginButtonheightContraint?.constant = UIScreen.main.bounds.height
-            self.loginButton.layer.cornerRadius = 0
-            self.loginButton.backgroundColor = ThemeColor.shared.modalBackgroundColor
+            self.registerButton.layer.cornerRadius = 0
+            self.registerButton.backgroundColor = ThemeColor.shared.modalBackgroundColor
             self.logginButtonBottomContraint?.constant = 0
             
             self.view.layoutIfNeeded()
         }) { finished in
             // present view here
             DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                UserDefaultsManager.saveAuth()
                 self.navigationController?.present(UserInfoFormViewController(), animated: false, completion: {
-                    self.loginButton.isHidden = true
+                    self.registerButton.isHidden = true
                 })
                 
             })
@@ -231,7 +262,7 @@ extension LoginViewController: UIWebViewDelegate {
         guard let url = webView.request?.url else { return true }
         
         AuthOperation().processLogin(url: url, completion: {
-            UserDefaults.standard.setValue(true, forKey: Identifier().userIsAuthenticatedIdentifier)
+            UserDefaultsManager.saveAuth()
             self.removeWebViewWithAnimate()
         })
         

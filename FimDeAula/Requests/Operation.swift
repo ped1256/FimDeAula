@@ -20,7 +20,7 @@ class Operation: NSObject {
         _ = graphRequest?.start(completionHandler: {
             (connection, result, error) -> Void in
             guard error == nil else { return }
-            UserDefaults.standard.setValue(true, forKey: Identifier().userIsLogedIdentifier)
+            UserDefaults.standard.setValue(true, forKey: Identifier().userIsloged)
             
             User.parseInfoFromFacebook(result: result, completion: { user in
                 completion(user)
@@ -77,6 +77,7 @@ class Operation: NSObject {
             userInfo["schedules"] = schedulesInfo
             
             self.ref?.child("user/\(user.id)").setValue(userInfo)
+            UserDefaults.standard.set(true, forKey: Identifier().userIsAuthenticatedIdentifier)
         }
     }
     

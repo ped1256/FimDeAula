@@ -143,39 +143,12 @@ class ChooseGoalViewController: UIViewController {
     }
     
     @objc func driverButtonAction(_ sender: Any) {
-//        guard let id = self.user?.id else { return }
-//        let load = LoadingView(frame: self.view.frame)
-//        self.view.addSubview(load)
-//        load.animating.startAnimating()
-        
         let chooseDestinyViewController = ChooseDestinyViewController()
         chooseDestinyViewController.decisionType = .driver
         chooseDestinyViewController.user = self.user
         
         let nav = AppNavigationController(rootViewController: chooseDestinyViewController)
         self.present(nav, animated: true, completion: nil)
-        
-//        Operation().getUserInfo(id: id) { user in
-//            guard let user = user else { return }
-//
-//            DispatchQueue.main.async {
-//                load.animating.stopAnimating()
-//                load.removeFromSuperview()
-//            }
-//
-//            if user.phoneNumber.isEmpty {
-//                DispatchQueue.main.async {
-//                    let formNumber = UserPhoneNumberForm(frame: self.view.frame)
-//                    formNumber.delegate = self
-//                    formNumber.buildUI()
-//                    self.view.addSubview(formNumber)
-//                }
-//            } else {
-//                DispatchQueue.main.async {
-//
-//                }
-//            }
-//        }
     }
     
     @objc func passagerButtonAction(_ sender: Any) {
@@ -193,21 +166,21 @@ class ChooseGoalViewController: UIViewController {
     }
 }
 
-extension ChooseGoalViewController: UserPhoneNumberFormDelegate {
-    
-    func didTouchAcceptButton(value: String) {
-        guard let user = self.user else { return }
-        Operation().addUserPhoneNumber(user: user , value: value)
-        
-        let chooseDestinyViewController = ChooseDestinyViewController()
-        chooseDestinyViewController.decisionType = .driver
-        chooseDestinyViewController.user = self.user
-        chooseDestinyViewController.user?.phoneNumber = value
-        
-        let nav = AppNavigationController(rootViewController: chooseDestinyViewController)
-        self.present(nav, animated: true, completion: nil)
-    }
-}
+//extension ChooseGoalViewController: UserPhoneNumberFormDelegate {
+//
+//    func didTouchAcceptButton(value: String) {
+//        guard let user = self.user else { return }
+//        Operation().addUserPhoneNumber(user: user , value: value)
+//
+//        let chooseDestinyViewController = ChooseDestinyViewController()
+//        chooseDestinyViewController.decisionType = .driver
+//        chooseDestinyViewController.user = self.user
+//        chooseDestinyViewController.user?.phoneNumber = value
+//
+//        let nav = AppNavigationController(rootViewController: chooseDestinyViewController)
+//        self.present(nav, animated: true, completion: nil)
+//    }
+//}
 
 //extension ChooseGoalViewController: UIWebViewDelegate {
 //    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {

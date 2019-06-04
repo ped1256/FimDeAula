@@ -22,7 +22,7 @@ class UserInfoFormViewController: UIViewController {
     private lazy var titleLabel: UILabel = {
         let l = UILabel()
         l.translatesAutoresizingMaskIntoConstraints = false
-        l.text = "Cadastro"
+        l.text = "Cadastre-se"
         l.textColor = .white
         l.alpha = 0.0
         l.font = UIFont.systemFont(ofSize: 25)

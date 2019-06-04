@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     
     var remoteConfig: RemoteConfig?
+    let nav = AppNavigationController()
     
     var window: UIWindow?
 
@@ -35,31 +36,46 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.makeKeyAndVisible()
         
         ThemeManager().start {
-            let nav = AppNavigationController()
             if UserDefaults.standard.value(forKeyPath: Identifier().userFirstTimeIdentifier) == nil {
-                let mainController = MainViewController()
-                nav.viewControllers = [mainController]
-            } else if UserDefaults.standard.value(forKeyPath: Identifier().userIsLogedIdentifier) != nil {
-                if let userIsloged = UserDefaults.standard.value(forKeyPath: Identifier().userIsLogedIdentifier) as? Bool, userIsloged == true {
-                    
-                    // salvar user ID para poder pegar info aqui e iniciar ChooseGoal
-//                    let choosegoalViewController = ChooseGoalViewController()
-//                    choosegoalViewController.shouldGetuUserInfo = true
-//                    nav.viewControllers = [choosegoalViewController]
-                } else {
-                    let loginViewController = LoginViewController()
-                    nav.viewControllers = [loginViewController]
+                self.onBoardingFlow()
+            } else if UserDefaults.standard.value(forKeyPath: Identifier().userIsloged) != nil {
+                if let userIsloged = UserDefaults.standard.value(forKeyPath: Identifier().userIsloged) as? Bool, userIsloged == true {
+                    self.logedFlow()
+                } else  {
+                    self.authFlow()
                 }
             } else {
-                let loginViewController = LoginViewController()
-                nav.viewControllers = [loginViewController]
+                self.authFlow()
             }
-
-            self.window?.rootViewController = nav
-            self.window?.makeKeyAndVisible()
         }
         
         return true
+    }
+    
+    private func onBoardingFlow() {
+        let mainController = MainViewController()
+        nav.viewControllers = [mainController]
+        self.window?.rootViewController = nav
+        self.window?.makeKeyAndVisible()
+    }
+
+    private func logedFlow() {
+        Operation().getUserInfo(id: "teste") { user in
+            DispatchQueue.main.async {
+                guard let user = user else { return }
+                let choseGoalViewController = ChooseGoalViewController(user: user)
+                self.nav.viewControllers = [choseGoalViewController]
+                self.window?.rootViewController = self.nav
+                self.window?.makeKeyAndVisible()
+            }
+        }
+    }
+
+    private func authFlow() {
+        let loginViewController = LoginViewController()
+        nav.viewControllers = [loginViewController]
+        self.window?.rootViewController = nav
+        self.window?.makeKeyAndVisible()
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {

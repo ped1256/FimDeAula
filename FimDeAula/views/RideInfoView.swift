@@ -268,7 +268,6 @@ class RideInfoView: UIView {
     
     func updateUI(){
         guard let driverName = self.user?.name,
-            let image = user?.picture,
             let slug = schedule?.destiny.slug,
             let hour = schedule?.hour,
             let space = schedule?.space,
@@ -276,7 +275,9 @@ class RideInfoView: UIView {
         
         DispatchQueue.main.async {
             self.driverNameText.text = driverName
-            self.driverImageView.image = image
+            if let image = self.user?.picture {
+                self.driverImageView.image = image
+            }
             self.distinyInfoText.text = "\(slug) - \(hour)"
             self.rideSpaceInfoText.text = space
             self.rideText.text = "\(slug) - \(title)"
