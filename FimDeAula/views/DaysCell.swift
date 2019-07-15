@@ -36,7 +36,6 @@ class DaysCell: UICollectionViewCell {
         titleLabel.numberOfLines = 1
         titleLabel.textColor = ThemeColor.shared.cellTitleColor
         titleLabel.font = UIFont.systemFont(ofSize: 18)
-        
     }
 
     override func prepareForReuse() {

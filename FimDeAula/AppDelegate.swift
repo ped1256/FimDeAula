@@ -36,17 +36,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.makeKeyAndVisible()
         
         ThemeManager().start {
-            if UserDefaults.standard.value(forKeyPath: Identifier().userFirstTimeIdentifier) == nil {
-                self.onBoardingFlow()
-            } else if UserDefaults.standard.value(forKeyPath: Identifier().userIsloged) != nil {
-                if let userIsloged = UserDefaults.standard.value(forKeyPath: Identifier().userIsloged) as? Bool, userIsloged == true {
-                    self.logedFlow()
-                } else  {
-                    self.authFlow()
-                }
-            } else {
-                self.authFlow()
-            }
+//            if UserDefaults.standard.value(forKeyPath: Identifier().userFirstTimeIdentifier) == nil {
+//                self.onBoardingFlow()
+//            } else if UserDefaults.standard.value(forKeyPath: Identifier().userIsloged) != nil {
+//                if let userIsloged = UserDefaults.standard.value(forKeyPath: Identifier().userIsloged) as? Bool, userIsloged == true {
+//                    self.logedFlow()
+//                } else  {
+//                    self.authFlow()
+//                }
+//            } else {
+//                self.authFlow()
+//            }
+            self.logedFlow()
         }
         
         return true
@@ -60,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     private func logedFlow() {
-        Operation().getUserInfo(id: "teste") { user in
+        Operation().getUserInfo(id: "test") { user in
             DispatchQueue.main.async {
                 guard let user = user else { return }
                 let choseGoalViewController = ChooseGoalViewController(user: user)

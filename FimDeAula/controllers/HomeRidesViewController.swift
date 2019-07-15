@@ -13,7 +13,6 @@ class HomeRidesViewController: UIViewController {
     
     var rides = [Schedule]()
     var decisionType: DecisionType = .passenger
-//    var user: User?
     let grayBackground = UIView()
     var titleLabel = UILabel()
     var subtitleView = UIView()
@@ -31,18 +30,21 @@ class HomeRidesViewController: UIViewController {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
 
-        let backgroundView = BackgroundViewWithAnimate(frame: self.view.frame)
+//        let backgroundView = BackgroundViewWithAnimate(frame: self.view.frame)
         
-        backgroundView.addSubview(grayBackground)
+//        backgroundView.addSubview(grayBackground)
+        self.view.backgroundColor = .black
+        self.view.addSubview(grayBackground)
         grayBackground.modalStyle()
         grayBackground.layer.cornerRadius = 0
         grayBackground.translatesAutoresizingMaskIntoConstraints = false
-        grayBackground.leftAnchor.constraint(equalTo: backgroundView.leftAnchor).isActive = true
-        grayBackground.rightAnchor.constraint(equalTo: backgroundView.rightAnchor).isActive = true
-        grayBackground.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor).isActive = true
-        grayBackground.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: 80).isActive = true
+        grayBackground.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
+        grayBackground.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
+        grayBackground.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        grayBackground.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 80).isActive = true
         
-        self.view.addSubview(backgroundView)
+//        self.view.addSubview(backgroundView)
+        
         self.buildUI()
         self.configureTableView()
     }
@@ -64,7 +66,7 @@ class HomeRidesViewController: UIViewController {
     }
     func addSubtitleView() {
         self.view.addSubview(subtitleView)
-        subtitleView.backgroundColor = ThemeColor.shared.actionButtonSecondaryColor
+        subtitleView.backgroundColor = ThemeColor.shared.actionButtonColor
         subtitleView.translatesAutoresizingMaskIntoConstraints = false
         subtitleView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: -10).isActive = true
         subtitleView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -100).isActive = true
@@ -140,17 +142,19 @@ extension HomeRidesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 300
+        return 100
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         let schedule = self.rides[indexPath.row]
         
-        let rideInfo = RideInfoView(frame: self.view.frame)
-        rideInfo.schedule = schedule
-        rideInfo.buildUI()
-        self.view.addSubview(rideInfo)
+//        let rideInfo = RideInfoView(frame: self.view.frame)
+//        rideInfo.schedule = schedule
+//        rideInfo.buildUI()
+//        self.view.addSubview(rideInfo)
+        let viewC = ScheduleDriverInfoViewController(schedule: schedule)
+        self.navigationController?.pushViewController(viewC, animated: true)
 
     }
     

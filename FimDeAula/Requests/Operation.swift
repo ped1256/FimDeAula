@@ -78,6 +78,7 @@ class Operation: NSObject {
             
             self.ref?.child("user/\(user.id)").setValue(userInfo)
             UserDefaults.standard.set(true, forKey: Identifier().userIsAuthenticatedIdentifier)
+            UserDefaults.standard.setValue(true, forKey: Identifier().userIsloged)
         }
     }
     

@@ -15,8 +15,8 @@ class LoginViewController: UIViewController {
  
     private var registerButton = UIButton()
     private var loginButton = UIButton()
-    private var logginButtonWidthContraint: NSLayoutConstraint?
-    private var logginButtonheightContraint: NSLayoutConstraint?
+    private var registerButtonWidthContraint: NSLayoutConstraint?
+    private var registerButtonheightContraint: NSLayoutConstraint?
     private var logginButtonBottomContraint: NSLayoutConstraint?
 
     private var modalView = UIView()
@@ -128,10 +128,10 @@ class LoginViewController: UIViewController {
         registerButton.clipsToBounds = true
         registerButton.setTitle("Cadastrar-se", for: .normal)
         
-        logginButtonWidthContraint = registerButton.widthAnchor.constraint(equalToConstant: 260)
-        logginButtonWidthContraint?.isActive = true
-        logginButtonheightContraint = registerButton.heightAnchor.constraint(equalToConstant: 44)
-        logginButtonheightContraint?.isActive = true
+        registerButtonWidthContraint = registerButton.widthAnchor.constraint(equalToConstant: 260)
+        registerButtonWidthContraint?.isActive = true
+        registerButtonheightContraint = registerButton.heightAnchor.constraint(equalToConstant: 44)
+        registerButtonheightContraint?.isActive = true
         
         registerButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         logginButtonBottomContraint = registerButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -54)
@@ -213,7 +213,7 @@ class LoginViewController: UIViewController {
         self.view.setNeedsLayout()
         
         UIView.animate(withDuration: 1.0) {
-            self.logginButtonWidthContraint?.constant = 44
+            self.registerButtonWidthContraint?.constant = 44
             self.registerButton.setTitle("", for: .normal)
             self.registerButton.layer.cornerRadius = 22
             self.acessorySpinner.state = .spinning
@@ -223,7 +223,7 @@ class LoginViewController: UIViewController {
     }
     
     private func cancelButtonAnimation() {
-        self.logginButtonWidthContraint?.constant = 260
+        self.registerButtonWidthContraint?.constant = 260
         self.registerButton.setTitle("Cadastrar-se", for: .normal)
         self.registerButton.layer.cornerRadius = 10
         self.acessorySpinner.state = .idle
@@ -236,21 +236,19 @@ class LoginViewController: UIViewController {
 
         self.view.setNeedsLayout()
         UIView.animate(withDuration: 0.4, animations: {
-            self.logginButtonWidthContraint?.constant = UIScreen.main.bounds.width
-            self.logginButtonheightContraint?.constant = UIScreen.main.bounds.height
+            self.loginButton.isHidden = true
+            self.registerButtonWidthContraint?.constant = UIScreen.main.bounds.width
+            self.registerButtonheightContraint?.constant = UIScreen.main.bounds.height
             self.registerButton.layer.cornerRadius = 0
             self.registerButton.backgroundColor = ThemeColor.shared.modalBackgroundColor
             self.logginButtonBottomContraint?.constant = 0
-            
             self.view.layoutIfNeeded()
         }) { finished in
-            // present view here
             DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
                 UserDefaultsManager.saveAuth()
                 self.navigationController?.present(UserInfoFormViewController(), animated: false, completion: {
                     self.registerButton.isHidden = true
                 })
-                
             })
         }
     }
@@ -270,24 +268,6 @@ extension LoginViewController: UIWebViewDelegate {
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
-        removeWebViewWithAnimate()
+//        removeWebViewWithAnimate()
     }
 }
-
-
-//extension LoginViewController: FBSDKLoginButtonDelegate {
-//    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-//        UserDefaults.standard.setValue(false, forKey: Identifier().userIsLogedIdentifier)
-//    }
-//
-//    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
-//        Operation().retrieverUserFacebookInfo { user in
-//            DispatchQueue.main.async {
-//                let chooseGoalViewController = ChooseGoalViewController()
-//                chooseGoalViewController.user = user
-//                Operation().registerOnlyUser(user: user)
-//                self.navigationController?.pushViewController(chooseGoalViewController, animated: true)
-//            }
-//        }
-//    }
-//}

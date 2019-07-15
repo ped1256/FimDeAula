@@ -36,6 +36,14 @@ class LoginFormViewController: UIViewController {
         return l
     }()
     
+    private lazy var closeButtonImageView: UIButton = {
+        let closeButtonImageView = UIButton()
+        closeButtonImageView.translatesAutoresizingMaskIntoConstraints = false
+        closeButtonImageView.setImage(UIImage(named: "Grey_close"), for: .normal)
+        closeButtonImageView.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
+        return closeButtonImageView
+    }()
+    
     private lazy var emailTextField: YoshikoTextField = {
         let l = YoshikoTextField()
         l.translatesAutoresizingMaskIntoConstraints = false
@@ -55,6 +63,7 @@ class LoginFormViewController: UIViewController {
         
         buildModalView()
         buildTitle()
+        buildCloseButton()
         buildEmailTextField()
         buildPasswordTextField()
         buttonController.install(in: self)
@@ -103,6 +112,16 @@ class LoginFormViewController: UIViewController {
         titleLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 30).isActive = true
     }
     
+    private func buildCloseButton() {
+        self.view.addSubview(closeButtonImageView)
+        NSLayoutConstraint.activate([
+            closeButtonImageView.heightAnchor.constraint(equalToConstant: 22),
+            closeButtonImageView.widthAnchor.constraint(equalToConstant: 22),
+            closeButtonImageView.topAnchor.constraint(equalTo: titleLabel.topAnchor, constant: 0),
+            closeButtonImageView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -22)
+            ])
+    }
+    
     private func buildEmailTextField() {
         self.modalView.addSubview(emailTextField)
         emailTextField.topAnchor.constraint(equalTo: modalView.topAnchor, constant: 15).isActive = true
@@ -120,6 +139,10 @@ class LoginFormViewController: UIViewController {
         passwordTextField.heightAnchor.constraint(equalTo: emailTextField.heightAnchor).isActive = true
         
         passwordTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+    }
+    
+    @objc private func dismissView() {
+        self.navigationController?.popViewController(animated: true)
     }
     
     private func showWithAnimation() {
