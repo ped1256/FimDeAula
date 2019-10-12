@@ -35,7 +35,7 @@ class HomeRidesViewController: UIViewController {
 //        backgroundView.addSubview(grayBackground)
         self.view.backgroundColor = .black
         self.view.addSubview(grayBackground)
-        grayBackground.modalStyle()
+//        grayBackground.modalStyle()
         grayBackground.layer.cornerRadius = 0
         grayBackground.translatesAutoresizingMaskIntoConstraints = false
         grayBackground.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
@@ -154,7 +154,9 @@ extension HomeRidesViewController: UITableViewDelegate, UITableViewDataSource {
 //        rideInfo.buildUI()
 //        self.view.addSubview(rideInfo)
         let viewC = ScheduleDriverInfoViewController(schedule: schedule)
-        self.navigationController?.pushViewController(viewC, animated: true)
+        let nav = UINavigationController(rootViewController: viewC)
+        nav.isNavigationBarHidden = true
+        self.present(nav, animated: true, completion: nil)
 
     }
     

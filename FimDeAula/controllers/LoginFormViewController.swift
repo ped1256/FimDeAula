@@ -86,7 +86,21 @@ class LoginFormViewController: UIViewController {
     }
     
     private func perform() {
+        guard let email = emailTextField.text, let password = passwordTextField.text else { return }
+        
+        AuthenticationEmailManager.auth(email: email, password: password) { (result) in
+            guard let userResult = result?.user  else { return }
 
+            Operation().getUserInfo(id: userResult.uid) { (user) in
+                guard let user = user else { return }
+                
+                DispatchQueue.main.async {
+                    let choseGoalViewController = ChooseGoalViewController(user: user)
+                    choseGoalViewController.modalPresentationStyle = .fullScreen
+                    self.present(choseGoalViewController, animated: true, completion: nil)
+                }
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

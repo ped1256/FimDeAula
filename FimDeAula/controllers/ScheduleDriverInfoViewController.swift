@@ -38,7 +38,7 @@ class ScheduleDriverInfoViewController: UIViewController {
         gradientLayer.colors = [colorTop, colorBottom]
         gradientLayer.locations = [0.0, 1.0]
         gradientLayer.frame = CGRect(x: view.frame.origin.x, y: view.frame.origin.y, width: view.frame.width, height: UIScreen.main.bounds.height * 0.8)
-        gradientLayer.opacity = 0.7
+        gradientLayer.opacity = 0.9
         
         imageView.layer.insertSublayer(gradientLayer, at: 0)
         return imageView
@@ -95,6 +95,14 @@ class ScheduleDriverInfoViewController: UIViewController {
         reservationButton.clipsToBounds = true
         reservationButton.translatesAutoresizingMaskIntoConstraints = false
         return  reservationButton
+    }()
+    
+    private lazy var closeButtonImageView: UIButton = {
+        let closeButtonImageView = UIButton()
+        closeButtonImageView.translatesAutoresizingMaskIntoConstraints = false
+        closeButtonImageView.setImage(UIImage(named: "Grey_close"), for: .normal)
+        closeButtonImageView.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
+        return closeButtonImageView
     }()
     
     private func buildUI() {
@@ -160,5 +168,15 @@ class ScheduleDriverInfoViewController: UIViewController {
         reservationButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -55).isActive = true
         reservationButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         reservationButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        
+        view.addSubview(closeButtonImageView)
+        closeButtonImageView.heightAnchor.constraint(equalToConstant: 25).isActive = true
+        closeButtonImageView.widthAnchor.constraint(equalToConstant: 25).isActive = true
+        closeButtonImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 35).isActive = true
+        closeButtonImageView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
+    }
+    
+    @objc private func dismissView() {
+        self.navigationController?.dismiss(animated: true, completion: nil)
     }
 }

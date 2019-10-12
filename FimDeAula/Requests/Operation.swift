@@ -60,9 +60,12 @@ class Operation: NSObject {
         }
     }
     
-    func registerOnlyUser(user: User){
+    func registerFirebaseUser(user: User, completion: ((Bool) -> Void)? = nil) {
         userIsRegistered(user: user) { isRegistered in
-            guard !isRegistered else { return }
+            guard !isRegistered else {
+                completion?(false)
+                return
+            }
             
             self.ref = Database.database().reference()
             
@@ -79,6 +82,7 @@ class Operation: NSObject {
             self.ref?.child("user/\(user.id)").setValue(userInfo)
             UserDefaults.standard.set(true, forKey: Identifier().userIsAuthenticatedIdentifier)
             UserDefaults.standard.setValue(true, forKey: Identifier().userIsloged)
+            completion?(true)
         }
     }
     

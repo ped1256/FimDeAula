@@ -35,10 +35,12 @@ class FormViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .clear
-        let backgroundView = BackgroundViewWithAnimate(frame: self.view.frame)
+        //        let backgroundView = BackgroundViewWithAnimate(frame: self.view.frame)
+        let backgroundView = UIView(frame: self.view.frame)
+        backgroundView.backgroundColor = .black
         
         backgroundView.addSubview(modalBackground)
-        modalBackground.modalStyle()
+//        modalBackground.modalStyle()
         modalBackground.layer.cornerRadius = 0
         modalBackground.translatesAutoresizingMaskIntoConstraints = false
         modalBackground.leftAnchor.constraint(equalTo: backgroundView.leftAnchor).isActive = true

@@ -29,10 +29,12 @@ class ChooseDestinyViewController: UIViewController {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
         
-        backgroundView = BackgroundViewWithAnimate(frame: self.view.frame)
-        backgroundView.backgroundColor = .white
+        //        let backgroundView = BackgroundViewWithAnimate(frame: self.view.frame)
+        let backgroundView = UIView(frame: self.view.frame)
+        backgroundView.backgroundColor = .black
+//        backgroundView.backgroundColor = .white
         backgroundView.addSubview(grayBackground)
-        grayBackground.modalStyle()
+//        grayBackground.modalStyle()
         grayBackground.layer.cornerRadius = 0
         grayBackground.translatesAutoresizingMaskIntoConstraints = false
         grayBackground.leftAnchor.constraint(equalTo: backgroundView.leftAnchor).isActive = true

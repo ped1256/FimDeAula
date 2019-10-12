@@ -23,8 +23,10 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let backgroundView = BackgroundViewWithAnimate(frame: self.view.frame)
-        backgroundView.startBackgroundAnimate()
+//        let backgroundView = BackgroundViewWithAnimate(frame: self.view.frame)
+//        backgroundView.startBackgroundAnimate()
+        let backgroundView = UIView(frame: self.view.frame)
+        backgroundView.backgroundColor = .black
         self.view.addSubview(backgroundView)
         self.navigationController?.navigationBar.isHidden = true
         addButtonaccept()
@@ -62,7 +64,7 @@ class MainViewController: UIViewController {
     
     func addBackModalView() {
         self.view.addSubview(modalView)
-        modalView.modalStyle()
+//        modalView.modalStyle()
         modalView.translatesAutoresizingMaskIntoConstraints = false
         modalView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 7).isActive = true
         modalView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -7).isActive = true

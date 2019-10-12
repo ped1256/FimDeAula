@@ -9,6 +9,7 @@ target 'FimDeAula' do
   pod 'Firebase/Core'
   pod 'Firebase/Database'
   pod 'FBSDKLoginKit'
+  pod 'FirebaseAuth'
   pod 'Firebase/RemoteConfig'
   pod 'Firebase/Storage'
   pod 'TextFieldEffects'

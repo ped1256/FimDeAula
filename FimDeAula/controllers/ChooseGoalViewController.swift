@@ -34,8 +34,10 @@ class ChooseGoalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let backgroundView = BackgroundViewWithAnimate(frame: self.view.frame)
-        backgroundView.startBackgroundAnimate()
+        //        let backgroundView = BackgroundViewWithAnimate(frame: self.view.frame)
+        //        backgroundView.startBackgroundAnimate()
+        let backgroundView = UIView(frame: self.view.frame)
+        backgroundView.backgroundColor = .black
         self.view.addSubview(backgroundView)
         self.navigationController?.navigationBar.isHidden = true
         
@@ -78,7 +80,7 @@ class ChooseGoalViewController: UIViewController {
     
     func addBackModalView() {
         self.view.addSubview(modalView)
-        modalView.modalStyle()
+//        modalView.modalStyle()
         modalView.translatesAutoresizingMaskIntoConstraints = false
         
         modalView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 7).isActive = true

@@ -1,0 +1,16 @@
+/* 
+  Melhorias.strings
+  FimDeAula
+
+  Created by Pedro Emanuel on 04/10/19.
+  Copyright © 2019 Pedro Emanuel. All rights reserved.
+ 
+ 
+ - integrar login facebook
+ - Remover Destinos "Outros"
+ - Criar empty view para busca de caronas
+ - Criar empty view para caronas já cadastradas
+ - implementar conversa com wpp
+ - implementar contador de reservas
+ 
+*/

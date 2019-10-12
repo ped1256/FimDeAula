@@ -82,6 +82,18 @@ class UserInfoFormViewController: UIViewController {
         return l
     }()
     
+    private lazy var passwordTextField: YoshikoTextField = {
+        let l = YoshikoTextField()
+        l.isSecureTextEntry = true
+        l.translatesAutoresizingMaskIntoConstraints = false
+        l.activeBorderColor = ThemeColor.shared.actionButtonColor
+        l.borderSize = 1
+        l.placeholder = "Senha"
+        l.placeholderColor = ThemeColor.shared.secondaryTextColor
+        l.textColor = .white
+        return l
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = ThemeColor.shared.modalBackgroundColor
@@ -92,6 +104,7 @@ class UserInfoFormViewController: UIViewController {
         buildAreaCodeTextField()
         buildPhoneNumberTextField()
         buildEmailTextField()
+        buildPasswordTextField()
         
         buttonController.install(in: self)
     }
@@ -117,25 +130,26 @@ class UserInfoFormViewController: UIViewController {
     private func performRegister() {
         hideKeyboard()
         
-        guard let name = nameTextfield.text, let email = emailTextField.text, let areaCode = areaCodeTextField.text, let number = phoneNumberTextField.text else { return }
+        guard let name = nameTextfield.text, let email = emailTextField.text, let areaCode = areaCodeTextField.text, let number = phoneNumberTextField.text, let password = passwordTextField.text else { return }
         let phoneNumber = "\(areaCode)\(number)"
-        let user = User(name: name , id: "test" , email: email, phoneNumber: phoneNumber)
 
-        Operation().registerOnlyUser(user: user)
-        
         let loadingView = LoadingView(frame: self.view.frame)
         self.view.addSubview(loadingView)
         loadingView.animating.startAnimating()
         
-        Operation().getUserInfo(id: user.id) { user in
-            DispatchQueue.main.async {
-                loadingView.animating.stopAnimating()
-                loadingView.removeFromSuperview()
-
-                guard let user = user else { return }
-                let choseGoalViewController = ChooseGoalViewController(user: user)
-                self.present(choseGoalViewController, animated: true, completion: nil)
-            }
+        AuthenticationEmailManager.register(email: email, password: password) { (result) in
+            guard let userResult = result?.user, let email = userResult.email else { return }
+            
+            let user = User(name: name , id: userResult.uid, email: email, phoneNumber: phoneNumber)
+            
+            loadingView.animating.stopAnimating()
+            loadingView.removeFromSuperview()
+            
+            let choseGoalViewController = ChooseGoalViewController(user: user)
+            choseGoalViewController.modalPresentationStyle = .fullScreen
+            
+            Operation().registerFirebaseUser(user: user, completion: nil)
+            self.present(choseGoalViewController, animated: true, completion: nil)
         }
     }
 
@@ -148,7 +162,7 @@ class UserInfoFormViewController: UIViewController {
         modalView.translatesAutoresizingMaskIntoConstraints = false
         modalView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 5).isActive = true
         modalView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -5).isActive = true
-        modalView.heightAnchor.constraint(equalToConstant: 230).isActive = true
+        modalView.heightAnchor.constraint(equalToConstant: 250).isActive = true
         modalView.topAnchor.constraint(equalTo: view.topAnchor, constant: 80).isActive = true
         modalView.backgroundColor = #colorLiteral(red: 0.2235294118, green: 0.2705882353, blue: 0.3176470588, alpha: 1)
         modalView.layer.cornerRadius = 10
@@ -196,6 +210,15 @@ class UserInfoFormViewController: UIViewController {
         emailTextField.widthAnchor.constraint(equalToConstant: 250).isActive = true
         emailTextField.heightAnchor.constraint(equalToConstant: 50).isActive = true
         emailTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+    }
+    
+    private func buildPasswordTextField() {
+        self.modalView.addSubview(passwordTextField)
+        passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 10).isActive = true
+        passwordTextField.leftAnchor.constraint(equalTo: modalView.leftAnchor, constant: 10).isActive = true
+        passwordTextField.rightAnchor.constraint(equalTo: modalView.rightAnchor, constant: -10).isActive = true
+        passwordTextField.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        passwordTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
 
     private func showWithAnimation() {
