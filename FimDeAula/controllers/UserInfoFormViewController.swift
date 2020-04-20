@@ -238,9 +238,9 @@ class UserInfoFormViewController: UIViewController {
     }
     
     private var isFieldsEmpty: Bool {
-        guard let name = nameTextfield.text, let email = emailTextField.text, let areaCode = areaCodeTextField.text, let number = phoneNumberTextField.text else { return true }
+        guard let name = nameTextfield.text, let email = emailTextField.text, let areaCode = areaCodeTextField.text, let number = phoneNumberTextField.text, let password = passwordTextField.text else { return true }
         
-        return name.isEmpty || areaCode.isEmpty || number.isEmpty || email.isEmpty
+        return name.isEmpty || areaCode.isEmpty || number.isEmpty || email.isEmpty || password.isEmpty
     }
 }
 

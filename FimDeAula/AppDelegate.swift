@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             } else {
                 self.authFlow()
             }
-//            self.logedFlow()
+            self.logedFlow()
         }
         
         return true
